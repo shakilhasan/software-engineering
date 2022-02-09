@@ -1,4 +1,4 @@
-//Hoisting: define top of his scope
+//Hoisting: define top of his scope, actually work using Execution Context
 // var,let,const hoisting-----------------------------
 // var,let,const are allocated to memory at js compile time,
 // var assign undefined value but let,const not assign any value
