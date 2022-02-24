@@ -230,18 +230,18 @@
 //H. use conditional shorthand
 {
     //not beautiful
-    if(isValid===true){
+    if (isValid === true) {
         //do somethings ....
     }
-    if(isValid===false){
+    if (isValid === false) {
         //do somethings ....
     }
 
     //good
-    if(isValid){
+    if (isValid) {
         //do somethings ....
     }
-    if(!isValid){
+    if (!isValid) {
         //do somethings ....
     }
 }
@@ -249,20 +249,24 @@
 //I. use method chaining
 {
     //bad
-    class Product{
-        constructor(name){
+    class Product {
+        constructor(name) {
             this.name = name;
         }
-        setUnits(units){
+
+        setUnits(units) {
             this.units = units;
         }
-        setPrice(price){
+
+        setPrice(price) {
             this.price = price;
         }
-        save(){
+
+        save() {
             console.log(this.name, this.price, this.units);
         }
     }
+
     const product = new Product('Bag');
     product.setPrice(23.99)
     product.setUnits(12);
@@ -270,22 +274,26 @@
 
 
     //good
-    class Product1{
-        constructor(name){
+    class Product1 {
+        constructor(name) {
             this.name = name;
         }
-        setUnits(units){
+
+        setUnits(units) {
             this.units = units;
             return this;
         }
-        setPrice(price){
+
+        setPrice(price) {
             this.price = price;
             return this;
         }
-        save(){
+
+        save() {
             console.log(this.name, this.price, this.units);
         }
     }
+
     const product1 = new Product1('Bag');
     product1.setPrice(23.99).setUnits(12).save();
 }
@@ -300,14 +308,47 @@
 //K. use Curly Braces
 {
     //bad
-    if(somethings)
-        x=false;
+    if (somethings) x = false;
 
 
     //good
-    if(somethings){
-        x=false;
+    if (somethings) {
+        x = false;
     }
+}
+
+//H. Add methods on .prototype when writing constructors
+{
+    //bad, performance issue
+    function Player(name, age) {
+        this.name = name;
+        this.age = age;
+        this.play = function () {
+            console.log(`${this.name} is playing`)
+        }
+    }
+
+    const sakib = new Player('sakib', 35)
+    const tamim = new Player('tamim', 35)
+    sakib.play();
+    console.log(sakib);
+    console.log(tamim);
+
+
+    //good
+    function Player1(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Player1.prototype.play = function () {
+        console.log(`${this.name} is playing`)
+    }
+    const sakib1 = new Player1('sakib', 35)
+    const tamim1 = new Player1('tamim', 35)
+    sakib1.play();
+    console.log(sakib1);
+    console.log(tamim1);
 }
 
 
