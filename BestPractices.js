@@ -317,7 +317,7 @@
     }
 }
 
-//H. Add methods on .prototype when writing constructors
+//L. Add methods on .prototype when writing constructors
 {
     //bad, performance issue
     function Player(name, age) {
@@ -351,5 +351,126 @@
     console.log(tamim1);
 }
 
+//M. Declare variables outside the for statement
+{
+    const someArray = [1, 2, 3, 4, 5, 6];
+    //bad, performance issue
+    for (let i = 0; i < someArray.length; i++) {  // someArray.length, execute every iteration
+        const container = document.getElementById('container');  // execute every iteration
+        container.innerHTML += 'my number' + i;
+        console.log(i);
+    }
 
+    //good
+    const container = document.getElementById('container');
+    const len = someArray.length;
+    for (let i = 0; i < len; i++) {  // someArray.length, execute every iteration
+        container.innerHTML += 'my number' + i;
+        console.log(i);
+    }
+}
 
+//N. use let and const as possible instead of var
+{
+    //use const when variable never change
+    //use let when variable can change
+}
+
+//O. omit var keyword, use comma instead
+{
+    //bad
+    var num1 = 1;
+    var num2 = 2;
+    var num3 = 3;
+
+    //good
+    var num1 = 1, num2 = 2, num3 = 3;
+}
+
+//P.Always use semicolon
+{
+    //not good, hard to find error
+    {
+        let item = 'item1'
+
+        function doSomething() {
+            return 'something'
+        }
+    }
+    //good,
+    {
+        let item = 'item1';
+
+        function doSomething() {
+            return 'something';
+        }
+    }
+}
+
+//Q. use IIFE(Immediately invoked function expression) as much as possible
+{
+    //when need immediate function call
+    //not good
+    function a() {
+        //do Something
+    }
+
+    a();
+
+    //good
+    (function a() {
+        //do Something
+    })();
+
+}
+
+//R.Module Pattern , Avoid using global
+{
+    //bad
+    const current = null;
+
+    function init() {
+        //do somethings
+    }
+
+    function change() {
+        //do somethings
+    }
+
+    function verify() {
+        //do somethings
+    }
+
+    //good
+    const myModule = (function () {
+        const current = null;
+
+        function init() {
+            //do somethings
+            console.log('init')
+        }
+
+        function change() {
+            //do somethings
+        }
+
+        function verify() {
+            //do somethings
+        }
+
+        return {
+            init, change, verify
+        }
+    })();
+
+    myModule.init();
+}
+
+//S. Avoid language attribute, in html
+{
+    //bad ,language attribute will deprecate soon
+    <script src="text/javascript" language="javascript"></script>;
+
+    //good
+    <script src="text/javascript"></script>;
+}
