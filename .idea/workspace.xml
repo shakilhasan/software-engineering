@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement BestPractices">
+    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,15 +39,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.PrimitiveVsReference.js">
+  <component name="RunManager" selected="Node.js.Symbol.js">
     <configuration name="PrimitiveVsReference.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="PrimitiveVsReference.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Prototype.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Prototype.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="Symbol.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Symbol.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.Symbol.js" />
         <item itemvalue="Node.js.PrimitiveVsReference.js" />
         <item itemvalue="Node.js.Prototype.js" />
       </list>
@@ -68,7 +72,8 @@
       <workItem from="1645334466626" duration="4986000" />
       <workItem from="1645585323493" duration="482000" />
       <workItem from="1645750647830" duration="5555000" />
-      <workItem from="1645769789335" duration="5261000" />
+      <workItem from="1645769789335" duration="6093000" />
+      <workItem from="1645784386007" duration="7872000" />
     </task>
     <task id="LOCAL-00001" summary="*WIP PrimitiveVsReference">
       <created>1645585785708</created>
@@ -84,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645769678111</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implement Request">
+      <created>1645783789625</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645783789625</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,7 +116,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="*WIP PrimitiveVsReference" />
     <MESSAGE value="implement BestPractices" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement BestPractices" />
+    <MESSAGE value="implement Request" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement Request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
