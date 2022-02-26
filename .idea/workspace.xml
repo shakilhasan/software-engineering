@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Symbol">
+    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Iterator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +39,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.Iterator.js">
+  <component name="RunManager" selected="Node.js.Generator.js">
+    <configuration name="Generator.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Generator.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="Iterator.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v14.18.1/bin/node" nameIsGenerated="true" path-to-js-file="Iterator.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -54,6 +57,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.Generator.js" />
         <item itemvalue="Node.js.Iterator.js" />
         <item itemvalue="Node.js.Symbol.js" />
         <item itemvalue="Node.js.PrimitiveVsReference.js" />
@@ -78,7 +82,9 @@
       <workItem from="1645750647830" duration="5555000" />
       <workItem from="1645769789335" duration="6093000" />
       <workItem from="1645784386007" duration="12933000" />
-      <workItem from="1645846169287" duration="4625000" />
+      <workItem from="1645846169287" duration="10149000" />
+      <workItem from="1645881187469" duration="1502000" />
+      <workItem from="1645887206219" duration="8204000" />
     </task>
     <task id="LOCAL-00001" summary="*WIP PrimitiveVsReference">
       <created>1645585785708</created>
@@ -108,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645802418311</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="implement Iterator">
+      <created>1645871023997</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645871023997</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +143,8 @@
     <MESSAGE value="implement BestPractices" />
     <MESSAGE value="implement Request" />
     <MESSAGE value="implement Symbol" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement Symbol" />
+    <MESSAGE value="implement Iterator" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement Iterator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
