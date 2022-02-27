@@ -2,7 +2,7 @@
 //should have known about Symbol and iterator
 //generator, generator is like update version of iterator, or wrapper
 {
-    function* generator() {
+    function* generator1() {
         yield 1;
         yield 2;
         // return 'I am finished'; //generator end here
@@ -10,7 +10,7 @@
         yield 4;
     }
 
-    let iterator = generator(); //generator() function return an iterator
+    let iterator = generator1(); //generator() function return an iterator
     console.log(iterator.next());
     console.log(iterator.next());
     console.log(iterator.next());
