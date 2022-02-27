@@ -1,6 +1,7 @@
+//Synchronous blocking code, render queue being stop when heavy task loop block the screen
 { // images/ EventLoop.png
-    // process heavy sync task
     function process(num) {
+        //such, process heavy sync task
         console.log(num);
     }
 

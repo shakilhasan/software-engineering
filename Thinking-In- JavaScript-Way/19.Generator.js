@@ -127,13 +127,13 @@
 {
     console.log('Example-3:Generator Control Flow--------------')
 
-    function* generator(a, b) {
+    function* generator2(a, b) {
         let k = yield a + b;  // k assign at 2nd step, not at 1st step,
         let m = yield a + b + k;
         yield a + b + k + m;
     }
 
-    let gen = generator(10, 20);
+    let gen = generator2(10, 20);
     console.log(gen.next());
     console.log(gen.next(50));
     console.log(gen.next(100));
