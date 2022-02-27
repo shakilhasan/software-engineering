@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Iterator">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +89,7 @@
       <workItem from="1645846169287" duration="10149000" />
       <workItem from="1645881187469" duration="1502000" />
       <workItem from="1645887206219" duration="8204000" />
+      <workItem from="1645961643688" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="*WIP PrimitiveVsReference">
       <created>1645585785708</created>
