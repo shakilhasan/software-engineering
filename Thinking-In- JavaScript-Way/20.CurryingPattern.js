@@ -28,9 +28,10 @@ const _ = require('lodash');
                 }
             }
         }
+
         console.log(curriedMultiply(1)(2)(3));
 
-        const curriedMultiply1 =(a)=>(b)=>(c)=>a * b * c; //or, shortcut by arrow function
+        const curriedMultiply1 = (a) => (b) => (c) => a * b * c; //or, shortcut by arrow function
         console.log(curriedMultiply1(1)(2)(3));
 
         //or
@@ -121,14 +122,16 @@ console.log('make a CurryConverter function: take a normal function then convert
 //ex-2 --------------
 {
     console.log('ex-2 --------------');
+
     function log(date, important, message) {
         console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${important}:${message}`);
     }
+
     let curriedLog = _.curry(log);
-    curriedLog(new Date(),'DEBUG','some debug');//normal call
+    curriedLog(new Date(), 'DEBUG', 'some debug');//normal call
     curriedLog(new Date())('DEBUG')('some debug'); //curried call
 
     let logNow = curriedLog(new Date()); // partial call
-    logNow('INFO','info message');
+    logNow('INFO', 'info message');
 
 }

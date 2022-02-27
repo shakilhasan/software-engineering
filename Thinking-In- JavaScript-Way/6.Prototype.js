@@ -25,11 +25,9 @@ sakib.eat()
 tamim.play()
 
 
-
 // prototype in Array function---------------
 let persons = []; //new Array();
 console.log(Array.prototype)
-
 
 
 // use of Object.create----------------

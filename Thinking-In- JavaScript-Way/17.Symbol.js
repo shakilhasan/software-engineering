@@ -96,6 +96,7 @@
                 return string.indexOf(this.title) >= 0 ? 'Found' : 'not fount';
             }
         }
+
         console.log('javascript'.search('script'));
         let laptop = new Product('laptop');
         console.log('Hp laptop'.search(laptop));

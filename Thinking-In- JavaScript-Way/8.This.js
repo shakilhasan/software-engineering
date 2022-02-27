@@ -58,6 +58,7 @@
 //3.new Binding------------------------------------------
 {
     console.log("3.new Binding-----------------------")
+
     function Person(name, age) {
         // let this =Object.create(null); //JS execute in backend
         this.name = name
@@ -65,6 +66,7 @@
         console.log(`${this.name} is ${this.age} years old`)
         // return this
     }
+
     const sakib = new Person('Sakib', 37)  // return this object to sakib
 }
 

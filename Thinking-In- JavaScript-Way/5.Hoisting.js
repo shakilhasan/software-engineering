@@ -43,6 +43,7 @@ console.log(`i love ${getLanguage()}`);
 //Function Hoisting-------------------------
 //function also hoisted to top of his scope
 muFunc();
+
 function muFunc() {
     console.log("This is a function")
 }

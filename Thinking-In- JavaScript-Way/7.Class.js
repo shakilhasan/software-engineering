@@ -15,8 +15,6 @@ class Person {        //parent class
 }
 
 
-
-
 class Cricketer extends Person {    //subclass
     constructor(name, age, type, country) {
         super(name, age)
@@ -45,8 +43,6 @@ class Cricketer extends Person {    //subclass
         console.log(`${this.name} is eating rice`);
     }
 }
-
-
 
 
 const sakib = new Cricketer('sakib', 35, 'all rounder', 'bangladesh');
