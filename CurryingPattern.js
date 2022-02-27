@@ -1,6 +1,7 @@
 //https://youtu.be/oPRx4A13ytI
 //Currying in JavaScript
 // Currying is combination of multiple partial functions
+//*important for job interview
 const _ = require('lodash');
 //ex-1 ----------------------
 {
