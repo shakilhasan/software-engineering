@@ -38,6 +38,7 @@
 
 //2.Explicit Binding------------------------------------------
 {
+    //but Arrow function Not suitable for call, apply and bind methods
     console.log("2.Explicit Binding-----------------------")
     const printName = function (type) {
         console.log(`${this.name}-${type}`);
