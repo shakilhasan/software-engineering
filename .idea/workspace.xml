@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Iterator">
-      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Thinking-In- JavaScript-Way/21.debounce/style.css" afterDir="false" />
+    <list default="true" id="65f721d7-467d-4579-b58d-ca89553ec61b" name="Changes" comment="implement Generator">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,32 +36,33 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.Generator.js">
+  <component name="RunManager" selected="Node.js.22.TaggedTemplateLiteral.js">
+    <configuration name="21.TemplateLiteral.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="21.TemplateLiteral.js" working-dir="$PROJECT_DIR$/Modern-JavaScript-ES6">
+      <method v="2" />
+    </configuration>
+    <configuration name="22.TaggedTemplateLiteral.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="22.TaggedTemplateLiteral.js" working-dir="$PROJECT_DIR$/Modern-JavaScript-ES6">
+      <method v="2" />
+    </configuration>
     <configuration name="Generator.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Generator.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Iterator.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v14.18.1/bin/node" nameIsGenerated="true" path-to-js-file="Iterator.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="PrimitiveVsReference.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="PrimitiveVsReference.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
-    <configuration name="Prototype.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Prototype.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
-    <configuration name="Symbol.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="Symbol.js" working-dir="$PROJECT_DIR$">
+    <configuration name="playground.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="playground.js" working-dir="$PROJECT_DIR$/Modern-JavaScript-ES6/20.Module">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.22.TaggedTemplateLiteral.js" />
+        <item itemvalue="Node.js.21.TemplateLiteral.js" />
+        <item itemvalue="Node.js.playground.js" />
         <item itemvalue="Node.js.Generator.js" />
         <item itemvalue="Node.js.Iterator.js" />
-        <item itemvalue="Node.js.Symbol.js" />
-        <item itemvalue="Node.js.PrimitiveVsReference.js" />
-        <item itemvalue="Node.js.Prototype.js" />
       </list>
     </recent_temporary>
   </component>
@@ -88,7 +85,8 @@
       <workItem from="1645784386007" duration="12933000" />
       <workItem from="1645846169287" duration="10149000" />
       <workItem from="1645881187469" duration="1502000" />
-      <workItem from="1645887206219" duration="8204000" />
+      <workItem from="1645887206219" duration="8387000" />
+      <workItem from="1646063687424" duration="370000" />
       <workItem from="1645961643688" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="*WIP PrimitiveVsReference">
@@ -126,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645871023997</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="implement Generator">
+      <created>1645896591585</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645896591585</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,17 +154,7 @@
     <MESSAGE value="implement Request" />
     <MESSAGE value="implement Symbol" />
     <MESSAGE value="implement Iterator" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement Iterator" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Prototype.js</url>
-          <line>46</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="implement Generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement Generator" />
   </component>
 </project>
