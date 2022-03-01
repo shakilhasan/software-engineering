@@ -21,4 +21,13 @@ import external1, {pi as myPi, a as myA} from './external.js'; //default import
 console.log(external1, myPi, myA)
 
 
+    //Dynamic Imports
+    (async () => {
+        if ('somethingIsTrue') {
+            // import module for side effects
+            await import('./external.js');
+        }
+    })();
+
+
 

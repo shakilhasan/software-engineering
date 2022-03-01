@@ -1,4 +1,6 @@
 //iterable
+// built-in iterables: String, Array, TypedArray, Map, and Set
+// non-iterable: Object
 {
     const arr = [1, 2, 3];
     const obj = {
