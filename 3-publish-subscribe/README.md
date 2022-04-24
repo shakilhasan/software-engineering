@@ -1,5 +1,5 @@
 # 3. Publish/Subscribe
-
+### Broadcast log messages to many receivers.
 ## Topics cover here:
 - Exchanges
 - Temporary queues
@@ -11,6 +11,6 @@
 assumes RabbitMQ is installed and running on localhost on the standard port (5672)
 ```sh
 cd 3-publish-subscribe
-node emit_log
+node emit_log "info: This is the log message"
 node receive_logs
 ```
