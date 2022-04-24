@@ -1,4 +1,11 @@
 # 2. Work queues
+
+## Topics cover here:
+- Round-robin dispatching
+- Message acknowledgment
+- Message durability
+- Fair dispatch
+
 #### For details [here](https://www.rabbitmq.com/tutorials/tutorial-two-javascript.html)
 
 ## Commands:

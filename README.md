@@ -21,6 +21,7 @@ npm install
 goto a directory and run the example:
 - 1-hello-world
 - 2-world-queue
+- 3-publish-subscribe
 
 
 #### For details [here](https://www.rabbitmq.com/getstarted.html)

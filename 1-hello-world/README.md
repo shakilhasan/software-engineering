@@ -1,4 +1,9 @@
 # 1. "Hello World!"
+
+## Topics cover here:
+- Sending
+- Receiving
+
 #### For details [here](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
 
 ## Commands:
