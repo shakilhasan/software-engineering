@@ -1,5 +1,5 @@
 # 3. Publish/Subscribe
-### to make it possible to subscribe only to a subset of the messages
+### to subscribe only to a subset of the messages, selectively receiving
 ## Topics cover here:
 - Bindings
 - Direct exchange
@@ -26,3 +26,6 @@ node receive_logs_direct warning error > logs_from_rabbit.log
 ```sh
 node receive_logs_direct info warning error
 ```
+
+## Limitations:
+-  it can't do routing based on multiple criteria
