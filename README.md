@@ -1,9 +1,13 @@
-# rabbitmq-examples
-### RabbitMQ is a message broker that allows you to publish messages to a queue and consume them from a queue.
-#### These tutorials cover the basics of creating messaging applications using RabbitMQ
- 
-We'll use the  [amqp.node](http://www.squaremobius.net/amqp.node) client in this tutorial.
+# rabbitmq-examples: Node.js code for RabbitMQ tutorials
 
+### RabbitMQ is a message broker that allows you to publish messages to a queue and consume them from a queue.
+
+Here you can find JavaScript (Node) code examples from [RabbitMQ
+tutorials](https://www.rabbitmq.com/getstarted.html).
+
+## Requirements:
+You need RabbitMQ, [Node.js](https://nodejs.org/en/download/) and [amqp.node](https://github.com/squaremo/amqp.node)
+to run these tutorials.
 ## Commands:
 * Installing RabbitMQ: Try the community Docker image or install from [here](https://www.rabbitmq.com/download.html)
 ```
@@ -23,6 +27,5 @@ goto a directory and run the example:
 - 1-hello-world
 - 2-world-queue
 - 3-publish-subscribe
-
-
-#### For details [here](https://www.rabbitmq.com/getstarted.html)
+- 4-routing
+- 5-topics
