@@ -34,4 +34,3 @@
     // person.country="bd"; //error
     console.log(person);
 }
-
