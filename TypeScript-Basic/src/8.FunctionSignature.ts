@@ -24,5 +24,5 @@
     userDetails = (id: number | string, user: { name: string, age: number }) => { // object name can not change but property name can change
         console.log(`id- ${id} age- ${user.age}`)
     }
-    userDetails(1, {name:"sakib", age:40});
+    userDetails(1, {name: "sakib", age: 40});
 }

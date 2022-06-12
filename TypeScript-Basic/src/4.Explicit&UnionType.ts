@@ -1,12 +1,12 @@
 {
-    let a:string;
-    let b:number; // explicit type
-    let c: string|number; // union type
-    a='sakib';
-    b=4;
+    let a: string;
+    let b: number; // explicit type
+    let c: string | number; // union type
+    a = 'sakib';
+    b = 4;
     // b='tamin';  //error
-    c=5;
-    c='tamim';
+    c = 5;
+    c = 'tamim';
 }
 {
     //array
@@ -42,8 +42,8 @@
         console.log(obj);
     }
     {
-        let obj:object;
-        obj=[1,2,3,4]; // array is a certain type of object
+        let obj: object;
+        obj = [1, 2, 3, 4]; // array is a certain type of object
         console.log(obj);
     }
 }
