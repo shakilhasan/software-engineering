@@ -12,8 +12,7 @@
     calculate = (a, b, c) => {
         if (c === 'add') {
             return a + b;
-        }
-        else {
+        } else {
             return a - b;
         }
     };
@@ -25,5 +24,5 @@
     userDetails = (id, user) => {
         console.log(`id- ${id} age- ${user.age}`);
     };
-    userDetails(1, { name: "sakib", age: 40 });
+    userDetails(1, {name: "sakib", age: 40});
 }

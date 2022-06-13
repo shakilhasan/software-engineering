@@ -6,6 +6,6 @@
     const sayHello = (user) => {
         console.log(`Hello ${user.age > 50 ? "Sir" : "Mr."} ${user.name}`);
     };
-    userDetails(1, { name: "sakib", age: 35 });
-    sayHello({ name: "sakib", age: 35 });
+    userDetails(1, {name: "sakib", age: 35});
+    sayHello({name: "sakib", age: 35});
 }

@@ -4,7 +4,7 @@
     //without generic
     const addID = (obj) => {
         let id = Math.floor(Math.random() * 100);
-        return Object.assign(Object.assign({}, obj), { id });
+        return Object.assign(Object.assign({}, obj), {id});
     };
     let user = addID({
         name: "Mashrafi", age: 40,
@@ -16,7 +16,7 @@
     //with generic, type is work like a  variable
     const addID = (obj) => {
         let id = Math.floor(Math.random() * 100);
-        return Object.assign(Object.assign({}, obj), { id });
+        return Object.assign(Object.assign({}, obj), {id});
     };
     let user = addID({
         name: "Mashrafi", age: 40,
@@ -30,7 +30,7 @@
     // generic with extends
     const addID = (obj) => {
         let id = Math.floor(Math.random() * 100);
-        return Object.assign(Object.assign({}, obj), { id });
+        return Object.assign(Object.assign({}, obj), {id});
     };
     let user = addID({
         name: "Mashrafi", age: 40,
@@ -41,7 +41,7 @@
     // extends with define object
     const addID = (obj) => {
         let id = Math.floor(Math.random() * 100);
-        return Object.assign(Object.assign({}, obj), { id });
+        return Object.assign(Object.assign({}, obj), {id});
     };
     let user = addID({
         name: "Mashrafi", age: 40, country: "BD", // extra property can pass

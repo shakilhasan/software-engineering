@@ -6,6 +6,7 @@
         let length = options.length;
         console.log(width);
     }
+
     drawRectangle({
         width: 30,
         length: 20,
@@ -17,6 +18,7 @@
         let length = options.length;
         console.log(width);
     }
+
     drawRectangle({
         width: 30,
         length: 20,
@@ -36,10 +38,12 @@
             this.age = age;
             this.country = country;
         }
+
         play() {
             console.log(`${this.name} from ${this.country} is playing`);
         }
     }
+
     const sakib = new Player('Sakib', 40, 'BD');
     let tamim;
     tamim = new Player('Tamim', 45, 'BD-1');
@@ -57,9 +61,11 @@
             this.age = age;
             this.country = country;
         }
+
         getProperty() {
             return this.age;
         }
+
         play() {
             console.log(`${this.name} from ${this.country} is playing`);
         }
