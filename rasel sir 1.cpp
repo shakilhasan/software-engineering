@@ -15,7 +15,7 @@ void fi(int a[]){   for(int i=0;i<6;i++){ a[i]=0; }
 void fs(int a[]){ int s=0;  for(int i=0;i<6;i++){ s=s+a[i]; }
 cout<<"\nsum of these volume is :"<<s<<"\n";
 }
-main(){ int n=1,a[100];  fi(a);
+int main(){ int n=1,a[100];  fi(a);
 cout<<"which u want to calculate \n 1 for cube \n 2 for sqr \n 3 for tri \n 4 for rect \n 5 for cir\n 0 for exit the proggram\n 6 TO SUM ALL VOLUME \n";
 while(n>0){ cout<<"............................\nplease enter case NO:";  cin>>n;
 switch(n){case 1: {cube x; a[1]=x.cu(); cout<<a[1]<<"\n"; } break;
