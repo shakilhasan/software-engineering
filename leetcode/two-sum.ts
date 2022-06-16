@@ -13,4 +13,5 @@ function twoSum(nums: number[], target: number): number[] {
     return a;
 }
 
-twoSum([2, 7, 11, 15], 9);
+let output:number[]=twoSum([2, 7, 11, 15], 9);
+console.log(output);
