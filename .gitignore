@@ -8,10 +8,11 @@ public/files
 .idea/
 .idea
 .vscode
-build
-
-build/
 .vscode/
+
+
+build
+build/
 
 
 *.o
