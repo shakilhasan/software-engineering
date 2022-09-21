@@ -8,5 +8,9 @@ public/files
 .idea/
 .idea
 
+build/
+.vscode/
+
+
 *.o
 *.save
