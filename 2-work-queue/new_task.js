@@ -23,6 +23,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
     setTimeout(function() {
         connection.close();
-        process.exit(0)
+        process.exit(0);
     }, 500);
 });
