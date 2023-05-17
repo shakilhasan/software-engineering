@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 // https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/rpc_client.js
-var amqp = require('amqplib/callback_api');
+const amqp = require('amqplib/callback_api');
 
-var args = process.argv.slice(2);
+const args = process.argv.slice(2);
 
-if (args.length == 0) {
+if (args.length === 0) {
     console.log("Usage: rpc_client.js num");
     process.exit(1);
 }
@@ -23,13 +23,18 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             if (error2) {
                 throw error2;
             }
-            var correlationId = generateUuid();
-            var num = parseInt(args[0]);
+            const correlationId = generateUuid();
+            const num = parseInt(args[0]);
 
             console.log(' [x] Requesting fib(%d)', num);
 
+            channel.sendToQueue('rpc_queue',
+                Buffer.from(num.toString()),{
+                    correlationId: correlationId,
+                    replyTo: q.queue });
+
             channel.consume(q.queue, function(msg) {
-                if (msg.properties.correlationId == correlationId) {
+                if (msg.properties.correlationId === correlationId) {
                     console.log(' [.] Got %s', msg.content.toString());
                     setTimeout(function() {
                         connection.close();
@@ -39,11 +44,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             }, {
                 noAck: true
             });
-
-            channel.sendToQueue('rpc_queue',
-                Buffer.from(num.toString()),{
-                    correlationId: correlationId,
-                    replyTo: q.queue });
         });
     });
 });

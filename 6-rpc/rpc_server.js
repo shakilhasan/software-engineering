@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/rpc_server.js
-var amqp = require('amqplib/callback_api');
+const amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', function(error0, connection) {
     if (error0) {
@@ -18,11 +18,11 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         channel.prefetch(1);
         console.log(' [x] Awaiting RPC requests');
         channel.consume(queue, function reply(msg) {
-            var n = parseInt(msg.content.toString());
+            const n = parseInt(msg.content.toString());
 
             console.log(" [.] fib(%d)", n);
 
-            var r = fibonacci(n);
+            const r = fibonacci(n);
 
             channel.sendToQueue(msg.properties.replyTo,
                 Buffer.from(r.toString()), {
@@ -35,7 +35,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 });
 
 function fibonacci(n) {
-    if (n == 0 || n == 1)
+    if (n === 0 || n === 1)
         return n;
     else
         return fibonacci(n - 1) + fibonacci(n - 2);
