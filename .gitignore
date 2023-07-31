@@ -1,19 +1,43 @@
-# Dependency directories
+# General rules
+.DS_Store
+Thumbs.db
 node_modules/
-public/files
-# dotenv environment variables file
-.env
-
-# IDE Generated Folder
-.idea/
-.idea
-.vscode
-.vscode/
-
-
+dist/
 build
 build/
+*.log
+public/files
+public/images
 
-
+# C and C++ specific
+*.out
 *.o
+*.obj
+*.exe
 *.save
+
+# Node.js specific
+npm-debug.log
+yarn-error.log
+
+# JavaScript and TypeScript specific
+*.js.map
+*.tsbuildinfo
+
+# Python specific
+__pycache__/
+*.pyc
+
+# Visual Studio Code specific (optional - if you use VSCode)
+.vscode/
+.vscode
+
+# JetBrains IDEs specific (optional - if you use JetBrains IDEs)
+.idea/
+.idea
+*.iml
+*.ipr
+*.iws
+
+# dotenv environment variables file
+.env
