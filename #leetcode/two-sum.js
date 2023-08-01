@@ -1,22 +1,17 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {*[]}
- */
-const twoSum = function (nums, target) {
-    let len = nums.length
+"use strict";
+function twoSum(nums, target) {
+    let len = nums.length;
     let a = [];
-    for (let i = 0; i < len; i++) {
-        for (let j = i; j < len; j++) {
+    for (let i = 0; i < len - 1; i++) {
+        for (let j = i + 1; j < len; j++) {
             if (nums[i] + nums[j] == target) {
                 a[0] = i;
                 a[1] = j;
-                return a;
-                // break;
+                break;
             }
         }
     }
-};
-
-let c=twoSum([1,3,4,5,6],7);
-console.log(c);
+    return a;
+}
+let output = twoSum([2, 7, 11, 15], 9);
+console.log(output);

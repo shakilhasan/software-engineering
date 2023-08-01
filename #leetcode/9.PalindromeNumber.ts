@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/palindrome-number
 function isPalindromeByStr(x: number): boolean {
      let str:string=x.toString();
-    if(str === [...str].reverse().join("")) return true;
-    return false;
-
-};
+    return str === [...str].reverse().join("");
+}
 console.log(isPalindromeByStr(12122121));
