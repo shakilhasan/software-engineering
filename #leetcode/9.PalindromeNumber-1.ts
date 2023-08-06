@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/palindrome-number
+// @ts-ignore
 function isPalindrome(x: number): boolean {
     if (x < 0) return false;
     let remainder: number, reversed: number = 0, num: number = x;
