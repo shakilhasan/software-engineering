@@ -1,32 +1,24 @@
 //https://leetcode.com/problems/merge-two-sorted-lists
- //Definition for singly-linked list.
-// status: not accepted
- class ListNode {
-     val: number
-    next: ListNode | null
-     constructor(val?: number, next?: ListNode | null) {
-         this.val = (val===undefined ? 0 : val)
-         this.next = (next===undefined ? null : next)
-     }
- }
-function mergeTwoLists(list1: ListNode, list2: ListNode): ListNode | null {
-    let result:ListNode= new ListNode(0,null);
-    while (list1.next && list2.next){
-        if(list1.val<list2.val && list1.next){
-            result.val=list1.val;
-            result.next=list1;
-            list1=list1.next;
-        }else  if(list1.val>=list2.val && list2.next){
-            result.val=list2.val;
-            result.next=list2;
-            list2=list2.next;
+import {ListNode} from "./helpers/Class";
+
+function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+    let result: ListNode | null | undefined = new ListNode(0, null);
+    let initResult: ListNode | null | undefined = new ListNode(0, null);
+    let preResult: ListNode | null | undefined = null
+    while (list1?.val && list2?.val) {
+        if (list1.val < list2.val && result ) {
+            result.val = list1?.val;
+            result.next = initResult;
+            if(preResult) preResult.next = list1;
+            list1 = list1.next;
+        } else if (list1.val >= list2.val && result) {
+            result.val = list2.val;
+            result.next = initResult;
+            if(preResult) preResult.next = list2;
+            list2 = list2.next;
         }
+        preResult = result;
+        result = result?.next;
     }
-    return  result;
-};
-let list1:ListNode= new ListNode(10,null);
-let list2:ListNode= new ListNode(10,null);
-
-console.log(mergeTwoLists(list1,list2))
-
-
+    return result;
+}
