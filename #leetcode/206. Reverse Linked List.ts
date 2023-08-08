@@ -4,11 +4,12 @@ function reverseList(head: ListNode | null): ListNode | null {
     let result:ListNode | null=new ListNode();
     let current=head
     while (current){
-        let pre:ListNode | null=new ListNode();
-
+        let newNode:ListNode | null=new ListNode();
         result.val=current.val;
-        pre.next=result;
+        newNode.next=result;
+        result=newNode;
         current=current.next;
     }
-    return null;
+    result=result.next;
+    return result;
 }

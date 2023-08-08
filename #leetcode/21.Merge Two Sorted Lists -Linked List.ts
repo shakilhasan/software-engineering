@@ -8,7 +8,7 @@ function mergeTwoLists(list1: ListNode | null | undefined, list2: ListNode | nul
     if (!list1 && !list2) return list1;
     while ((list1 || list2) && result) {
         if ((list1 && !list2) || (list2 && list1 && (list1?.val <= list2?.val))) {
-            result.val = list1?.val;
+            result.val = list1.val;
             result.next = new ListNode();
             list1 = list1.next;
         } else if ((!list1 && list2) || (list2 && list1 && (list1.val > list2.val))) {
