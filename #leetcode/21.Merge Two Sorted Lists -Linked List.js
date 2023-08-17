@@ -3,26 +3,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //https://leetcode.com/problems/merge-two-sorted-lists
 const Class_1 = require("./helpers/Class");
 function mergeTwoLists(list1, list2) {
-    let result = new Class_1.ListNode(0, null);
-    let initResult = new Class_1.ListNode(0, null);
-    let preResult = null;
-    while ((list1 === null || list1 === void 0 ? void 0 : list1.val) && (list2 === null || list2 === void 0 ? void 0 : list2.val)) {
-        if (list1.val < list2.val && result) {
-            result.val = list1 === null || list1 === void 0 ? void 0 : list1.val;
-            result.next = initResult;
-            if (preResult)
-                preResult.next = list1;
+    let result = new Class_1.ListNode();
+    let resultHead = result;
+    let pre = new Class_1.ListNode();
+    if (!list1 && !list2)
+        return list1;
+    while ((list1 || list2) && result) {
+        if ((list1 && !list2) || (list2 && list1 && ((list1 === null || list1 === void 0 ? void 0 : list1.val) <= (list2 === null || list2 === void 0 ? void 0 : list2.val)))) {
+            result.val = list1.val;
+            result.next = new Class_1.ListNode();
             list1 = list1.next;
         }
-        else if (list1.val >= list2.val && result) {
+        else if ((!list1 && list2) || (list2 && list1 && (list1.val > list2.val))) {
             result.val = list2.val;
-            result.next = initResult;
-            if (preResult)
-                preResult.next = list2;
+            result.next = new Class_1.ListNode();
             list2 = list2.next;
         }
-        preResult = result;
+        pre = result;
         result = result === null || result === void 0 ? void 0 : result.next;
     }
-    return result;
+    pre.next = null;
+    return resultHead;
 }
