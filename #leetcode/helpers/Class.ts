@@ -132,12 +132,16 @@ export class LinkList {
     }
 
     removeFrom(index: number) {
-        let current = this.head, i = 0, pre;
-        while (current) {
+        let current = this.head, i = 0;
+        if (this.head && index === 0) {
+            this.head = this.head.next;
+            return
+        }
+        while (current?.next) {
             if ((index - 1) === i++) {
-                pre = current.next;
+                current.next = current.next.next;
+                break
             }
-            pre = current;
             current = current.next;
         }
     }
@@ -215,7 +219,7 @@ list.push("last");
 list.unshift(0);
 // list.concat(new LinkListNode({val: 10}));
 // list.insertAt('newInserted', 0);
-// list.removeFrom(0);
+list.removeFrom(0);
 // list.removeElement(0);
 // list.reverse();
 console.log(list.toString());
