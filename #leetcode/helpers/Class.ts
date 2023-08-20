@@ -1,16 +1,21 @@
 // Definition for singly-linked list.
-export class ListNode {
+export class LinkListNode {
     val: any
-    next: ListNode | null
+    index: number
+    next: LinkListNode | null
 
-    constructor(val?: any, next?: ListNode | null) {
-        this.val = val ?? 0
-        this.next = next ?? null
+    constructor({val = 0, index = -1, next = null}: {
+        val?: any, index?: number, next?: LinkListNode | null
+    }) {
+        this.val = val;
+        this.index = index;
+        this.next = next;
     }
+
 }
 
 export class LinkList {
-    head: ListNode | null;
+    head: LinkListNode | null;
     length: number;
 
     constructor() {
@@ -19,10 +24,10 @@ export class LinkList {
     }
 
     push(val: any) {
-        let node = new ListNode(val);
+        let node = new LinkListNode({val});
         if (this.head === null) this.head = node;
         else {
-            let current: ListNode | undefined = this.head;
+            let current: LinkListNode | undefined = this.head;
             while (current) {
                 if (current.next === null) {
                     current.next = node;
@@ -36,7 +41,7 @@ export class LinkList {
 
     pop() {
         if (this.head === null) return;
-        let current: ListNode | null = this.head;
+        let current: LinkListNode | null = this.head;
         while (current) {
             if (current.next?.next === null) {
                 current.next = null;
@@ -48,7 +53,7 @@ export class LinkList {
     }
 
     toString() {
-        let current: ListNode | null = this.head;
+        let current: LinkListNode | null = this.head;
         let result = '';
         while (current) {
             result += current.val + '->';
@@ -58,11 +63,11 @@ export class LinkList {
     }
 
     join(val: any) {
-        let current: ListNode | null = this.head;
+        let current: LinkListNode | null = this.head;
         this.length += this.length - 1;
         while (current) {
             if (current.next) {
-                current.next = new ListNode(val, current.next)
+                current.next = new LinkListNode({val, next:current.next})
                 current = current.next.next;
             } else break;
         }
@@ -75,10 +80,10 @@ export class LinkList {
 
     unshift(val: any) {
         this.length += 1;
-        this.head = new ListNode(val, this.head);
+        this.head = new LinkListNode({val, next:this.head});
     }
 
-    concat(node: ListNode | null) {
+    concat(node: LinkListNode | null) {
         let current = this.head;
         this.length += this.count(node);
         while (current) {
@@ -90,7 +95,7 @@ export class LinkList {
         }
     }
 
-    count(node: ListNode | null) {
+    count(node: LinkListNode | null) {
         let current = node, i = 0;
         while (current) {
             i++;
@@ -112,7 +117,7 @@ list.push("last");
 // list.join(10);
 // list.shift()
 list.unshift("first")
-list.concat(new ListNode(10));
+list.concat(new LinkListNode({val:10}));
 console.log(list.toString());
 console.log(list.length);
 

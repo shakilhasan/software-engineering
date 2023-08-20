@@ -6,8 +6,8 @@
  * }
  */
 /**
- * @param {ListNode} head
- * @return {ListNode}
+ * @param {Node} head
+ * @return {Node}
  */
  var deleteDuplicates = function(head) {
     cur=head;

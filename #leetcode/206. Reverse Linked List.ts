@@ -1,10 +1,10 @@
 //https://leetcode.com/problems/reverse-linked-list
-import {ListNode} from "./helpers/Class";
-function reverseList(head: ListNode | null): ListNode | null {
-    let result:ListNode | null=new ListNode();
+import {LinkListNode} from "./helpers/Class";
+function reverseList(head: LinkListNode | null): LinkListNode | null {
+    let result:LinkListNode | null=new LinkListNode();
     let current=head
     while (current){
-        let newNode:ListNode | null=new ListNode();
+        let newNode:LinkListNode | null=new LinkListNode();
         result.val=current.val;
         newNode.next=result;
         result=newNode;

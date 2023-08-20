@@ -1,21 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LinkList = exports.Node = void 0;
+exports.LinkList = exports.LinkListNode = void 0;
 // Definition for singly-linked list.
-class Node {
-    constructor(val, next) {
-        this.val = val !== null && val !== void 0 ? val : 0;
-        this.next = next !== null && next !== void 0 ? next : null;
+class LinkListNode {
+    constructor({ val = 0, index = -1, next = null }) {
+        this.val = val;
+        this.index = index;
+        this.next = next;
     }
 }
-exports.Node = Node;
+exports.LinkListNode = LinkListNode;
 class LinkList {
     constructor() {
         this.head = null;
         this.length = 0;
     }
     push(val) {
-        let node = new Node(val);
+        let node = new LinkListNode({ val });
         if (this.head === null)
             this.head = node;
         else {
@@ -58,7 +59,7 @@ class LinkList {
         this.length += this.length - 1;
         while (current) {
             if (current.next) {
-                current.next = new Node(val, current.next);
+                current.next = new LinkListNode({ val, next: current.next });
                 current = current.next.next;
             }
             else
@@ -73,7 +74,7 @@ class LinkList {
     }
     unshift(val) {
         this.length += 1;
-        this.head = new Node(val, this.head);
+        this.head = new LinkListNode({ val, next: this.head });
     }
     concat(node) {
         let current = this.head;
@@ -106,6 +107,6 @@ list.push("last");
 // list.join(10);
 // list.shift()
 list.unshift("first");
-list.concat(new Node(10));
+list.concat(new LinkListNode({ val: 10 }));
 console.log(list.toString());
 console.log(list.length);
