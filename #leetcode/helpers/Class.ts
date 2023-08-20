@@ -16,11 +16,11 @@ export class LinkListNode {
 
 export class LinkList {
     head: LinkListNode | null;
-    length: number;
+    size: number;
 
-    constructor() {
-        this.head = null;
-        this.length = 0;
+    constructor({head = null, size = 0}: { head?: LinkListNode | null, size?: number }) {
+        this.head = head;
+        this.size = size;
     }
 
     push(val: any) {
@@ -36,7 +36,7 @@ export class LinkList {
                 current = current.next;
             }
         }
-        this.length++;
+        this.size++;
     }
 
     pop() {
@@ -48,7 +48,7 @@ export class LinkList {
         while (current) {
             if (current.next?.next === null) {
                 current.next = null;
-                this.length--;
+                this.size--;
                 break;
             }
             current = current.next;
@@ -68,7 +68,7 @@ export class LinkList {
 
     join(val: any) {
         let current: LinkListNode | null = this.head;
-        this.length += this.length - 1;
+        this.size += this.size - 1;
         while (current) {
             if (current.next) {
                 current.next = new LinkListNode({val, next: current.next})
@@ -78,18 +78,18 @@ export class LinkList {
     }
 
     shift() {
-        this.length -= 1;
+        this.size -= 1;
         if (this.head?.next) this.head = this.head?.next
     }
 
     unshift(val: any) {
-        this.length += 1;
+        this.size += 1;
         this.head = new LinkListNode({val, next: this.head});
     }
 
     concat(node: LinkListNode | null) {
         let current = this.head;
-        this.length += this.count(node);
+        this.size += this.count(node);
         while (current) {
             if (current.next === null) {
                 current.next = node;
@@ -101,6 +101,15 @@ export class LinkList {
 
     count(node: LinkListNode | null) {
         let current = node, i = 0;
+        while (current) {
+            i++;
+            current = current.next;
+        }
+        return i;
+    }
+
+    length() {
+        let current = this.head, i = 0;
         while (current) {
             i++;
             current = current.next;
@@ -194,7 +203,7 @@ export class LinkList {
     }
 }
 
-const list = new LinkList();
+const list = new LinkList({});
 list.push(1);
 list.push(2);
 list.push(3);
@@ -214,5 +223,5 @@ console.log(list.toString());
 // console.log(list.findIndex(3));
 // console.log(list.isEmpty());
 // console.log(list.includes(1));
-// console.log(list.length);
+// console.log(list.size);
 
