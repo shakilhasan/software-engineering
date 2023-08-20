@@ -121,6 +121,18 @@ class LinkList {
             current = current.next;
         }
     }
+    removeElement(val) {
+        let current = this.head;
+        if (this.head && this.head.val === val) {
+            this.head = this.head.next;
+            return;
+        }
+        while (current === null || current === void 0 ? void 0 : current.next) {
+            if (current.next.val === val)
+                current.next = current.next.next;
+            current = current.next;
+        }
+    }
     isEmpty() {
         return this.head === null;
     }
@@ -181,6 +193,7 @@ list.unshift(0);
 // list.concat(new LinkListNode({val: 10}));
 // list.insertAt('newInserted', 0);
 // list.removeFrom(0);
+// list.removeElement(0);
 // list.reverse();
 console.log(list.toString());
 // console.log(list.findLastIndex(3));
