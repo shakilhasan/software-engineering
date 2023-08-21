@@ -1,5 +1,5 @@
 // Definition for singly-linked list.
-export class LinkListNode {
+class LinkListNode {
     val: any
     index: number
     next: LinkListNode | null
@@ -14,7 +14,7 @@ export class LinkListNode {
 
 }
 
-export class LinkList {
+class LinkList {
     head: LinkListNode | null;
     size: number;
 
@@ -206,6 +206,8 @@ export class LinkList {
         this.head = null;
     }
 }
+//______________________________
+export {LinkListNode, LinkList}
 
 const list = new LinkList({});
 list.push(1);
