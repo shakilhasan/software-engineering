@@ -2,11 +2,9 @@
 import {LinkList, LinkListNode} from "./helpers/Class";
 
 function addTwoNumbers(l1: LinkListNode | null, l2: LinkListNode | null): LinkListNode | null {
-    let list1 = new LinkList({head: l1});
-    let list2 = new LinkList({head: l2});
-    let partialSum = 0, nextCarry = 0, a = 0, b = 0, pre = null;
-    list1.reverse();
-    list2.reverse();
+    let partialSum = 0, nextCarry = 0, a = 0, b = 0, pre = new LinkListNode({});
+    let current = new LinkListNode({})
+    let resultList = new LinkList({head: current})
     while (l1 || l2 || nextCarry) {
         if (l1) {
             a = l1.val
@@ -20,11 +18,13 @@ function addTwoNumbers(l1: LinkListNode | null, l2: LinkListNode | null): LinkLi
 
         partialSum = a + b + nextCarry;
         nextCarry = partialSum >= 10 ? 1 : 0
-        pre = new LinkListNode({val: partialSum % 10, next: pre})
+        current.val = partialSum % 10;
+        current.next = new LinkListNode({})
+        pre = current;
+        current = current.next;
     }
-    let result = new LinkList({head: pre})
-    result.reverse()
-    return result.head;
+    pre.next = null;
+    return resultList.head;
 }
 
 function addTwoNumbers1(l1: LinkListNode | null, l2: LinkListNode | null, carry: number = 0): LinkListNode | null {
