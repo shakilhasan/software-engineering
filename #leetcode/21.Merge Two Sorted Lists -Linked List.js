@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 //https://leetcode.com/problems/merge-two-sorted-lists
-const Class_1 = require("./helpers/Class");
+const Class_1 = require("./helpers/LinkList");
 function mergeTwoLists(list1, list2) {
     let result = new Class_1.LinkListNode({});
     let resultHead = result;

@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/reverse-linked-list
-import {LinkListNode} from "./helpers/Class";
+import {LinkListNode} from "./helpers/LinkList";
 function reverseList(head: LinkListNode | null): LinkListNode | null {
     let result:LinkListNode | null=new LinkListNode({});
     let current=head

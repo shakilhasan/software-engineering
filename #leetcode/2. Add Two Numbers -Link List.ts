@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/add-two-numbers
-import {LinkList, LinkListNode} from "./helpers/Class";
+import {LinkList, LinkListNode} from "./helpers/LinkList";
 
 function addTwoNumbers(l1: LinkListNode | null, l2: LinkListNode | null): LinkListNode | null {
     let partialSum = 0, nextCarry = 0, a = 0, b = 0, pre = new LinkListNode({});

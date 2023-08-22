@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 //https://leetcode.com/problems/reorder-list
-const Class_1 = require("./helpers/Class");
+const Class_1 = require("./helpers/LinkList");
 function reorderList(head) {
     let list = new Class_1.LinkList({ head });
     let revList = new Class_1.LinkList({ head });

@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/remove-nth-node-from-end-of-list
-import {LinkList, LinkListNode} from "./helpers/Class";
+import {LinkList, LinkListNode} from "./helpers/LinkList";
 
 function removeNthFromEnd(head: LinkListNode | null, n: number): LinkListNode | null {
     let list=new LinkList({head});

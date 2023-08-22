@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 //https://leetcode.com/problems/reverse-linked-list
-const Class_1 = require("./helpers/Class");
+const Class_1 = require("./helpers/LinkList");
 function reverseList(head) {
     let result = new Class_1.LinkListNode({});
     let current = head;

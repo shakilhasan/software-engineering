@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/reorder-list
-import {LinkList, LinkListNode} from "./helpers/Class";
+import {LinkList, LinkListNode} from "./helpers/LinkList";
 
 function reorderList(head: LinkListNode | null): void {
     let list = new LinkList({head});

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 //https://leetcode.com/problems/remove-nth-node-from-end-of-list
-const Class_1 = require("./helpers/Class");
+const Class_1 = require("./helpers/LinkList");
 function removeNthFromEnd(head, n) {
     let list = new Class_1.LinkList({ head });
     length = list.length();

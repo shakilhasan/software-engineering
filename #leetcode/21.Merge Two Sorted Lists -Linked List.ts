@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/merge-two-sorted-lists
-import {LinkListNode, LinkList} from "./helpers/Class";
+import {LinkListNode, LinkList} from "./helpers/LinkList";
 
 function mergeTwoLists(list1: LinkListNode | null | undefined, list2: LinkListNode | null | undefined): LinkListNode | null | undefined {
     let result: LinkListNode | null | undefined = new LinkListNode({});

@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/linked-list-cycle
-import {LinkListNode} from "./helpers/Class";
+import {LinkListNode} from "./helpers/LinkList";
 
 function hasCycle(head: LinkListNode | null): boolean | null {
     let current = head, i = 0;
