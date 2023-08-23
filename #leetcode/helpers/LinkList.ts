@@ -2,7 +2,7 @@
 class LinkListNode {
     val: any
     index: number
-    next: LinkListNode | null
+    next: LinkListNode | null | undefined
 
     constructor({val = 0, index = -1, next = null}: {
         val?: any, index?: number, next?: LinkListNode | null
