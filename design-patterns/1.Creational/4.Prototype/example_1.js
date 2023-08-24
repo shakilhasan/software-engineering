@@ -1,9 +1,15 @@
 "use strict";
+// TODO: modified to fix ts-errors
 //https://refactoring.guru/design-patterns/prototype/typescript/example#example-0--index-ts
 class Prototype {
     primitive;
     component;
     circularReference;
+    constructor({ primitive = null, component = null, circularReference = null } = {}) {
+        this.primitive = primitive;
+        this.component = component;
+        this.circularReference = circularReference;
+    }
     clone() {
         const clone = Object.create(this);
         clone.component = Object.create(this.component);
@@ -23,7 +29,7 @@ class ComponentWithBackReference {
 /**
  * The client code.
  */
-function clientCode() {
+function prototypeClientCode() {
     const p1 = new Prototype();
     p1.primitive = 245;
     p1.component = new Date();
@@ -47,11 +53,11 @@ function clientCode() {
     else {
         console.log('Component with back reference has been cloned. Yay!');
     }
-    if (p1.circularReference.prototype === p2.circularReference.prototype) {
+    if (p1.circularReference.prototype === p2.circularReference?.prototype) {
         console.log('Component with back reference is linked to original object. Booo!');
     }
     else {
         console.log('Component with back reference is linked to the clone. Yay!');
     }
 }
-clientCode();
+prototypeClientCode();
