@@ -22,9 +22,9 @@ function mergeTwoLists(list1: LinkListNode | null | undefined, list2: LinkListNo
     pre.next = null;
     return resultHead;
 }
-function mergeTwoLists1(list1: LinkListNode | null , list2: LinkListNode | null ): LinkListNode | null  {
+function mergeTwoLists1(list1: LinkListNode | null| undefined, list2: LinkListNode | null | undefined): LinkListNode | null | undefined  {
     let resultHead: LinkListNode | null = new LinkListNode({});
-    let current: LinkListNode | null = resultHead;
+    let current: LinkListNode | null | undefined = resultHead;
     while ((list1 || list2) && current) {
         if ((list1 && !list2) || (list2 && list1 && (list1?.val <= list2?.val))) {
             current.next = list1
@@ -32,7 +32,7 @@ function mergeTwoLists1(list1: LinkListNode | null , list2: LinkListNode | null 
         }
         else {
             current.next = list2;
-            if(list2) list2=list2?.next;
+            if(list2) list2= list2?.next;
         }
         current = current.next
     }
