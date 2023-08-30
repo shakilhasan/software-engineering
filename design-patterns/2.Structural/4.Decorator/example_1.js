@@ -1,25 +1,21 @@
 "use strict";
 //https://refactoring.guru/design-patterns/decorator/typescript/example#example-0--index-ts
-class ConcreteComponent {
+class ConcreteComponent1 {
     operation() {
-        return 'ConcreteComponent';
+        return 'ConcreteComponent1';
     }
 }
 class Decorator {
     component;
+    //  The Decorator delegates all work to the wrapped component.
     constructor(component) {
         this.component = component;
     }
-    /**
-     * The Decorator delegates all work to the wrapped component.
-     */
     operation() {
         return this.component.operation();
     }
 }
-/**
- * Concrete Decorators call the wrapped object and alter its result in some way.
- */
+//Concrete Decorators call the wrapped object and alter its result in some way.
 class ConcreteDecoratorA extends Decorator {
     operation() {
         return `ConcreteDecoratorA(${super.operation()})`;
@@ -30,19 +26,20 @@ class ConcreteDecoratorB extends Decorator {
         return `ConcreteDecoratorB(${super.operation()})`;
     }
 }
-function clientCode(component) {
+function decoratorClientCode(component) {
     // ...
     console.log(`RESULT: ${component.operation()}`);
     // ...
 }
-/**
- * This way the client code can support both simple components...
- */
-const simple = new ConcreteComponent();
+const simple1 = new ConcreteComponent1();
 console.log('Client: I\'ve got a simple component:');
-clientCode(simple);
+decoratorClientCode(simple1);
 console.log('');
-const decorator1 = new ConcreteDecoratorA(simple);
+const decorator1 = new ConcreteDecoratorA(simple1);
+console.log('Client: Now I\'ve got a simple decorated component:');
+decoratorClientCode(decorator1);
+console.log('');
 const decorator2 = new ConcreteDecoratorB(decorator1);
-console.log('Client: Now I\'ve got a decorated component:');
-clientCode(decorator2);
+// console.log('decorator2- ', decorator2)
+console.log('Client: Now I\'ve got a nested decorated component:');
+decoratorClientCode(decorator2);

@@ -1,35 +1,29 @@
 //https://refactoring.guru/design-patterns/decorator/typescript/example#example-0--index-ts
 
-interface Component {
+interface Component1 {
     operation(): string;
 }
 
-class ConcreteComponent implements Component {
+class ConcreteComponent1 implements Component1 {
     public operation(): string {
-        return 'ConcreteComponent';
+        return 'ConcreteComponent1';
     }
 }
 
-class Decorator implements Component {
-    protected component: Component;
-
-    constructor(component: Component) {
+class Decorator implements Component1 {
+    protected component: Component1;
+    //  The Decorator delegates all work to the wrapped component.
+    constructor(component: Component1) {
         this.component = component;
     }
 
-    /**
-     * The Decorator delegates all work to the wrapped component.
-     */
     public operation(): string {
         return this.component.operation();
     }
 }
 
-/**
- * Concrete Decorators call the wrapped object and alter its result in some way.
- */
+//Concrete Decorators call the wrapped object and alter its result in some way.
 class ConcreteDecoratorA extends Decorator {
-
     public operation(): string {
         return `ConcreteDecoratorA(${super.operation()})`;
     }
@@ -41,23 +35,23 @@ class ConcreteDecoratorB extends Decorator {
     }
 }
 
-function clientCode(component: Component) {
+function decoratorClientCode(component: Component1) {
     // ...
-
     console.log(`RESULT: ${component.operation()}`);
-
     // ...
 }
 
-/**
- * This way the client code can support both simple components...
- */
-const simple = new ConcreteComponent();
+const simple1 = new ConcreteComponent1();
 console.log('Client: I\'ve got a simple component:');
-clientCode(simple);
+decoratorClientCode(simple1);
 console.log('');
 
-const decorator1 = new ConcreteDecoratorA(simple);
+const decorator1 = new ConcreteDecoratorA(simple1);
+console.log('Client: Now I\'ve got a simple decorated component:');
+decoratorClientCode(decorator1);
+console.log('');
+
 const decorator2 = new ConcreteDecoratorB(decorator1);
-console.log('Client: Now I\'ve got a decorated component:');
-clientCode(decorator2);
+// console.log('decorator2- ', decorator2)
+console.log('Client: Now I\'ve got a nested decorated component:');
+decoratorClientCode(decorator2);
