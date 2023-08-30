@@ -1,6 +1,6 @@
 "use strict";
 // TODO: I think, this example is not proper implementation
-//https://medium.com/@cristianalemanfuentes/abstract-factory-in-typescript-gof-design-pattern-e8f661e49071
+//https://medium.com/@cristianalemanfuentes/abstract-factory1-in-typescript-gof-design-pattern-e8f661e49071
 var Car;
 (function (Car) {
     Car[Car["HONDA"] = 0] = "HONDA";
@@ -59,11 +59,11 @@ class MazdaFactory extends CarPart {
         return new MazdaRightDoor;
     }
 }
-let factory = CarPart.getFactory(Car.HONDA);
-let rightdoor = factory.getRightDoor();
+let factory1 = CarPart.getFactory(Car.HONDA);
+let rightdoor = factory1.getRightDoor();
 console.log(rightdoor.makePart());
-factory = CarPart.getFactory(Car.MAZDA);
-rightdoor = factory.getRightDoor();
-let leftdoor = factory.getLeftDoor();
+factory1 = CarPart.getFactory(Car.MAZDA);
+rightdoor = factory1.getRightDoor();
+let leftdoor = factory1.getLeftDoor();
 console.log(rightdoor.makePart());
 console.log(leftdoor.makePart());
