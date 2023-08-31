@@ -15,6 +15,16 @@ class SimpleCommand implements Command {
     }
 }
 
+class Receiver {
+    public doSomething(a: string): void {
+        console.log(`Receiver: Working on (${a}.)`);
+    }
+
+    public doSomethingElse(b: string): void {
+        console.log(`Receiver: Also working on (${b}.)`);
+    }
+}
+
 class ComplexCommand implements Command {
     private receiver: Receiver;
     private a: string;
@@ -33,16 +43,6 @@ class ComplexCommand implements Command {
     }
 }
 
-class Receiver {
-    public doSomething(a: string): void {
-        console.log(`Receiver: Working on (${a}.)`);
-    }
-
-    public doSomethingElse(b: string): void {
-        console.log(`Receiver: Also working on (${b}.)`);
-    }
-}
-
 class Invoker {
     private onStart: Command;
     private onFinish: Command;
@@ -51,13 +51,6 @@ class Invoker {
         this.onStart = onStart;
         this.onFinish = onFinish;
     }
-    public setOnStart(command: Command): void {
-        this.onStart = command;
-    }
-
-    public setOnFinish(command: Command): void {
-        this.onFinish = command;
-    }
 
     public doSomethingImportant(): void {
         console.log('Invoker: Does anybody want something done before I begin?');
@@ -65,7 +58,7 @@ class Invoker {
             this.onStart.execute();
         }
 
-        console.log('Invoker: ...doing something really important...');
+        console.log('\nInvoker: ...doing something really important...\n');
 
         console.log('Invoker: Does anybody want something done after I finish?');
         if (this.isCommand(this.onFinish)) {
@@ -79,9 +72,6 @@ class Invoker {
 }
 
 const receiver = new Receiver();
-
-const invoker = new Invoker(new SimpleCommand('Say Hi!'),new ComplexCommand(receiver, 'Send email', 'Save report'));
-// invoker.setOnStart(new SimpleCommand('Say Hi!'));
-// invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
+const invoker = new Invoker(new SimpleCommand('Say Hi!'), new ComplexCommand(receiver, 'Send email', 'Save report'));
 
 invoker.doSomethingImportant();

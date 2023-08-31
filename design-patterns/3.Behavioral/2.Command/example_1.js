@@ -8,6 +8,14 @@ class SimpleCommand {
         console.log(`SimpleCommand: See, I can do simple things like printing (${this.payload})`);
     }
 }
+class Receiver {
+    doSomething(a) {
+        console.log(`Receiver: Working on (${a}.)`);
+    }
+    doSomethingElse(b) {
+        console.log(`Receiver: Also working on (${b}.)`);
+    }
+}
 class ComplexCommand {
     receiver;
     a;
@@ -23,14 +31,6 @@ class ComplexCommand {
         this.receiver.doSomethingElse(this.b);
     }
 }
-class Receiver {
-    doSomething(a) {
-        console.log(`Receiver: Working on (${a}.)`);
-    }
-    doSomethingElse(b) {
-        console.log(`Receiver: Also working on (${b}.)`);
-    }
-}
 class Invoker {
     onStart;
     onFinish;
@@ -38,18 +38,12 @@ class Invoker {
         this.onStart = onStart;
         this.onFinish = onFinish;
     }
-    setOnStart(command) {
-        this.onStart = command;
-    }
-    setOnFinish(command) {
-        this.onFinish = command;
-    }
     doSomethingImportant() {
         console.log('Invoker: Does anybody want something done before I begin?');
         if (this.isCommand(this.onStart)) {
             this.onStart.execute();
         }
-        console.log('Invoker: ...doing something really important...');
+        console.log('\nInvoker: ...doing something really important...\n');
         console.log('Invoker: Does anybody want something done after I finish?');
         if (this.isCommand(this.onFinish)) {
             this.onFinish.execute();
@@ -61,6 +55,4 @@ class Invoker {
 }
 const receiver = new Receiver();
 const invoker = new Invoker(new SimpleCommand('Say Hi!'), new ComplexCommand(receiver, 'Send email', 'Save report'));
-// invoker.setOnStart(new SimpleCommand('Say Hi!'));
-// invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
 invoker.doSomethingImportant();
