@@ -34,6 +34,10 @@ class Receiver {
 class Invoker {
     onStart;
     onFinish;
+    constructor(onStart, onFinish) {
+        this.onStart = onStart;
+        this.onFinish = onFinish;
+    }
     setOnStart(command) {
         this.onStart = command;
     }
@@ -55,8 +59,8 @@ class Invoker {
         return object.execute !== undefined;
     }
 }
-const invoker = new Invoker();
-invoker.setOnStart(new SimpleCommand('Say Hi!'));
 const receiver = new Receiver();
-invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
+const invoker = new Invoker(new SimpleCommand('Say Hi!'), new ComplexCommand(receiver, 'Send email', 'Save report'));
+// invoker.setOnStart(new SimpleCommand('Say Hi!'));
+// invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
 invoker.doSomethingImportant();

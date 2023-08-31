@@ -47,6 +47,10 @@ class Invoker {
     private onStart: Command;
     private onFinish: Command;
 
+    constructor(onStart: Command, onFinish: Command) {
+        this.onStart = onStart;
+        this.onFinish = onFinish;
+    }
     public setOnStart(command: Command): void {
         this.onStart = command;
     }
@@ -74,10 +78,10 @@ class Invoker {
     }
 }
 
-
-const invoker = new Invoker();
-invoker.setOnStart(new SimpleCommand('Say Hi!'));
 const receiver = new Receiver();
-invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
+
+const invoker = new Invoker(new SimpleCommand('Say Hi!'),new ComplexCommand(receiver, 'Send email', 'Save report'));
+// invoker.setOnStart(new SimpleCommand('Say Hi!'));
+// invoker.setOnFinish(new ComplexCommand(receiver, 'Send email', 'Save report'));
 
 invoker.doSomethingImportant();
