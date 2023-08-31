@@ -66,7 +66,7 @@ class Invoker {
         }
     }
 
-    private isCommand(object): object is Command {
+    private isCommand(object: any): object is Command {
         return object.execute !== undefined;
     }
 }
