@@ -25,7 +25,7 @@ class BinarySearchTree {
         }
     }
 
-    insertNode(current: BinarySearchTreeNode, node: BinarySearchTreeNode) {
+    insertNode(current: BinarySearchTreeNode, node: BinarySearchTreeNode) { // helper
         if (node.data < current.data)
             if (current.left === null) current.left = node
             else this.insertNode(current.left, node)
@@ -33,10 +33,33 @@ class BinarySearchTree {
         else this.insertNode(current.right, node)
     }
 
-    removeElement(data:any){
+    removeElement(data: any) {
+        // const node =new BinarySearchTreeNode({})
+        if (this.root && this.root.data === data) {
 
+        } else {
+            const removeNode = this.findElement(this.root, data);
+            this.balanceTree(removeNode?.right, removeNode?.left);
+        }
     }
-    deleteNode(data:any){
+
+    balanceTree(left: BinarySearchTreeNode, right: BinarySearchTreeNode) {
+        if (left.left == null) left.left = right;
+        else this.balanceTree(left.left, right);
+    }
+
+    findElement(current: BinarySearchTreeNode | null, data: any) { //helper
+        if (current && data < current.data) {
+            this.findElement(current.left, data);
+        } else if (current && data > current.data) {
+            this.findElement(current.right, data);
+        } else if (data === current?.data) {
+            return current;
+        }
+        return null;
+    }
+
+    deleteNode(data: any) {
 
     }
 }

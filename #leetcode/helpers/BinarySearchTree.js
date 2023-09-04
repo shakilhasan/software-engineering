@@ -30,6 +30,31 @@ class BinarySearchTree {
             this.insertNode(current.right, node);
     }
     removeElement(data) {
+        // const node =new BinarySearchTreeNode({})
+        if (this.root && this.root.data === data) {
+        }
+        else {
+            const removeNode = this.findElement(this.root, data);
+            this.balanceTree(removeNode === null || removeNode === void 0 ? void 0 : removeNode.right, removeNode === null || removeNode === void 0 ? void 0 : removeNode.left);
+        }
+    }
+    balanceTree(left, right) {
+        if (left.left == null)
+            left.left = right;
+        else
+            this.balanceTree(left.left, right);
+    }
+    findElement(current, data) {
+        if (current && data < current.data) {
+            this.findElement(current.left, data);
+        }
+        else if (current && data > current.data) {
+            this.findElement(current.right, data);
+        }
+        else if (data === (current === null || current === void 0 ? void 0 : current.data)) {
+            return current;
+        }
+        return null;
     }
     deleteNode(data) {
     }
