@@ -1,7 +1,7 @@
 //https://leetcode.com/problems/reorder-list
 import {LinkList, LinkListNode} from "./helpers/LinkList";
 
-function reorderList(head: LinkListNode | null): void {
+function reorderList(head: LinkListNode | null | undefined): void {
     let list = new LinkList({head});
     let revList = new LinkList({head});
     revList.reverse();

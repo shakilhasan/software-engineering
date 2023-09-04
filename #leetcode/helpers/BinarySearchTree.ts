@@ -34,29 +34,38 @@ class BinarySearchTree {
     }
 
     removeElement(data: any) {
-        // const node =new BinarySearchTreeNode({})
-        if (this.root && this.root.data === data) {
-
-        } else {
-            const removeNode = this.findElement(this.root, data);
-            this.balanceTree(removeNode?.right, removeNode?.left);
+        const {node, parent, type} = this.findElement(this.root, null, "", data);
+        if (!node) return;
+        const leftMost = this.findLeftMost(node?.right);
+        if (leftMost) {
+            leftMost.left = node.right;
+            if (parent)
+                if (type === "left") parent.left = node.right;
+                else parent.right = node.right;
+            else this.root=node.right
+        }else {
+            if (parent)
+                if (type === "left") parent.left = node.left;
+                else parent.right = node.left;
+            else this.root=node.left
         }
     }
 
-    balanceTree(left: BinarySearchTreeNode, right: BinarySearchTreeNode) {
-        if (left.left == null) left.left = right;
-        else this.balanceTree(left.left, right);
+    findLeftMost(left: BinarySearchTreeNode | null) {     //helper
+        if (!left) return left;
+        else if (left.left == null) return left;
+        else this.findLeftMost(left.left);
     }
 
-    findElement(current: BinarySearchTreeNode | null, data: any) { //helper
+    findElement(current: BinarySearchTreeNode | null, parent: BinarySearchTreeNode | null, type: string = "", data: any) { //helper
         if (current && data < current.data) {
-            this.findElement(current.left, data);
+            this.findElement(current.left, current, "left", data);
         } else if (current && data > current.data) {
-            this.findElement(current.right, data);
+            this.findElement(current.right, current, "right", data);
         } else if (data === current?.data) {
-            return current;
+            return {node: current, parent, type};
         }
-        return null;
+        return {};
     }
 
     deleteNode(data: any) {
@@ -73,3 +82,5 @@ bst.push(7);
 bst.push(6);
 bst.push(8);
 console.log("---:", bst.root);
+bst.removeElement(3)
+console.log("------:", bst.root);

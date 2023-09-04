@@ -1,7 +1,7 @@
 //https://leetcode.com/problems/add-two-numbers
 import {LinkList, LinkListNode} from "./helpers/LinkList";
 
-function addTwoNumbers(l1: LinkListNode | null, l2: LinkListNode | null): LinkListNode | null {
+function addTwoNumbers(l1: LinkListNode | null | undefined, l2: LinkListNode | null | undefined): LinkListNode | null | undefined {
     let partialSum = 0, nextCarry = 0, a = 0, b = 0, pre = new LinkListNode({});
     let current = new LinkListNode({})
     let resultList = new LinkList({head: current})
@@ -27,7 +27,7 @@ function addTwoNumbers(l1: LinkListNode | null, l2: LinkListNode | null): LinkLi
     return resultList.head;
 }
 
-function addTwoNumbers1(l1: LinkListNode | null, l2: LinkListNode | null, carry: number = 0): LinkListNode | null {
+function addTwoNumbers1(l1: LinkListNode | null | undefined, l2: LinkListNode | null | undefined, carry: number = 0): LinkListNode | null | undefined {
     if (l1 || l2 || carry) {
         let partialSum = 0, nextCarry = 0, a = 0, b = 0, pre = null;
         if (l1) {

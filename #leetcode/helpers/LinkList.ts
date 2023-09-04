@@ -5,7 +5,7 @@ class LinkListNode {
     next: LinkListNode | null | undefined
 
     constructor({val = 0, index = -1, next = null}: {
-        val?: any, index?: number, next?: LinkListNode | null
+        val?: any, index?: number, next?: LinkListNode | null | undefined
     }) {
         this.val = val;
         this.index = index;
@@ -15,10 +15,10 @@ class LinkListNode {
 }
 
 class LinkList {
-    head: LinkListNode | null;
+    head: LinkListNode | null | undefined;
     size: number;
 
-    constructor({head = null, size = 0}: { head?: LinkListNode | null, size?: number }) {
+    constructor({head = null, size = 0}: { head?: LinkListNode | null | undefined, size?: number }) {
         this.head = head;
         this.size = size;
     }
@@ -27,7 +27,7 @@ class LinkList {
         let node = new LinkListNode({val});
         if (this.head === null) this.head = node;
         else {
-            let current: LinkListNode | undefined = this.head;
+            let current: LinkListNode | null | undefined = this.head;
             while (current) {
                 if (current.next === null) {
                     current.next = node;
@@ -44,7 +44,7 @@ class LinkList {
             this.head = null;
             return;
         }
-        let current: LinkListNode | null = this.head;
+        let current: LinkListNode | null | undefined = this.head;
         while (current) {
             if (current.next?.next === null) {
                 current.next = null;
@@ -57,7 +57,7 @@ class LinkList {
     }
 
     toString() {
-        let current: LinkListNode | null = this.head;
+        let current: LinkListNode | null | undefined = this.head;
         let result = '';
         while (current) {
             result += current.val + '>';
@@ -67,7 +67,7 @@ class LinkList {
     }
 
     join(val: any) {
-        let current: LinkListNode | null = this.head;
+        let current: LinkListNode | null | undefined = this.head;
         this.size += this.size - 1;
         while (current) {
             if (current.next) {
@@ -87,7 +87,7 @@ class LinkList {
         this.head = new LinkListNode({val, next: this.head});
     }
 
-    concat(node: LinkListNode | null) {
+    concat(node: LinkListNode | null | undefined) {
         let current = this.head;
         this.size += this.count(node);
         while (current) {
@@ -99,7 +99,7 @@ class LinkList {
         }
     }
 
-    count(node: LinkListNode | null) {
+    count(node: LinkListNode | null | undefined) {
         let current = node, i = 0;
         while (current) {
             i++;
@@ -206,6 +206,7 @@ class LinkList {
         this.head = null;
     }
 }
+
 //______________________________
 export {LinkListNode, LinkList}
 
