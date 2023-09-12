@@ -1,7 +1,7 @@
 class BinarySearchTreeNode {
-    left: BinarySearchTreeNode | null;
-    right: BinarySearchTreeNode | null;
-    data: number;
+    left: BinarySearchTreeNode | null | undefined;
+    right: BinarySearchTreeNode | null | undefined;
+    data: any;
 
     constructor({data = 0, left = null, right = null}) {
         this.data = data;
@@ -17,7 +17,7 @@ class BinarySearchTree {
         this.root = root;
     }
 
-    push(data: number) {
+    push(data: any) {
         let node = new BinarySearchTreeNode({data})
         if (this.root === null) this.root = node
         else {
@@ -25,7 +25,8 @@ class BinarySearchTree {
         }
     }
 
-    insertNode(current: BinarySearchTreeNode, node: BinarySearchTreeNode) { // helper
+    insertNode(current: BinarySearchTreeNode | null | undefined, node: BinarySearchTreeNode) { // helper
+        if (!current) return current;
         if (node.data < current.data)
             if (current.left === null) current.left = node
             else this.insertNode(current.left, node)
@@ -34,28 +35,37 @@ class BinarySearchTree {
     }
 
     removeElement(data: any) {
-        const node = this.findElement(this.root, data);
-        console.log("node-", node?.data)
-        if (!node) return;
-        if (node.left && node.right) {
-            let leftMostParent = node;
-            let leftMost = node.right;
-            while (leftMost.left != null) {
-                leftMostParent = leftMost;
-                leftMost = leftMost.left;
-            }
-            if (leftMostParent === node) leftMostParent.right = leftMost.right;
-            else leftMostParent.left = leftMost.right;
-            node.data = leftMost.data;
-        }
-        return node;
+        this.removeElement_recursion(this.root, data);
     }
 
-    findElement(current: BinarySearchTreeNode | null, data: any): any { //helper
-        if (data === current?.data) return current;
-        else if (current?.data && data < current.data) return this.findElement(current.left, data);
-        else if (current?.data && data > current.data) return this.findElement(current.right, data);
+    removeElement_recursion(current: BinarySearchTreeNode | null | undefined, data: any) {
+        if (!current) return current;
+        else if (data < current?.data) {
+            current.left = this.removeElement_recursion(current.left, data);
+            return current;
+        } else if (data > current?.data) {
+            current.right = this.removeElement_recursion(current.right, data);
+            return current;
+        } else {
+            if (current.left === null) return current.right;
+            else if (current.right === null) return current.left;
+            else if (current.left && current.right) {
+                let leftMostParent: BinarySearchTreeNode | null | undefined = current;
+                let leftMost: BinarySearchTreeNode | null | undefined = current.right;
+                while (leftMost && leftMost.left !== null) {
+                    leftMostParent = leftMost;
+                    leftMost = leftMost.left;
+                }
+
+                if (leftMostParent === current) leftMostParent.right = leftMost?.right;
+                else leftMostParent.left = leftMost?.right;
+                current.data = leftMost?.data;
+                return current;
+            }
+
+        }
     }
+
 }
 
 let bst = new BinarySearchTree({})
@@ -67,5 +77,5 @@ bst.push(7);
 bst.push(6);
 bst.push(8);
 console.log("---:", bst.root);
-bst.removeElement(7)
+bst.removeElement(5)
 console.log("------:", bst.root);

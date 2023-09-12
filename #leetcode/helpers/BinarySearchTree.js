@@ -19,6 +19,8 @@ class BinarySearchTree {
         }
     }
     insertNode(current, node) {
+        if (!current)
+            return current;
         if (node.data < current.data)
             if (current.left === null)
                 current.left = node;
@@ -30,32 +32,39 @@ class BinarySearchTree {
             this.insertNode(current.right, node);
     }
     removeElement(data) {
-        const node = this.findElement(this.root, data);
-        console.log("node-", node === null || node === void 0 ? void 0 : node.data);
-        if (!node)
-            return;
-        if (node.left && node.right) {
-            let leftMostParent = node;
-            let leftMost = node.right;
-            while (leftMost.left != null) {
-                leftMostParent = leftMost;
-                leftMost = leftMost.left;
-            }
-            if (leftMostParent === node)
-                leftMostParent.right = leftMost.right;
-            else
-                leftMostParent.left = leftMost.right;
-            node.data = leftMost.data;
-        }
-        return node;
+        this.deleteNode(this.root, data);
     }
-    findElement(current, data) {
-        if (data === (current === null || current === void 0 ? void 0 : current.data))
+    deleteNode(current, data) {
+        if (!current)
             return current;
-        else if ((current === null || current === void 0 ? void 0 : current.data) && data < current.data)
-            return this.findElement(current.left, data);
-        else if ((current === null || current === void 0 ? void 0 : current.data) && data > current.data)
-            return this.findElement(current.right, data);
+        else if (data < (current === null || current === void 0 ? void 0 : current.data)) {
+            current.left = this.deleteNode(current.left, data);
+            return current;
+        }
+        else if (data > (current === null || current === void 0 ? void 0 : current.data)) {
+            current.right = this.deleteNode(current.right, data);
+            return current;
+        }
+        else {
+            if (current.left === null)
+                return current.right;
+            else if (current.right === null)
+                return current.left;
+            else if (current.left && current.right) {
+                let leftMostParent = current;
+                let leftMost = current.right;
+                while (leftMost && leftMost.left !== null) {
+                    leftMostParent = leftMost;
+                    leftMost = leftMost.left;
+                }
+                if (leftMostParent === current)
+                    leftMostParent.right = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
+                else
+                    leftMostParent.left = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
+                current.data = leftMost === null || leftMost === void 0 ? void 0 : leftMost.data;
+                return current;
+            }
+        }
     }
 }
 let bst = new BinarySearchTree({});
@@ -67,5 +76,5 @@ bst.push(7);
 bst.push(6);
 bst.push(8);
 console.log("---:", bst.root);
-bst.removeElement(7);
+bst.removeElement(5);
 console.log("------:", bst.root);
