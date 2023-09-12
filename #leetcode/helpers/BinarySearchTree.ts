@@ -34,42 +34,27 @@ class BinarySearchTree {
     }
 
     removeElement(data: any) {
-        const {node, parent, type} = this.findElement(this.root, null, "", data);
+        const node = this.findElement(this.root, data);
+        console.log("node-", node?.data)
         if (!node) return;
-        const leftMost = this.findLeftMost(node?.right);
-        if (leftMost) {
-            leftMost.left = node.right;
-            if (parent)
-                if (type === "left") parent.left = node.right;
-                else parent.right = node.right;
-            else this.root=node.right
-        }else {
-            if (parent)
-                if (type === "left") parent.left = node.left;
-                else parent.right = node.left;
-            else this.root=node.left
+        if (node.left && node.right) {
+            let leftMostParent = node;
+            let leftMost = node.right;
+            while (leftMost.left != null) {
+                leftMostParent = leftMost;
+                leftMost = leftMost.left;
+            }
+            if (leftMostParent === node) leftMostParent.right = leftMost.right;
+            else leftMostParent.left = leftMost.right;
+            node.data = leftMost.data;
         }
+        return node;
     }
 
-    findLeftMost(left: BinarySearchTreeNode | null) {     //helper
-        if (!left) return left;
-        else if (left.left == null) return left;
-        else this.findLeftMost(left.left);
-    }
-
-    findElement(current: BinarySearchTreeNode | null, parent: BinarySearchTreeNode | null, type: string = "", data: any) { //helper
-        if (current && data < current.data) {
-            this.findElement(current.left, current, "left", data);
-        } else if (current && data > current.data) {
-            this.findElement(current.right, current, "right", data);
-        } else if (data === current?.data) {
-            return {node: current, parent, type};
-        }
-        return {};
-    }
-
-    deleteNode(data: any) {
-
+    findElement(current: BinarySearchTreeNode | null, data: any): any { //helper
+        if (data === current?.data) return current;
+        else if (current?.data && data < current.data) return this.findElement(current.left, data);
+        else if (current?.data && data > current.data) return this.findElement(current.right, data);
     }
 }
 
@@ -82,5 +67,5 @@ bst.push(7);
 bst.push(6);
 bst.push(8);
 console.log("---:", bst.root);
-bst.removeElement(3)
+bst.removeElement(7)
 console.log("------:", bst.root);

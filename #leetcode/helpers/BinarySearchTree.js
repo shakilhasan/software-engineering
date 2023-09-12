@@ -30,51 +30,32 @@ class BinarySearchTree {
             this.insertNode(current.right, node);
     }
     removeElement(data) {
-        const { node, parent, type } = this.findElement(this.root, null, "", data);
+        const node = this.findElement(this.root, data);
+        console.log("node-", node === null || node === void 0 ? void 0 : node.data);
         if (!node)
             return;
-        const leftMost = this.findLeftMost(node == null || node === void 0 ? void 0 : node.right);
-        if (leftMost) {
-            leftMost.left = node.right;
-            if (parent)
-                if (type === "left")
-                    parent.left = node.right;
-                else
-                    parent.right = node.right;
+        if (node.left && node.right) {
+            let leftMostParent = node;
+            let leftMost = node.right;
+            while (leftMost.left != null) {
+                leftMostParent = leftMost;
+                leftMost = leftMost.left;
+            }
+            if (leftMostParent === node)
+                leftMostParent.right = leftMost.right;
             else
-                this.root = node.right;
+                leftMostParent.left = leftMost.right;
+            node.data = leftMost.data;
         }
-        else {
-            if (parent)
-                if (type === "left")
-                    parent.left = node.left;
-                else
-                    parent.right = node.left;
-            else
-                this.root = node.left;
-        }
+        return node;
     }
-    findLeftMost(left) {
-        if (!left)
-            return left;
-        else if (left.left == null)
-            return left;
-        else
-            this.findLeftMost(left.left);
-    }
-    findElement(current, parent, type = "", data) {
-        if (current && data < current.data) {
-            this.findElement(current.left, current, "left", data);
-        }
-        else if (current && data > current.data) {
-            this.findElement(current.right, current, "right", data);
-        }
-        else if (data === (current === null || current === void 0 ? void 0 : current.data)) {
-            return { node: current, parent, type };
-        }
-        return {};
-    }
-    deleteNode(data) {
+    findElement(current, data) {
+        if (data === (current === null || current === void 0 ? void 0 : current.data))
+            return current;
+        else if ((current === null || current === void 0 ? void 0 : current.data) && data < current.data)
+            return this.findElement(current.left, data);
+        else if ((current === null || current === void 0 ? void 0 : current.data) && data > current.data)
+            return this.findElement(current.right, data);
     }
 }
 let bst = new BinarySearchTree({});
@@ -86,5 +67,5 @@ bst.push(7);
 bst.push(6);
 bst.push(8);
 console.log("---:", bst.root);
-bst.removeElement(1);
+bst.removeElement(7);
 console.log("------:", bst.root);
