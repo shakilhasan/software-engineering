@@ -57,12 +57,48 @@ class BinarySearchTree {
         }
         return current;
     }
+    inorder() {
+        this.inorder_recursion(this.root);
+    }
+    inorder_recursion(current) {
+        if (current) {
+            // console.log("-----", current.data);
+            this.inorder_recursion(current === null || current === void 0 ? void 0 : current.left);
+            // console.log("*******", current.data);
+            console.log(current === null || current === void 0 ? void 0 : current.data);
+            this.inorder_recursion(current === null || current === void 0 ? void 0 : current.right);
+            // console.log("##########", current.data);
+        }
+    }
+    preorder() {
+        this.preorder_recursion(this.root);
+    }
+    preorder_recursion(current) {
+        if (current) {
+            console.log(current === null || current === void 0 ? void 0 : current.data);
+            this.preorder_recursion(current === null || current === void 0 ? void 0 : current.left);
+            this.preorder_recursion(current === null || current === void 0 ? void 0 : current.right);
+        }
+    }
+    postorder() {
+        this.postorder_recursion(this.root);
+    }
+    postorder_recursion(current) {
+        if (current) {
+            this.postorder_recursion(current === null || current === void 0 ? void 0 : current.left);
+            this.postorder_recursion(current === null || current === void 0 ? void 0 : current.right);
+            console.log(current === null || current === void 0 ? void 0 : current.data);
+        }
+    }
 }
 let bst = new BinarySearchTree({});
-bst.insertArray([4, 3, 5]); //Case-1
+// bst.insertArray([4, 3, 5]);   //Case-1
 // bst.insertArray([5, 8, 7, 9]); //Case-1
 // bst.insertArray([5, 3, 2, 1]); //Case-2
-// bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
+bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
 console.log("---:", bst.root);
-bst.removeElement(5);
+// bst.removeElement(5);
 console.log("------:", bst.root);
+// bst.inorder();
+// bst.preorder();
+bst.postorder();
