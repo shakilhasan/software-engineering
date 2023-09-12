@@ -1,63 +1,61 @@
-class BinarySearchTreeNode {
+export class BinarySearchTreeNode {
     left: BinarySearchTreeNode | null | undefined;
     right: BinarySearchTreeNode | null | undefined;
-    data: any;
+    val: number;
 
-    constructor({data = 0, left = null, right = null}) {
-        this.data = data;
+    constructor({val = 0, left = null, right = null}) {
+        this.val = val;
         this.left = left;
         this.right = right;
     }
 }
 
-class BinarySearchTree {
+export class BinarySearchTree {
     root: null | undefined | BinarySearchTreeNode
 
     constructor({root = null}) {
         this.root = root;
     }
 
-    insertArray(arr: any[]) {
+    insertArray(arr: number[]) {
         arr.forEach((item) => {
             this.insert(item)
         })
     }
 
-    insert(data: any) {
-        this.root = this.insert_recursion(this.root, data);
+    insert(val: number) {
+        this.root = this.insert_recursion(this.root, val);
     }
 
-    insert_recursion(current: BinarySearchTreeNode | null | undefined, data: any) {
-        if (!current) return new BinarySearchTreeNode({data});
-        else if (data < current.data) current.left = this.insert_recursion(current.left, data);
-        else if (data > current.data) current.right = this.insert_recursion(current.right, data);
+    insert_recursion(current: BinarySearchTreeNode | null | undefined, val: number) {
+        if (!current) return new BinarySearchTreeNode({val});
+        else if (val < current.val) current.left = this.insert_recursion(current.left, val);
+        else if (val > current.val) current.right = this.insert_recursion(current.right, val);
         return current;
     }
 
-    removeElement(data: any) {
-        this.root = this.removeElement_recursion(this.root, data);
+    removeElement(val: number) {
+        this.root = this.removeElement_recursion(this.root, val);
     }
 
-    removeElement_recursion(current: BinarySearchTreeNode | null | undefined, data: any) {
+    removeElement_recursion(current: BinarySearchTreeNode | null | undefined, val: number) {
         if (!current) return current;
-        else if (data < current?.data) current.left = this.removeElement_recursion(current.left, data);
-        else if (data > current?.data) current.right = this.removeElement_recursion(current.right, data);
+        else if (val < current.val) current.left = this.removeElement_recursion(current.left, val);
+        else if (val > current.val) current.right = this.removeElement_recursion(current.right, val);
         else if (current.left === null) return current.right;  //Case-1: if no left child ,right can be existed or not.
         else if (current.right === null) return current.left;  //Case-2: if no right child.
         else if (current.left && current.right) {              //Case-3: if both children exist.
-            let leftMostParent: BinarySearchTreeNode | null | undefined = current;
-            let leftMost: BinarySearchTreeNode | null | undefined = current.right;
-            while (leftMost && leftMost.left !== null) {
+            let leftMostParent = current, leftMost = current.right;
+            while (leftMost && leftMost.left) {
                 leftMostParent = leftMost;
                 leftMost = leftMost.left;
             }
 
-            if (leftMostParent === current) leftMostParent.right = leftMost?.right;
-            else leftMostParent.left = leftMost?.right;
-            current.data = leftMost?.data;
+            if (leftMostParent === current) leftMostParent.right = leftMost.right;
+            else leftMostParent.left = leftMost.right;
+            current.val = leftMost.val;
             return current;
         }
-
         return current;
     }
 
@@ -67,12 +65,12 @@ class BinarySearchTree {
 
     inorder_recursion(current: BinarySearchTreeNode | null | undefined) {
         if (current) {
-            // console.log("-----", current.data);
+            // console.log("-----", current.val);
             this.inorder_recursion(current?.left);
-            // console.log("*******", current.data);
-            console.log(current?.data);
+            // console.log("*******", current.val);
+            console.log(current?.val);
             this.inorder_recursion(current?.right);
-            // console.log("##########", current.data);
+            // console.log("##########", current.val);
         }
     }
 
@@ -82,11 +80,12 @@ class BinarySearchTree {
 
     preorder_recursion(current: BinarySearchTreeNode | null | undefined) {
         if (current) {
-            console.log(current?.data);
+            console.log(current?.val);
             this.preorder_recursion(current?.left);
             this.preorder_recursion(current?.right);
         }
     }
+
     postorder() {
         this.postorder_recursion(this.root);
     }
@@ -95,21 +94,21 @@ class BinarySearchTree {
         if (current) {
             this.postorder_recursion(current?.left);
             this.postorder_recursion(current?.right);
-            console.log(current?.data);
+            console.log(current?.val);
         }
     }
 
 }
 
-let bst = new BinarySearchTree({})
+// let bst = new BinarySearchTree({})
 // bst.insertArray([4, 3, 5]);   //Case-1
 // bst.insertArray([5, 8, 7, 9]); //Case-1
 // bst.insertArray([5, 3, 2, 1]); //Case-2
-bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
+// bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
 
-console.log("---:", bst.root);
+// console.log("---:", bst.root);
 // bst.removeElement(5);
-console.log("------:", bst.root);
+// console.log("------:", bst.root);
 // bst.inorder();
 // bst.preorder();
-bst.postorder();
+// bst.postorder();
