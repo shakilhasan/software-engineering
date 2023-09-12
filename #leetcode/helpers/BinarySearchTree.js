@@ -10,71 +10,59 @@ class BinarySearchTree {
     constructor({ root = null }) {
         this.root = root;
     }
-    push(data) {
-        let node = new BinarySearchTreeNode({ data });
-        if (this.root === null)
-            this.root = node;
-        else {
-            this.insertNode(this.root, node);
-        }
+    insertArray(arr) {
+        arr.forEach((item) => {
+            this.insert(item);
+        });
     }
-    insertNode(current, node) {
+    insert(data) {
+        this.root = this.insert_recursion(this.root, data);
+    }
+    insert_recursion(current, data) {
         if (!current)
-            return current;
-        if (node.data < current.data)
-            if (current.left === null)
-                current.left = node;
-            else
-                this.insertNode(current.left, node);
-        else if (current.right === null)
-            current.right = node;
-        else
-            this.insertNode(current.right, node);
+            return new BinarySearchTreeNode({ data });
+        else if (data < current.data)
+            current.left = this.insert_recursion(current.left, data);
+        else if (data > current.data)
+            current.right = this.insert_recursion(current.right, data);
+        return current;
     }
     removeElement(data) {
-        this.deleteNode(this.root, data);
+        this.root = this.removeElement_recursion(this.root, data);
     }
-    deleteNode(current, data) {
+    removeElement_recursion(current, data) {
         if (!current)
             return current;
-        else if (data < (current === null || current === void 0 ? void 0 : current.data)) {
-            current.left = this.deleteNode(current.left, data);
-            return current;
-        }
-        else if (data > (current === null || current === void 0 ? void 0 : current.data)) {
-            current.right = this.deleteNode(current.right, data);
-            return current;
-        }
-        else {
-            if (current.left === null)
-                return current.right;
-            else if (current.right === null)
-                return current.left;
-            else if (current.left && current.right) {
-                let leftMostParent = current;
-                let leftMost = current.right;
-                while (leftMost && leftMost.left !== null) {
-                    leftMostParent = leftMost;
-                    leftMost = leftMost.left;
-                }
-                if (leftMostParent === current)
-                    leftMostParent.right = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
-                else
-                    leftMostParent.left = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
-                current.data = leftMost === null || leftMost === void 0 ? void 0 : leftMost.data;
-                return current;
+        else if (data < (current === null || current === void 0 ? void 0 : current.data))
+            current.left = this.removeElement_recursion(current.left, data);
+        else if (data > (current === null || current === void 0 ? void 0 : current.data))
+            current.right = this.removeElement_recursion(current.right, data);
+        else if (current.left === null)
+            return current.right; //Case-1: if no left child ,right can be existed or not.
+        else if (current.right === null)
+            return current.left; //Case-2: if no right child.
+        else if (current.left && current.right) { //Case-3: if both children exist.
+            let leftMostParent = current;
+            let leftMost = current.right;
+            while (leftMost && leftMost.left !== null) {
+                leftMostParent = leftMost;
+                leftMost = leftMost.left;
             }
+            if (leftMostParent === current)
+                leftMostParent.right = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
+            else
+                leftMostParent.left = leftMost === null || leftMost === void 0 ? void 0 : leftMost.right;
+            current.data = leftMost === null || leftMost === void 0 ? void 0 : leftMost.data;
+            return current;
         }
+        return current;
     }
 }
 let bst = new BinarySearchTree({});
-bst.push(5);
-bst.push(2);
-bst.push(3);
-bst.push(1);
-bst.push(7);
-bst.push(6);
-bst.push(8);
+bst.insertArray([4, 3, 5]); //Case-1
+// bst.insertArray([5, 8, 7, 9]); //Case-1
+// bst.insertArray([5, 3, 2, 1]); //Case-2
+// bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
 console.log("---:", bst.root);
 bst.removeElement(5);
 console.log("------:", bst.root);
