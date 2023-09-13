@@ -1,7 +1,7 @@
 export class BinarySearchTreeNode {
     left: BinarySearchTreeNode | null | undefined;
     right: BinarySearchTreeNode | null | undefined;
-    val: number;
+    val: any;
 
     constructor({val = 0, left = null, right = null}) {
         this.val = val;
@@ -17,7 +17,7 @@ export class BinarySearchTree {
         this.root = root;
     }
 
-    insertArray(arr: number[]) {
+    insertArray(arr: any[]) {
         arr.forEach((item) => {
             this.insert(item)
         })
