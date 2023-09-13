@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//https://leetcode.com/problems/maximum-depth-of-binary-tree
+// https://leetcode.com/problems/maximum-depth-of-binary-tree
 const BinarySearchTree_1 = require("./helpers/BinarySearchTree");
 function maxDepth(root) {
     if (root) {

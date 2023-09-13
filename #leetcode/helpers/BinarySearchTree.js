@@ -92,16 +92,32 @@ class BinarySearchTree {
             console.log(current === null || current === void 0 ? void 0 : current.val);
         }
     }
+    maxDepth() {
+        return this.maxDepth_recursion(this.root);
+    }
+    maxDepth_recursion(root) {
+        if (root) {
+            let leftMax = this.maxDepth_recursion(root.left);
+            let rightMax = this.maxDepth_recursion(root.right);
+            if (leftMax > rightMax)
+                return leftMax + 1;
+            else
+                return rightMax + 1;
+        }
+        else
+            return 0;
+    }
 }
 exports.BinarySearchTree = BinarySearchTree;
 // let bst = new BinarySearchTree({})
-// bst.insertArray([4, 3, 5]);   //Case-1
-// bst.insertArray([5, 8, 7, 9]); //Case-1
-// bst.insertArray([5, 3, 2, 1]); //Case-2
-// bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //Case-3
+// bst.insertArray([4, 3, 5]);   //for removeElement Case-1
+// bst.insertArray([5, 8, 7, 9]); //for removeElementCase-1
+// bst.insertArray([5, 3, 2, 1]); //for removeElementCase-2
+// bst.insertArray([5, 2, 3, 1, 7, 6, 8]); //for removeElementCase-3
 // console.log("---:", bst.root);
 // bst.removeElement(5);
 // console.log("------:", bst.root);
 // bst.inorder();
 // bst.preorder();
 // bst.postorder();
+// console.log("maxDepth : ",bst.maxDepth())
