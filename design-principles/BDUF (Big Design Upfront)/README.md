@@ -1,0 +1,4 @@
+#  BDUF (Big Design Upfront)
+According to this principle, a developer should design the project first, create the flow of the diagram, and then implement it later. Before developing functionality, we should first think about the architecture and design of the whole system to the smallest details, and then follow the steps outlined in our plan to implement it.
+
+This helps uncover issues at the requirements stage and resolve them quickly. It is possible, however, that software requirements may change during the project’s life cycle and such changes to software requirements may result in difficulties or may even render the design obsolete. The best way to handle this would be by designing the architecture first, then dividing the requirements into stages according to their priority. Develop from the highest priority stage to the lowest during the development process. Prior to coding, implement the BDUF principle at each step.
