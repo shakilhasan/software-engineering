@@ -1,9 +1,0 @@
-# Dependency directories
-node_modules/
-public/files
-# dotenv environment variables file
-.env
-
-# IDE Generated Folder
-.idea/
-.idea
