@@ -7,6 +7,7 @@
 </a>
 </h3>
 
+Start a New TypeScript Project [here](https://www.digitalocean.com/community/tutorials/typescript-new-project)
 
 TypeScript Tutorial Series for absolute beginners. If you know JavaScript and want to start with TypeScript from scratch, this playlist is for you.
 
