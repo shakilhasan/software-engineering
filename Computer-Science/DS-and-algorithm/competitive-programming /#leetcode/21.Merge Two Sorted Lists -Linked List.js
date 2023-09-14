@@ -9,18 +9,18 @@ function mergeTwoLists(list1, list2) {
     if (!list1 && !list2)
         return list1;
     while ((list1 || list2) && result) {
-        if ((list1 && !list2) || (list2 && list1 && ((list1 === null || list1 === void 0 ? void 0 : list1.val) <= (list2 === null || list2 === void 0 ? void 0 : list2.val)))) {
+        if ((list1 && !list2) || (list2 && list1 && (list1?.val <= list2?.val))) {
             result.val = list1.val;
             result.next = new LinkList_1.LinkListNode({});
             list1 = list1.next;
         }
         else {
-            result.val = list2 === null || list2 === void 0 ? void 0 : list2.val;
+            result.val = list2?.val;
             result.next = new LinkList_1.LinkListNode({});
-            list2 = list2 === null || list2 === void 0 ? void 0 : list2.next;
+            list2 = list2?.next;
         }
         pre = result;
-        result = result === null || result === void 0 ? void 0 : result.next;
+        result = result?.next;
     }
     pre.next = null;
     return resultHead;
@@ -29,14 +29,14 @@ function mergeTwoLists1(list1, list2) {
     let resultHead = new LinkList_1.LinkListNode({});
     let current = resultHead;
     while ((list1 || list2) && current) {
-        if ((list1 && !list2) || (list2 && list1 && ((list1 === null || list1 === void 0 ? void 0 : list1.val) <= (list2 === null || list2 === void 0 ? void 0 : list2.val)))) {
+        if ((list1 && !list2) || (list2 && list1 && (list1?.val <= list2?.val))) {
             current.next = list1;
             list1 = list1.next;
         }
         else {
             current.next = list2;
             if (list2)
-                list2 = list2 === null || list2 === void 0 ? void 0 : list2.next;
+                list2 = list2?.next;
         }
         current = current.next;
     }

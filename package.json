@@ -1,5 +1,5 @@
 {
-  "name": "design-guidelines",
+  "name": "software-engineering",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsc -w"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakilhasan/software-engineering.git"
+  },
+  "author": "Shakil Hasan Bin Younus",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.5.3",

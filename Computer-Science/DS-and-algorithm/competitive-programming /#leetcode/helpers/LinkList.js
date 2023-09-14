@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinkList = exports.LinkListNode = void 0;
 // Definition for singly-linked list.
 class LinkListNode {
+    val;
+    index;
+    next;
     constructor({ val = 0, index = -1, next = null }) {
         this.val = val;
         this.index = index;
@@ -11,6 +14,8 @@ class LinkListNode {
 }
 exports.LinkListNode = LinkListNode;
 class LinkList {
+    head;
+    size;
     constructor({ head = null, size = 0 }) {
         this.head = head;
         this.size = size;
@@ -32,14 +37,13 @@ class LinkList {
         this.size++;
     }
     pop() {
-        var _a, _b;
-        if (((_a = this.head) === null || _a === void 0 ? void 0 : _a.next) === null) {
+        if (this.head?.next === null) {
             this.head = null;
             return;
         }
         let current = this.head;
         while (current) {
-            if (((_b = current.next) === null || _b === void 0 ? void 0 : _b.next) === null) {
+            if (current.next?.next === null) {
                 current.next = null;
                 this.size--;
                 break;
@@ -70,10 +74,9 @@ class LinkList {
         }
     }
     shift() {
-        var _a, _b;
         this.size -= 1;
-        if ((_a = this.head) === null || _a === void 0 ? void 0 : _a.next)
-            this.head = (_b = this.head) === null || _b === void 0 ? void 0 : _b.next;
+        if (this.head?.next)
+            this.head = this.head?.next;
     }
     unshift(val) {
         this.size += 1;
@@ -125,7 +128,7 @@ class LinkList {
             this.head = this.head.next;
             return;
         }
-        while (current === null || current === void 0 ? void 0 : current.next) {
+        while (current?.next) {
             if ((index - 1) === i++) {
                 current.next = current.next.next;
                 break;
@@ -139,7 +142,7 @@ class LinkList {
             this.head = this.head.next;
             return;
         }
-        while (current === null || current === void 0 ? void 0 : current.next) {
+        while (current?.next) {
             if (current.next.val === val)
                 current.next = current.next.next;
             current = current.next;

@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinarySearchTree = exports.BinarySearchTreeNode = void 0;
 class BinarySearchTreeNode {
+    left;
+    right;
+    val;
     constructor({ val = 0, left = null, right = null }) {
         this.val = val;
         this.left = left;
@@ -10,6 +13,7 @@ class BinarySearchTreeNode {
 }
 exports.BinarySearchTreeNode = BinarySearchTreeNode;
 class BinarySearchTree {
+    root;
     constructor({ root = null }) {
         this.root = root;
     }
@@ -65,10 +69,10 @@ class BinarySearchTree {
     inorder_recursion(current) {
         if (current) {
             // console.log("-----", current.val);
-            this.inorder_recursion(current === null || current === void 0 ? void 0 : current.left);
+            this.inorder_recursion(current?.left);
             // console.log("*******", current.val);
-            console.log(current === null || current === void 0 ? void 0 : current.val);
-            this.inorder_recursion(current === null || current === void 0 ? void 0 : current.right);
+            console.log(current?.val);
+            this.inorder_recursion(current?.right);
             // console.log("##########", current.val);
         }
     }
@@ -77,9 +81,9 @@ class BinarySearchTree {
     }
     preorder_recursion(current) {
         if (current) {
-            console.log(current === null || current === void 0 ? void 0 : current.val);
-            this.preorder_recursion(current === null || current === void 0 ? void 0 : current.left);
-            this.preorder_recursion(current === null || current === void 0 ? void 0 : current.right);
+            console.log(current?.val);
+            this.preorder_recursion(current?.left);
+            this.preorder_recursion(current?.right);
         }
     }
     postorder() {
@@ -87,9 +91,9 @@ class BinarySearchTree {
     }
     postorder_recursion(current) {
         if (current) {
-            this.postorder_recursion(current === null || current === void 0 ? void 0 : current.left);
-            this.postorder_recursion(current === null || current === void 0 ? void 0 : current.right);
-            console.log(current === null || current === void 0 ? void 0 : current.val);
+            this.postorder_recursion(current?.left);
+            this.postorder_recursion(current?.right);
+            console.log(current?.val);
         }
     }
     maxDepth() {
