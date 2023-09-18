@@ -1,4 +1,5 @@
 "use strict";
+// ------SimpleCommand-----
 class SimpleCommand {
     payload;
     constructor(payload) {
@@ -8,6 +9,7 @@ class SimpleCommand {
         console.log(`SimpleCommand: See, I can do simple things like printing (${this.payload})`);
     }
 }
+// -------ComplexCommand---------
 class Receiver {
     doSomething(a) {
         console.log(`Receiver: Working on (${a}.)`);
@@ -31,6 +33,7 @@ class ComplexCommand {
         this.receiver.doSomethingElse(this.b);
     }
 }
+//-------Invoker-------
 class Invoker {
     onStart;
     onFinish;
@@ -55,4 +58,5 @@ class Invoker {
 }
 const receiver = new Receiver();
 const invoker = new Invoker(new SimpleCommand('Say Hi!'), new ComplexCommand(receiver, 'Send email', 'Save report'));
+// const invoker = new Invoker(new ComplexCommand(receiver, 'Send email', 'Save report'),new SimpleCommand('Say Hi!'));
 invoker.doSomethingImportant();

@@ -2,7 +2,7 @@
 interface Command {
     execute(): void;
 }
-
+// ------SimpleCommand-----
 class SimpleCommand implements Command {
     private payload: string;
 
@@ -14,7 +14,7 @@ class SimpleCommand implements Command {
         console.log(`SimpleCommand: See, I can do simple things like printing (${this.payload})`);
     }
 }
-
+// -------ComplexCommand---------
 class Receiver {
     public doSomething(a: string): void {
         console.log(`Receiver: Working on (${a}.)`);
@@ -42,7 +42,7 @@ class ComplexCommand implements Command {
         this.receiver.doSomethingElse(this.b);
     }
 }
-
+//-------Invoker-------
 class Invoker {
     private onStart: Command;
     private onFinish: Command;
@@ -73,5 +73,6 @@ class Invoker {
 
 const receiver = new Receiver();
 const invoker = new Invoker(new SimpleCommand('Say Hi!'), new ComplexCommand(receiver, 'Send email', 'Save report'));
+// const invoker = new Invoker(new ComplexCommand(receiver, 'Send email', 'Save report'),new SimpleCommand('Say Hi!'));
 
 invoker.doSomethingImportant();
