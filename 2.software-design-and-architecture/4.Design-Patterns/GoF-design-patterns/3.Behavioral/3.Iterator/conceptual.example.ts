@@ -39,7 +39,7 @@ class AlphabeticalOrderIterator implements Iterator<string> {
         return this.position;
     }
 
-    public next(): string {
+    public next(): any {
         const item = this.collection.getItems()[this.position];
         this.position += this.reverse ? -1 : 1;
         return item;
@@ -79,14 +79,12 @@ const collection = new WordsCollection();
 collection.addItem('First');
 collection.addItem('Second');
 collection.addItem('Third');
-
 const iterator = collection.getIterator();
 
 console.log('Straight traversal:');
 while (iterator.valid()) {
     console.log(iterator.next());
 }
-
 console.log('');
 console.log('Reverse traversal:');
 const reverseIterator = collection.getReverseIterator();
