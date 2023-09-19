@@ -1,5 +1,26 @@
 "use strict";
 const DEFAULT_MONTHLY_EXPENSES_LIMIT = 0;
+class EmployeeMemento {
+    constructor(state) {
+        this._state = state;
+        this._date = new Date();
+        this._name = `date=${this._date.toISOString().substring(0, 10)}, \
+salary=${this._state.salary}, limit=\
+${this._state.monthlyExpensesLimit}`;
+    }
+    _state;
+    get state() {
+        return this._state;
+    }
+    _date;
+    get date() {
+        return this._date;
+    }
+    _name;
+    get name() {
+        return this._name;
+    }
+}
 class EmployeeOriginator {
     _monthlyExpensesLimit;
     constructor(name, salary) {
@@ -34,27 +55,6 @@ class EmployeeOriginator {
     }
     showState() {
         console.log(`Employee: State for ${this.name} is salary=${this._salary} and monthlyExpensesLimit=${this._monthlyExpensesLimit}`);
-    }
-}
-class EmployeeMemento {
-    constructor(state) {
-        this._state = state;
-        this._date = new Date();
-        this._name = `date=${this._date.toISOString().substring(0, 10)}, \
-salary=${this._state.salary}, limit=\
-${this._state.monthlyExpensesLimit}`;
-    }
-    _state;
-    get state() {
-        return this._state;
-    }
-    _date;
-    get date() {
-        return this._date;
-    }
-    _name;
-    get name() {
-        return this._name;
     }
 }
 class EmployeeCaretaker {

@@ -1,4 +1,34 @@
 //https://refactoring.guru/design-patterns/memento/typescript/example#example-0--index-ts
+interface Memento {
+    getState(): string;
+
+    getName(): string;
+
+    getDate(): string;
+}
+
+class ConcreteMemento implements Memento {
+    private state: string;
+    private date: string;
+
+    constructor(state: string) {
+        this.state = state;
+        this.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    }
+
+    public getState(): string {
+        return this.state;
+    }
+
+    public getName(): string {
+        return `${this.date} / (${this.state.substr(0, 9)}...)`;
+    }
+
+    public getDate(): string {
+        return this.date;
+    }
+}
+
 class Originator {
     private state: string;
 
@@ -27,36 +57,6 @@ class Originator {
         return Array.apply(null, [length])
             .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
             .join('');
-    }
-}
-
-interface Memento {
-    getState(): string;
-
-    getName(): string;
-
-    getDate(): string;
-}
-
-class ConcreteMemento implements Memento {
-    private state: string;
-    private date: string;
-
-    constructor(state: string) {
-        this.state = state;
-        this.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    }
-
-    public getState(): string {
-        return this.state;
-    }
-
-    public getName(): string {
-        return `${this.date} / (${this.state.substr(0, 9)}...)`;
-    }
-
-    public getDate(): string {
-        return this.date;
     }
 }
 
@@ -92,9 +92,7 @@ class Caretaker {
 }
 
 //Client code.
-// @ts-ignore
 const originator = new Originator('Super-duper-super-puper-super.');
-// @ts-ignore
 const caretaker = new Caretaker(originator);
 
 caretaker.backup();

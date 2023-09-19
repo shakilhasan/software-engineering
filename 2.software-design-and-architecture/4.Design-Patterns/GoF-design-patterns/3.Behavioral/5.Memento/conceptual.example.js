@@ -1,5 +1,21 @@
 "use strict";
-//https://refactoring.guru/design-patterns/memento/typescript/example#example-0--index-ts
+class ConcreteMemento {
+    state;
+    date;
+    constructor(state) {
+        this.state = state;
+        this.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    }
+    getState() {
+        return this.state;
+    }
+    getName() {
+        return `${this.date} / (${this.state.substr(0, 9)}...)`;
+    }
+    getDate() {
+        return this.date;
+    }
+}
 class Originator {
     state;
     constructor(state) {
@@ -23,23 +39,6 @@ class Originator {
         return Array.apply(null, [length])
             .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
             .join('');
-    }
-}
-class ConcreteMemento {
-    state;
-    date;
-    constructor(state) {
-        this.state = state;
-        this.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    }
-    getState() {
-        return this.state;
-    }
-    getName() {
-        return `${this.date} / (${this.state.substr(0, 9)}...)`;
-    }
-    getDate() {
-        return this.date;
     }
 }
 class Caretaker {
@@ -69,9 +68,7 @@ class Caretaker {
     }
 }
 //Client code.
-// @ts-ignore
 const originator = new Originator('Super-duper-super-puper-super.');
-// @ts-ignore
 const caretaker = new Caretaker(originator);
 caretaker.backup();
 originator.doSomething();

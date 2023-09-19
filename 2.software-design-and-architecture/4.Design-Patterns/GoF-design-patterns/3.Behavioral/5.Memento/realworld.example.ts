@@ -1,5 +1,44 @@
 const DEFAULT_MONTHLY_EXPENSES_LIMIT = 0;
 
+interface Memento1<T> {
+    readonly state: T;
+    readonly name: string;
+    readonly date: Date;
+}
+
+interface EmployeeState {
+    salary: number;
+    monthlyExpensesLimit: number;
+}
+
+class EmployeeMemento implements Memento1<EmployeeState> {
+    constructor(state: EmployeeState) {
+        this._state = state;
+        this._date = new Date();
+        this._name = `date=${this._date.toISOString().substring(0, 10)}, \
+salary=${this._state.salary}, limit=\
+${this._state.monthlyExpensesLimit}`;
+    }
+
+    private _state: EmployeeState;
+
+    get state() {
+        return this._state;
+    }
+
+    private _date: Date;
+
+    get date() {
+        return this._date;
+    }
+
+    private _name: string;
+
+    get name() {
+        return this._name;
+    }
+}
+
 class EmployeeOriginator {
     private _monthlyExpensesLimit: number;
 
@@ -47,44 +86,6 @@ class EmployeeOriginator {
     }
 }
 
-interface Memento1<T> {
-    readonly state: T;
-    readonly name: string;
-    readonly date: Date;
-}
-
-interface EmployeeState {
-    salary: number;
-    monthlyExpensesLimit: number;
-}
-
-class EmployeeMemento implements Memento1<EmployeeState> {
-    constructor(state: EmployeeState) {
-        this._state = state;
-        this._date = new Date();
-        this._name = `date=${this._date.toISOString().substring(0, 10)}, \
-salary=${this._state.salary}, limit=\
-${this._state.monthlyExpensesLimit}`;
-    }
-
-    private _state: EmployeeState;
-
-    get state() {
-        return this._state;
-    }
-
-    private _date: Date;
-
-    get date() {
-        return this._date;
-    }
-
-    private _name: string;
-
-    get name() {
-        return this._name;
-    }
-}
 
 class EmployeeCaretaker {
     private _employeeMementos: Memento1<EmployeeState>[] = [];
@@ -105,7 +106,7 @@ class EmployeeCaretaker {
             return;
         }
         const employeeMementoToRestore = this._employeeMementos.pop();
-        if(employeeMementoToRestore) {
+        if (employeeMementoToRestore) {
             console.log(`Employee caretaker1: Restoring memento: ${employeeMementoToRestore.name}`);
             this._employee.restore(employeeMementoToRestore);
         }
