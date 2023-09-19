@@ -1,22 +1,18 @@
 //https://refactoring.guru/design-patterns/memento/typescript/example#example-0--index-ts
 class Originator {
     private state: string;
+
     constructor(state: string) {
         this.state = state;
         console.log(`Originator: My initial state is: ${state}`);
     }
+
     public doSomething(): void {
         console.log('Originator: I\'m doing something important.');
         this.state = this.generateRandomString(30);
         console.log(`Originator: and my state has changed to: ${this.state}`);
     }
 
-    private generateRandomString(length: number = 10): string {
-        const charSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        return Array.apply(null, { length })
-            .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
-            .join('');
-    }
     public save(): Memento {
         return new ConcreteMemento(this.state);
     }
@@ -25,20 +21,32 @@ class Originator {
         this.state = memento.getState();
         console.log(`Originator: My state has changed to: ${this.state}`);
     }
+
+    private generateRandomString(length: number = 10): string {
+        const charSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return Array.apply(null, {length})
+            .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
+            .join('');
+    }
 }
 
 interface Memento {
     getState(): string;
+
     getName(): string;
+
     getDate(): string;
 }
+
 class ConcreteMemento implements Memento {
     private state: string;
     private date: string;
+
     constructor(state: string) {
         this.state = state;
         this.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
     }
+
     public getState(): string {
         return this.state;
     }
