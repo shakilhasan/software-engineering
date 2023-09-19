@@ -24,7 +24,7 @@ class Originator {
 
     private generateRandomString(length: number = 10): string {
         const charSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        return Array.apply(null, {length})
+        return Array.apply(null, [length])
             .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
             .join('');
     }
@@ -75,13 +75,12 @@ class Caretaker {
     }
 
     public undo(): void {
-        if (!this.mementos.length) {
-            return;
-        }
+        if (!this.mementos.length) return;
         const memento = this.mementos.pop();
-
-        console.log(`Caretaker: Restoring state to: ${memento.getName()}`);
-        this.originator.restore(memento);
+        if(memento){
+            console.log(`Caretaker: Restoring state to: ${memento.getName()}`);
+            this.originator.restore(memento);
+        }
     }
 
     public showHistory(): void {
@@ -93,7 +92,9 @@ class Caretaker {
 }
 
 //Client code.
+// @ts-ignore
 const originator = new Originator('Super-duper-super-puper-super.');
+// @ts-ignore
 const caretaker = new Caretaker(originator);
 
 caretaker.backup();
