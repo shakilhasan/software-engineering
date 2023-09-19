@@ -29,14 +29,14 @@ class EmployeeOriginator {
         this._monthlyExpensesLimit = newLimit;
     }
 
-    public saveSnapshot(): Memento<EmployeeState> {
+    public saveSnapshot(): Memento1<EmployeeState> {
         return new EmployeeMemento({
             salary: this._salary,
             monthlyExpensesLimit: this._monthlyExpensesLimit,
         });
     }
 
-    public restore(memento: Memento<EmployeeState>): void {
+    public restore(memento: Memento1<EmployeeState>): void {
         this._salary = memento.state.salary;
         this._monthlyExpensesLimit = memento.state.monthlyExpensesLimit;
         console.log(`Originator: Restored state from memento: ${memento.name}`);
@@ -47,7 +47,7 @@ class EmployeeOriginator {
     }
 }
 
-interface Memento<T> {
+interface Memento1<T> {
     readonly state: T;
     readonly name: string;
     readonly date: Date;
@@ -58,7 +58,7 @@ interface EmployeeState {
     monthlyExpensesLimit: number;
 }
 
-class EmployeeMemento implements Memento<EmployeeState> {
+class EmployeeMemento implements Memento1<EmployeeState> {
     constructor(state: EmployeeState) {
         this._state = state;
         this._date = new Date();
@@ -87,7 +87,7 @@ ${this._state.monthlyExpensesLimit}`;
 }
 
 class EmployeeCaretaker {
-    private _employeeMementos: Memento<EmployeeState>[] = [];
+    private _employeeMementos: Memento1<EmployeeState>[] = [];
 
     private _employee: EmployeeOriginator;
 
@@ -96,7 +96,7 @@ class EmployeeCaretaker {
     }
 
     public backup(): void {
-        console.log('Employee caretaker: Saving employee\'s state...');
+        console.log('Employee caretaker1: Saving employee\'s state...');
         this._employeeMementos.push(this._employee.saveSnapshot());
     }
 
@@ -105,15 +105,14 @@ class EmployeeCaretaker {
             return;
         }
         const employeeMementoToRestore = this._employeeMementos.pop();
-
-        console.log(`Employee caretaker: Restoring memento: ${employeeMementoToRestore.name}`);
-        this._employee.restore(employeeMementoToRestore);
+        if(employeeMementoToRestore) {
+            console.log(`Employee caretaker1: Restoring memento: ${employeeMementoToRestore.name}`);
+            this._employee.restore(employeeMementoToRestore);
+        }
     }
 
     public showHistory(): void {
-        if (!this._employeeMementos.length) {
-            console.log('Empty employee mementos list');
-        }
+        if (!this._employeeMementos.length) console.log('Empty employee mementos list');
         for (const memento of this._employeeMementos) {
             console.log(memento.name);
         }
@@ -122,33 +121,33 @@ class EmployeeCaretaker {
 
 //client code.
 
-console.log('Client: Creating employee originator and caretaker...');
-const originator = new EmployeeOriginator('Justin Case', 50000);
-const caretaker = new EmployeeCaretaker(originator);
+console.log('Client: Creating employee originator1 and caretaker1...');
+const originator1 = new EmployeeOriginator('Justin Case', 50000);
+const caretaker1 = new EmployeeCaretaker(originator1);
 
 console.log('\nClient: Let\'s change states saving state before each change...');
-caretaker.backup();
-originator.raiseSalaryTo(60000);
-caretaker.backup();
-originator.raiseLimitTo(100);
-caretaker.backup();
-originator.raiseSalaryTo(100000);
+caretaker1.backup();
+originator1.raiseSalaryTo(60000);
+caretaker1.backup();
+originator1.raiseLimitTo(100);
+caretaker1.backup();
+originator1.raiseSalaryTo(100000);
 
-console.log('\nClient: This is the history of mementos and the state of the originator:');
-caretaker.showHistory();
-originator.showState();
+console.log('\nClient: This is the history of mementos and the state of the originator1:');
+caretaker1.showHistory();
+originator1.showState();
 
 console.log('\nClient: Changed state up to 3 times, let\'s rollback to the initial state!');
-caretaker.undo();
-originator.showState();
-caretaker.undo();
-originator.showState();
-caretaker.undo();
-originator.showState();
+caretaker1.undo();
+originator1.showState();
+caretaker1.undo();
+originator1.showState();
+caretaker1.undo();
+originator1.showState();
 
 console.log('\nClient: Now the history of mementos should be empty');
-caretaker.showHistory();
+caretaker1.showHistory();
 
 console.log('\nClient: A new undo will leave the employee untouched');
-caretaker.undo();
-originator.showState();
+caretaker1.undo();
+originator1.showState();
