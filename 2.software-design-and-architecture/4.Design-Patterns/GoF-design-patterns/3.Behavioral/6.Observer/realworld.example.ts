@@ -38,11 +38,11 @@ class LoggingObserver {
         this.volumeController.removeListener('volumeDown', this.volumeDownObserver);
     }
 
-    private volumeUpObserver(volume) {
+    private volumeUpObserver(volume:any) {
         console.log(`Volume up, now the volume value is ${volume}`);
     }
 
-    private volumeDownObserver(volume) {
+    private volumeDownObserver(volume:any) {
         console.log(`Volume down, now the volume value is ${volume}`);
     }
 }
