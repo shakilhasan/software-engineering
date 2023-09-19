@@ -1,31 +1,31 @@
 "use strict";
 class ConcreteSubject {
-    state;
+    state = 0;
     observers = [];
     attach(observer) {
         const isExist = this.observers.includes(observer);
         if (isExist)
-            return console.log('Subject: Observer has been attached already.');
-        console.log('Subject: Attached an observer.');
+            return console.log('Subject1: Observer has been attached already.');
+        console.log('Subject1: Attached an observer.');
         this.observers.push(observer);
     }
     detach(observer) {
         const observerIndex = this.observers.indexOf(observer);
         if (observerIndex === -1)
-            return console.log('Subject: Nonexistent observer.');
+            return console.log('Subject1: Nonexistent observer.');
         this.observers.splice(observerIndex, 1);
-        console.log('Subject: Detached an observer.');
+        console.log('Subject1: Detached an observer.');
     }
     notify() {
-        console.log('Subject: Notifying observers...');
+        console.log('Subject1: Notifying observers...');
         for (const observer of this.observers) {
             observer.update(this);
         }
     }
     someBusinessLogic() {
-        console.log('\nSubject: I\'m doing something important.');
+        console.log('\nSubject1: I\'m doing something important.');
         this.state = Math.floor(Math.random() * (10 + 1));
-        console.log(`Subject: My state has just changed to: ${this.state}`);
+        console.log(`Subject1: My state has just changed to: ${this.state}`);
         this.notify();
     }
 }
