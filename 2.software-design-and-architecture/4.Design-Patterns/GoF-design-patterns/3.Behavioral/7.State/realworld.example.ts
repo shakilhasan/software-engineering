@@ -3,13 +3,13 @@ interface Coin {
     value: number;
 }
 
-interface Product {
+interface Product7 {
     name: string;
     value: number;
 }
 
 interface InventoryItem {
-    product: Product;
+    product: Product7;
     items: number;
 }
 
@@ -37,7 +37,7 @@ class VendingMachineContext {
         console.log('Credit has been reset');
     }
 
-    public hasStockOf(product: Product): boolean {
+    public hasStockOf(product: Product7): boolean {
         return this.inventory.items.some(i => i.product.name === product.name && i.items > 0);
     }
 
@@ -45,7 +45,7 @@ class VendingMachineContext {
         return !this.inventory.items.some(i => i.items > 0);
     }
 
-    public dispenseProduct(product: Product) {
+    public dispenseProduct(product: Product7) {
         if (product.value > this.credit) throw new Error(`You are trying to buy a product with price ${product.value} but your credit is only ${this.credit}`);
         if (!this.hasStockOf(product)) throw new Error(`No ${product.name} products left, select another one`);
 
@@ -73,13 +73,13 @@ class VendingMachineContext {
         this.state.insertCoin(coin);
     }
 
-    public selectProduct(product: Product): void {
+    public selectProduct(product: Product7): void {
         this.state.selectProduct(product);
     }
 }
 
 abstract class State1 {
-    protected context: VendingMachineContext;
+    protected context: VendingMachineContext | undefined;
 
     public setContext(context: VendingMachineContext) {
         this.context = context;
@@ -87,26 +87,29 @@ abstract class State1 {
 
     public abstract insertCoin(coin: Coin): void;
 
-    public abstract selectProduct(product: Product): void;
+    public abstract selectProduct(product: Product7): void;
 }
 
 class InitialReadyState extends State1 {
     public insertCoin(coin: Coin): void {
-        this.context.addCredit(coin.value);
-        this.context.transitionTo(new TransactionStarted());
+        if (this.context) {
+            this.context.addCredit(coin.value);
+            this.context.transitionTo(new TransactionStarted());
+        }
     }
 
-    public selectProduct(_: Product): void {
+    public selectProduct(_: Product7): void {
         throw new Error('You should insert coins before selecting the product');
     }
 }
 
 class TransactionStarted extends State1 {
     public insertCoin(coin: Coin): void {
-        this.context.addCredit(coin.value);
+        if (this.context) this.context.addCredit(coin.value);
     }
 
-    public selectProduct(product: Product): void {
+    public selectProduct(product: Product7): void {
+        if (!this.context) return;
         this.context.dispenseProduct(product);
 
         if (this.context.isOutOfStock()) this.context.transitionTo(new OutOfStock());
@@ -119,16 +122,16 @@ class OutOfStock extends State1 {
         throw new Error('Stop inserting coins, we completely run out of stock');
     }
 
-    public selectProduct(_: Product): void {
+    public selectProduct(_: Product7): void {
         throw new Error('Stop selecting products, we completely run of stock');
     }
 }
 
-const SODA: Product = {
+const SODA: Product7 = {
     name: 'Soda',
     value: 15,
 };
-const NUTS: Product = {
+const NUTS: Product7 = {
     name: 'Nuts',
     value: 25,
 };
@@ -144,35 +147,36 @@ const NICKEL = {name: 'nickel', value: 5};
 const DIME = {name: 'dime', value: 10};
 
 //client code
-const context = new VendingMachineContext(new InitialReadyState());
-
-const handleError = (error) => {
+const context1 = new VendingMachineContext(new InitialReadyState());
+const handleError = (error: any) => {
     console.error(error.message);
 };
 
 try {
-    context.selectProduct(NUTS);
+    context1.selectProduct(NUTS);
 } catch (error) {
     handleError(error);
 }
-context.insertCoin(DIME);
+context1.insertCoin(DIME);
 try {
-    context.selectProduct(SODA);
+    context1.selectProduct(SODA);
 } catch (error) {
     handleError(error);
 }
-context.insertCoin(NICKEL);
-context.selectProduct(SODA);
 
-context.insertCoin(DIME);
-context.insertCoin(NICKEL);
+context1.insertCoin(NICKEL);
+context1.selectProduct(SODA);
+
+context1.insertCoin(DIME);
+context1.insertCoin(NICKEL);
+
 try {
-    context.selectProduct(SODA);
+    context1.selectProduct(SODA);
 } catch (error) {
     handleError(error);
 }
 try {
-    context.insertCoin(NICKEL);
+    context1.insertCoin(NICKEL);
 } catch (error) {
     handleError(error);
 }
