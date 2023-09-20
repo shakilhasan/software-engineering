@@ -1,5 +1,5 @@
 interface VisitableComponent {
-    accept(visitor: Visitor): number;
+    accept(visitor: Visitor_10): number;
 }
 
 class HeadPhonesProduct implements VisitableComponent {
@@ -11,7 +11,7 @@ class HeadPhonesProduct implements VisitableComponent {
         public price: number) {
     }
 
-    public accept(visitor: Visitor): number {
+    public accept(visitor: Visitor_10): number {
         return visitor.visitHeadPhones(this);
     }
 }
@@ -25,7 +25,7 @@ class WashingMachineProduct implements VisitableComponent {
         public price: number) {
     }
 
-    public accept(visitor: Visitor): number {
+    public accept(visitor: Visitor_10): number {
         return visitor.visitWashingMachine(this);
     }
 }
@@ -39,12 +39,12 @@ class TVProduct implements VisitableComponent {
         public price: number) {
     }
 
-    public accept(visitor: Visitor): number {
+    public accept(visitor: Visitor_10): number {
         return visitor.visitTV(this);
     }
 }
 
-interface Visitor {
+interface Visitor_10 {
     visitHeadPhones(headphones: HeadPhonesProduct): number;
 
     visitWashingMachine(washingMachine: WashingMachineProduct): number;
@@ -62,7 +62,7 @@ const APPLE_EXTRA_SHIPPING_COST = 100;
 const APPLE_BRAND_NAME = 'Apple';
 const WEBOS_OS_NAME = 'webOS';
 
-class ShippingCostCalculatorVisitor implements Visitor {
+class ShippingCostCalculatorVisitor implements Visitor_10 {
     public visitHeadPhones(headphones: HeadPhonesProduct): number {
         const shippingCost = headphones.weight * CLASS_A_SHIPPING_COST_MULTIPLIER;
         if (headphones.brand === APPLE_BRAND_NAME) {
@@ -92,7 +92,7 @@ class ShippingCostCalculatorVisitor implements Visitor {
 const RECYCLABLE_ELECTRONIC_PRODUCT_SPECIAL_TAX = 25;
 const VAT = 0.21;
 
-class TaxCalculatorVisitor implements Visitor {
+class TaxCalculatorVisitor implements Visitor_10 {
     visitHeadPhones(headphones: HeadPhonesProduct): number {
         return headphones.price * VAT;
     }
@@ -109,7 +109,7 @@ class TaxCalculatorVisitor implements Visitor {
 
 function calculateCosts(
     products: VisitableComponent[],
-    visitor: Visitor): number {
+    visitor: Visitor_10): number {
     return products.reduce((acc, curr) => (acc + curr.accept(visitor)), 0);
 }
 
