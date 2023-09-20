@@ -1,4 +1,8 @@
 //https://refactoring.guru/design-patterns/observer/typescript/example#example-0--index-ts
+interface Observer {
+    update(subject: Subject1): void;
+}
+
 interface Subject1 {
     attach(observer: Observer): void;
 
@@ -39,10 +43,6 @@ class ConcreteSubject implements Subject1 {
         console.log(`Subject1: My state has just changed to: ${this.state}`);
         this.notify();
     }
-}
-
-interface Observer {
-    update(subject: Subject1): void;
 }
 
 class ConcreteObserverA implements Observer {
