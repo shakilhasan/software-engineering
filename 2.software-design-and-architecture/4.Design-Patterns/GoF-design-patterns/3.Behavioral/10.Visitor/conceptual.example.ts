@@ -1,9 +1,9 @@
 //https://refactoring.guru/design-patterns/visitor/typescript/example#example-0--index-ts
-interface Component {
+interface Component_10 {
     accept(visitor: Visitor): void;
 }
 
-class ConcreteComponentA implements Component {
+class ConcreteComponentA implements Component_10 {
     public accept(visitor: Visitor): void {
         visitor.visitConcreteComponentA(this);
     }
@@ -13,7 +13,7 @@ class ConcreteComponentA implements Component {
     }
 }
 
-class ConcreteComponentB implements Component {
+class ConcreteComponentB implements Component_10 {
     public accept(visitor: Visitor): void {
         visitor.visitConcreteComponentB(this);
     }
@@ -50,7 +50,7 @@ class ConcreteVisitor2 implements Visitor {
 }
 
 //client code
-function clientCode(components: Component[], visitor: Visitor) {
+function clientCode_10(components: Component_10[], visitor: Visitor) {
     for (const component of components) {
         component.accept(visitor);
     }
@@ -63,9 +63,9 @@ const components = [
 
 console.log('The client code works with all visitors via the base Visitor interface:');
 const visitor1 = new ConcreteVisitor1();
-clientCode(components, visitor1);
+clientCode_10(components, visitor1);
 console.log('');
 
 console.log('It allows the same client code to work with different types of visitors:');
 const visitor2 = new ConcreteVisitor2();
-clientCode(components, visitor2);
+clientCode_10(components, visitor2);
