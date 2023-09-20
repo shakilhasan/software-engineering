@@ -1,13 +1,19 @@
 "use strict";
 class Invoice {
     _customer;
-    _lines = [];
-    _notes = '';
     constructor(_customer) {
         this._customer = _customer;
     }
-    addLine(newLine) {
-        this._lines = [...this._lines, newLine];
+    _lines = [];
+    get lines() {
+        return this._lines;
+    }
+    _notes = '';
+    get notes() {
+        return this._notes;
+    }
+    set notes(notes) {
+        this._notes = notes;
     }
     get taxes() {
         return this.subtotal * this.customer.country.vat;
@@ -18,15 +24,11 @@ class Invoice {
     get total() {
         return this.subtotal + this.taxes;
     }
-    get lines() {
-        return this._lines;
-    }
     get customer() {
         return this._customer;
     }
-    get notes() { return this._notes; }
-    set notes(notes) {
-        this._notes = notes;
+    addLine(newLine) {
+        this._lines = [...this._lines, newLine];
     }
 }
 class InvoiceFormatter {
@@ -47,11 +49,15 @@ ${this.hookFormatSubFooter()}
 `;
     }
     /** These operations have already a default implementation */
-    hookFormatSubHeader() { return ''; }
+    hookFormatSubHeader() {
+        return '';
+    }
     formatTotal() {
         return `Total: ${this.invoice.total}€`;
     }
-    hookFormatSubFooter() { return ''; }
+    hookFormatSubFooter() {
+        return '';
+    }
 }
 class HtmlInvoiceFormatter extends InvoiceFormatter {
     formatHeader() {
