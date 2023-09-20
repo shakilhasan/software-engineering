@@ -1,5 +1,5 @@
 //https://refactoring.guru/design-patterns/strategy/typescript/example#example-0--index-ts
-class Context {
+class Context_8 {
     private strategy: Strategy;
 
     constructor(strategy: Strategy) {
@@ -33,10 +33,10 @@ class ConcreteStrategyB implements Strategy {
     }
 }
 
-const context = new Context(new ConcreteStrategyA());
+const context_8 = new Context_8(new ConcreteStrategyA());
 console.log('Client: Strategy is set to normal sorting.');
-context.doSomeBusinessLogic();
+context_8.doSomeBusinessLogic();
 console.log('');
 console.log('Client: Strategy is set to reverse sorting.');
-context.setStrategy(new ConcreteStrategyB());
-context.doSomeBusinessLogic();
+context_8.setStrategy(new ConcreteStrategyB());
+context_8.doSomeBusinessLogic();
