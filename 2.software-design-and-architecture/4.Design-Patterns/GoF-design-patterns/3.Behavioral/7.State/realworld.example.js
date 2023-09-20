@@ -1,9 +1,16 @@
 "use strict";
+class State1 {
+    context;
+    setContext(context) {
+        this.context = context;
+    }
+}
 class VendingMachineContext {
     state;
     credit = 0;
     inventory = INITIAL_INVENTORY;
     constructor(state) {
+        this.state = state;
         this.transitionTo(state);
     }
     addCredit(credit) {
@@ -50,16 +57,12 @@ class VendingMachineContext {
         this.state.selectProduct(product);
     }
 }
-class State1 {
-    context;
-    setContext(context) {
-        this.context = context;
-    }
-}
 class InitialReadyState extends State1 {
     insertCoin(coin) {
-        this.context.addCredit(coin.value);
-        this.context.transitionTo(new TransactionStarted());
+        if (this.context) {
+            this.context.addCredit(coin.value);
+            this.context.transitionTo(new TransactionStarted());
+        }
     }
     selectProduct(_) {
         throw new Error('You should insert coins before selecting the product');
@@ -67,9 +70,12 @@ class InitialReadyState extends State1 {
 }
 class TransactionStarted extends State1 {
     insertCoin(coin) {
-        this.context.addCredit(coin.value);
+        if (this.context)
+            this.context.addCredit(coin.value);
     }
     selectProduct(product) {
+        if (!this.context)
+            return;
         this.context.dispenseProduct(product);
         if (this.context.isOutOfStock())
             this.context.transitionTo(new OutOfStock());
@@ -85,6 +91,7 @@ class OutOfStock extends State1 {
         throw new Error('Stop selecting products, we completely run of stock');
     }
 }
+//client code .............................................
 const SODA = {
     name: 'Soda',
     value: 15,
@@ -101,36 +108,35 @@ const INITIAL_INVENTORY = {
 };
 const NICKEL = { name: 'nickel', value: 5 };
 const DIME = { name: 'dime', value: 10 };
-//client code
-const context = new VendingMachineContext(new InitialReadyState());
+const context1 = new VendingMachineContext(new InitialReadyState());
 const handleError = (error) => {
     console.error(error.message);
 };
 try {
-    context.selectProduct(NUTS);
+    context1.selectProduct(NUTS);
 }
 catch (error) {
     handleError(error);
 }
-context.insertCoin(DIME);
+context1.insertCoin(DIME);
 try {
-    context.selectProduct(SODA);
+    context1.selectProduct(SODA);
 }
 catch (error) {
     handleError(error);
 }
-context.insertCoin(NICKEL);
-context.selectProduct(SODA);
-context.insertCoin(DIME);
-context.insertCoin(NICKEL);
+context1.insertCoin(NICKEL);
+context1.selectProduct(SODA);
+context1.insertCoin(DIME);
+context1.insertCoin(NICKEL);
 try {
-    context.selectProduct(SODA);
+    context1.selectProduct(SODA);
 }
 catch (error) {
     handleError(error);
 }
 try {
-    context.insertCoin(NICKEL);
+    context1.insertCoin(NICKEL);
 }
 catch (error) {
     handleError(error);

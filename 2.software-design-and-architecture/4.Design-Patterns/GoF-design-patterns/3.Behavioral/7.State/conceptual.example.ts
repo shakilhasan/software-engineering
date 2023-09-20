@@ -1,4 +1,16 @@
 //https://refactoring.guru/design-patterns/state/typescript/example#example-0--index-ts
+abstract class State {
+    protected context: Context | undefined;
+
+    public setContext(context: Context) {
+        this.context = context;
+    }
+
+    public abstract handle1(): void;
+
+    public abstract handle2(): void;
+}
+
 class Context {
     private state: State | undefined;
 
@@ -19,18 +31,6 @@ class Context {
     public request2(): void {
         if (this.state) this.state.handle2();
     }
-}
-
-abstract class State {
-    protected context: Context | undefined;
-
-    public setContext(context: Context) {
-        this.context = context;
-    }
-
-    public abstract handle1(): void;
-
-    public abstract handle2(): void;
 }
 
 class ConcreteStateA extends State {

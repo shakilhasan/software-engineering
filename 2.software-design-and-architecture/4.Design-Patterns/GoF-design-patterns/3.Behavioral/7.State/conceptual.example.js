@@ -1,5 +1,11 @@
 "use strict";
 //https://refactoring.guru/design-patterns/state/typescript/example#example-0--index-ts
+class State {
+    context;
+    setContext(context) {
+        this.context = context;
+    }
+}
 class Context {
     state;
     constructor(state) {
@@ -17,12 +23,6 @@ class Context {
     request2() {
         if (this.state)
             this.state.handle2();
-    }
-}
-class State {
-    context;
-    setContext(context) {
-        this.context = context;
     }
 }
 class ConcreteStateA extends State {

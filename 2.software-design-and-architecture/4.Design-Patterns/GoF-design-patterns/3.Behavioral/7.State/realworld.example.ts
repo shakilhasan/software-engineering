@@ -17,6 +17,18 @@ interface Inventory {
     items: InventoryItem[];
 }
 
+abstract class State1 {
+    protected context: VendingMachineContext | undefined;
+
+    public setContext(context: VendingMachineContext) {
+        this.context = context;
+    }
+
+    public abstract insertCoin(coin: Coin): void;
+
+    public abstract selectProduct(product: Product7): void;
+}
+
 class VendingMachineContext {
     private state: State1;
     private credit: number = 0;
@@ -78,18 +90,6 @@ class VendingMachineContext {
     }
 }
 
-abstract class State1 {
-    protected context: VendingMachineContext | undefined;
-
-    public setContext(context: VendingMachineContext) {
-        this.context = context;
-    }
-
-    public abstract insertCoin(coin: Coin): void;
-
-    public abstract selectProduct(product: Product7): void;
-}
-
 class InitialReadyState extends State1 {
     public insertCoin(coin: Coin): void {
         if (this.context) {
@@ -127,6 +127,7 @@ class OutOfStock extends State1 {
     }
 }
 
+//client code .............................................
 const SODA: Product7 = {
     name: 'Soda',
     value: 15,
@@ -146,7 +147,6 @@ const INITIAL_INVENTORY: Inventory = {
 const NICKEL = {name: 'nickel', value: 5};
 const DIME = {name: 'dime', value: 10};
 
-//client code
 const context1 = new VendingMachineContext(new InitialReadyState());
 const handleError = (error: any) => {
     console.error(error.message);
