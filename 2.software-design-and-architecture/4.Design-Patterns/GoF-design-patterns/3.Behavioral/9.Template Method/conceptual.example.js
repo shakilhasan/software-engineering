@@ -43,11 +43,11 @@ class ConcreteClass2 extends AbstractClass {
         console.log('ConcreteClass2 says: Overridden Hook1');
     }
 }
-function clientCode(abstractClass) {
+function clientCode_9(abstractClass) {
     abstractClass.templateMethod();
 }
 console.log('Same client code can work with different subclasses:');
-clientCode(new ConcreteClass1());
+clientCode_9(new ConcreteClass1());
 console.log('');
 console.log('Same client code can work with different subclasses:');
-clientCode(new ConcreteClass2());
+clientCode_9(new ConcreteClass2());
