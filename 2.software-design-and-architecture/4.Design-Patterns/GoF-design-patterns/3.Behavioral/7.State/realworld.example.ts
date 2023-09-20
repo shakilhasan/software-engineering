@@ -18,11 +18,12 @@ interface Inventory {
 }
 
 class VendingMachineContext {
-    private state: State;
+    private state: State1;
     private credit: number = 0;
     private inventory: Inventory = INITIAL_INVENTORY;
 
-    constructor(state: State) {
+    constructor(state: State1) {
+        this.state = state;
         this.transitionTo(state);
     }
 
@@ -49,17 +50,20 @@ class VendingMachineContext {
         if (!this.hasStockOf(product)) throw new Error(`No ${product.name} products left, select another one`);
 
         const inventoryItem = this.inventory.items.find(i => i.product.name === product.name);
-        const newInventoryItem = {
-            product,
-            items: inventoryItem.items - 1,
-        };
+        let newInventoryItem: any = {};
+        if (inventoryItem) {
+            newInventoryItem = {
+                product,
+                items: inventoryItem.items - 1,
+            };
+        }
         const restOfInventory = this.inventory.items.filter(i => i.product.name !== product.name);
         this.inventory.items = [...restOfInventory, newInventoryItem];
         console.log(`Product ${product.name} dispensed. Inventory is now:`, this.inventory.items);
         this.resetCredit();
     }
 
-    public transitionTo(state: State): void {
+    public transitionTo(state: State1): void {
         console.log(`Context: Transition to ${(<any>state).constructor.name}.`);
         this.state = state;
         this.state.setContext(this);
@@ -74,7 +78,7 @@ class VendingMachineContext {
     }
 }
 
-abstract class State {
+abstract class State1 {
     protected context: VendingMachineContext;
 
     public setContext(context: VendingMachineContext) {
@@ -86,7 +90,7 @@ abstract class State {
     public abstract selectProduct(product: Product): void;
 }
 
-class InitialReadyState extends State {
+class InitialReadyState extends State1 {
     public insertCoin(coin: Coin): void {
         this.context.addCredit(coin.value);
         this.context.transitionTo(new TransactionStarted());
@@ -97,7 +101,7 @@ class InitialReadyState extends State {
     }
 }
 
-class TransactionStarted extends State {
+class TransactionStarted extends State1 {
     public insertCoin(coin: Coin): void {
         this.context.addCredit(coin.value);
     }
@@ -110,7 +114,7 @@ class TransactionStarted extends State {
     }
 }
 
-class OutOfStock extends State {
+class OutOfStock extends State1 {
     public insertCoin(_: Coin): void {
         throw new Error('Stop inserting coins, we completely run out of stock');
     }
