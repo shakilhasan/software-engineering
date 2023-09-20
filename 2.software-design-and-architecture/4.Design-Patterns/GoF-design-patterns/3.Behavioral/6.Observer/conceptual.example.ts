@@ -42,7 +42,6 @@ class ConcreteSubject implements Subject1 {
 }
 
 interface Observer {
-    // Receive update from subject.
     update(subject: Subject1): void;
 }
 
