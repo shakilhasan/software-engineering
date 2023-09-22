@@ -1,9 +1,3 @@
-interface AbstractFactory {
-    createProductA(): AbstractProductA;
-
-    createProductB(): AbstractProductB;
-}
-
 interface AbstractProductA {
     usefulFunctionA(): string;
 }
@@ -12,6 +6,12 @@ interface AbstractProductB {
     usefulFunctionB(): string;
 
     anotherUsefulFunctionB(collaborator: AbstractProductA): string;
+}
+
+interface AbstractFactory {
+    createProductA(): AbstractProductA;
+
+    createProductB(): AbstractProductB;
 }
 
 class ConcreteFactory1 implements AbstractFactory {
@@ -24,16 +24,6 @@ class ConcreteFactory1 implements AbstractFactory {
     }
 }
 
-class ConcreteFactory2 implements AbstractFactory {
-    public createProductA(): AbstractProductA {
-        return new ConcreteProductA2();
-    }
-
-    public createProductB(): AbstractProductB {
-        return new ConcreteProductB2();
-    }
-}
-
 class ConcreteProductA1 implements AbstractProductA {
     public usefulFunctionA(): string {
         return 'The result of the product A1.';
@@ -43,6 +33,16 @@ class ConcreteProductA1 implements AbstractProductA {
 class ConcreteProductA2 implements AbstractProductA {
     public usefulFunctionA(): string {
         return 'The result of the product A2.';
+    }
+}
+
+class ConcreteFactory2 implements AbstractFactory {
+    public createProductA(): AbstractProductA {
+        return new ConcreteProductA2();
+    }
+
+    public createProductB(): AbstractProductB {
+        return new ConcreteProductB2();
     }
 }
 

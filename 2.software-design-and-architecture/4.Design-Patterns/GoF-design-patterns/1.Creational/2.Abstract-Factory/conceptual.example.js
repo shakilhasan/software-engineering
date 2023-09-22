@@ -7,14 +7,6 @@ class ConcreteFactory1 {
         return new ConcreteProductB1();
     }
 }
-class ConcreteFactory2 {
-    createProductA() {
-        return new ConcreteProductA2();
-    }
-    createProductB() {
-        return new ConcreteProductB2();
-    }
-}
 class ConcreteProductA1 {
     usefulFunctionA() {
         return 'The result of the product A1.';
@@ -23,6 +15,14 @@ class ConcreteProductA1 {
 class ConcreteProductA2 {
     usefulFunctionA() {
         return 'The result of the product A2.';
+    }
+}
+class ConcreteFactory2 {
+    createProductA() {
+        return new ConcreteProductA2();
+    }
+    createProductB() {
+        return new ConcreteProductB2();
     }
 }
 class ConcreteProductB1 {
