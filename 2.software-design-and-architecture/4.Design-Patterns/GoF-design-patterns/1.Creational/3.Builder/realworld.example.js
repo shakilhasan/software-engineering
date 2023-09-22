@@ -30,7 +30,8 @@ class User {
         this.isAdmin = isAdmin;
     }
     setPhoneNumber(phoneNumber) {
-        if (!/^[+]?[(]?\d{3})?[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber))
+        // if (!/^[+]?[(]?\d{3})?[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber))
+        if (!/^[+]?[(]?\d{3}[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber))
             throw new Error('Invalid phone number format');
         this.phoneNumber = phoneNumber;
     }
@@ -48,7 +49,8 @@ var Gender;
 class UserBuilder {
     #user;
     constructor() {
-        this.reset();
+        this.#user = new User();
+        // this.reset();
     }
     reset() {
         this.#user = new User();

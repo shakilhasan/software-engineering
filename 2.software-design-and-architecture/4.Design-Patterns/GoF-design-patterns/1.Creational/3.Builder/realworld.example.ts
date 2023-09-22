@@ -1,11 +1,11 @@
 export class User {
-    public name: string;
-    public surname: string;
-    public email: string;
+    public name: string | undefined;
+    public surname: string | undefined;
+    public email: string | undefined;
     public gender: Gender = Gender.Undefined;
-    public address: string;
+    public address: string | undefined;
     public isAdmin: boolean = false;
-    public phoneNumber: string;
+    public phoneNumber: string | undefined;
 
     public setName(name: string) {
         this.name = name;
@@ -38,7 +38,8 @@ export class User {
     }
 
     public setPhoneNumber(phoneNumber: string) {
-        if (!/^[+]?[(]?\d{3})?[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber)) throw new Error('Invalid phone number format');
+        // if (!/^[+]?[(]?\d{3})?[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber))
+        if (!/^[+]?[(]?\d{3}[-\s.]?\d{3}[-\s.]?\d{4,6}$/.test(phoneNumber)) throw new Error('Invalid phone number format');
         this.phoneNumber = phoneNumber;
     }
 }
@@ -49,9 +50,9 @@ enum Gender { Male = 'Male', Female = 'Female', Undefined = 'Undefined' }
  * EN: General interface Builder
  */
 export interface Builder {
-    reset();
+    reset(): any;
 
-    getProduct();
+    getProduct(): any;
 }
 
 /**
@@ -61,7 +62,8 @@ export class UserBuilder implements Builder {
     #user: User;
 
     constructor() {
-        this.reset();
+        this.#user = new User();
+        // this.reset();
     }
 
     public reset() {
