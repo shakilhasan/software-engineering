@@ -44,6 +44,7 @@ class FlyweightFactory {
     }
 }
 
+//client code
 const factory = new FlyweightFactory([
     ['Chevrolet', 'Camaro2018', 'pink'],
     ['Mercedes Benz', 'C300', 'black'],
