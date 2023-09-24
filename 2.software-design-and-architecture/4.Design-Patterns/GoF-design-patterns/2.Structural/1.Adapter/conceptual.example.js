@@ -20,6 +20,7 @@ class Adapter extends Target {
         return `Adapter: (TRANSLATED) ${result}`;
     }
 }
+//client code
 function adapterClientCode(target) {
     console.log(target.request());
 }
