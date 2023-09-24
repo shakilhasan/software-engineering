@@ -23,6 +23,7 @@ class Proxy1 {
         console.log('Proxy1: Logging the time of request.');
     }
 }
+//client code
 function proxyClientCode(subject) {
     subject.request();
 }

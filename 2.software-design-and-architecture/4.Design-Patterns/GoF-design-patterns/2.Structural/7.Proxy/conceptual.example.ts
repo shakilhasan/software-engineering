@@ -33,15 +33,14 @@ class Proxy1 implements Subject {
     }
 }
 
+//client code
 function proxyClientCode(subject: Subject) {
     subject.request();
 }
-
 console.log('Client: Executing the client code with a real subject:');
 const realSubject = new RealSubject();
 proxyClientCode(realSubject);
 console.log('');
-
 console.log('Client: Executing the same client code with a proxy:');
 const proxy = new Proxy1(realSubject);
 proxyClientCode(proxy);
