@@ -43,18 +43,15 @@ class Composite extends Component {
         return `Branch(${results.join('+')})`;
     }
 }
+//client code
 function compositeClientCode(component) {
-    // ...
     console.log(`RESULT: ${component.operation()}`);
-    // ...
 }
 const simple = new Leaf();
 console.log('Client: I\'ve got a simple component:');
 compositeClientCode(simple);
 console.log('');
-/**
- * ...as well as the complex composites.
- */
+//as well as the complex composites.
 const tree = new Composite();
 const branch1 = new Composite();
 branch1.add(new Leaf());
@@ -67,12 +64,9 @@ console.log('Client: Now I\'ve got a composite tree:');
 compositeClientCode(tree);
 console.log('');
 function compositeClientCode2(component1, component2) {
-    // ...
-    if (component1.isComposite()) {
+    if (component1.isComposite())
         component1.add(component2);
-    }
     console.log(`RESULT: ${component1.operation()}`);
-    // ...
 }
 console.log('Client: I don\'t need to check the components classes even when managing the tree:');
 compositeClientCode2(tree, simple);
