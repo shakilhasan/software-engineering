@@ -1,5 +1,4 @@
 "use strict";
-//https://refactoring.guru/design-patterns/decorator/typescript/example#example-0--index-ts
 class ConcreteComponent1 {
     operation() {
         return 'ConcreteComponent1';
@@ -26,10 +25,9 @@ class ConcreteDecoratorB extends Decorator {
         return `ConcreteDecoratorB(${super.operation()})`;
     }
 }
+// client code
 function decoratorClientCode(component) {
-    // ...
     console.log(`RESULT: ${component.operation()}`);
-    // ...
 }
 const simple1 = new ConcreteComponent1();
 console.log('Client: I\'ve got a simple component:');

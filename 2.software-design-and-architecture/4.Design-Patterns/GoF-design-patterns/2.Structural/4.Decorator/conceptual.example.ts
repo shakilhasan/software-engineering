@@ -1,5 +1,4 @@
 //https://refactoring.guru/design-patterns/decorator/typescript/example#example-0--index-ts
-
 interface Component1 {
     operation(): string;
 }
@@ -12,6 +11,7 @@ class ConcreteComponent1 implements Component1 {
 
 class Decorator implements Component1 {
     protected component: Component1;
+
     //  The Decorator delegates all work to the wrapped component.
     constructor(component: Component1) {
         this.component = component;
@@ -35,22 +35,19 @@ class ConcreteDecoratorB extends Decorator {
     }
 }
 
+// client code
 function decoratorClientCode(component: Component1) {
-    // ...
     console.log(`RESULT: ${component.operation()}`);
-    // ...
 }
 
 const simple1 = new ConcreteComponent1();
 console.log('Client: I\'ve got a simple component:');
 decoratorClientCode(simple1);
 console.log('');
-
 const decorator1 = new ConcreteDecoratorA(simple1);
 console.log('Client: Now I\'ve got a simple decorated component:');
 decoratorClientCode(decorator1);
 console.log('');
-
 const decorator2 = new ConcreteDecoratorB(decorator1);
 // console.log('decorator2- ', decorator2)
 console.log('Client: Now I\'ve got a nested decorated component:');
