@@ -1,5 +1,5 @@
 interface WeatherService {
-    request(): Promise<WeatherForecast>;
+    request(): Promise<WeatherForecast | undefined>;
 }
 
 interface WeatherForecast {
@@ -9,7 +9,7 @@ interface WeatherForecast {
 
 //The real service emulates a network request to an external service with a 1 second delay
 class RealWeatherServiceSDK implements WeatherService {
-    public async request(): Promise<WeatherForecast> {
+    public async request(): Promise<WeatherForecast | undefined> {
         const randomWeatherForecast = {
             avgTemperature: Math.random() * 35,
             maxPrecipitationProbability: Math.random() * 100,
@@ -22,14 +22,14 @@ class RealWeatherServiceSDK implements WeatherService {
 }
 
 class ProxyWeatherService implements WeatherService {
-    private cachedResponse: WeatherForecast;
-    private cacheDate: Date;
+    private cachedResponse: WeatherForecast | undefined;
+    private cacheDate: Date | undefined;
     private expirationTimeInMillis = 24 * 60 * 60 * 1000;
 
     constructor(private realWeatherService: WeatherService) {
     }
 
-    public async request(): Promise<WeatherForecast> {
+    public async request(): Promise<WeatherForecast | undefined> {
         console.log(`Requesting forecast on date ${new Date().toISOString()}.`);
         const initialTime = Date.now();
         if (this.isCacheExpired()) {
@@ -42,12 +42,10 @@ class ProxyWeatherService implements WeatherService {
     }
 
     private isCacheExpired(): boolean {
-        return this.cachedResponse ?
-            Date.now() > this.cacheDate.getTime() + this.expirationTimeInMillis :
-            true;
+        return (this.cachedResponse && this.cacheDate) ? Date.now() > this.cacheDate.getTime() + this.expirationTimeInMillis : true;
     }
 
-    private setCache(weatherForecast: WeatherForecast) {
+    private setCache(weatherForecast: WeatherForecast | undefined) {
         this.cachedResponse = weatherForecast;
         this.cacheDate = new Date();
     }
@@ -57,7 +55,7 @@ class ProxyWeatherService implements WeatherService {
 async function clientCode(weatherService: WeatherService) {
     for (let i = 0; i < 3; i += 1) {
         const weatherForecast = await weatherService.request();
-        console.log(`The weather forecast is ${weatherForecast.avgTemperature}º average temperature and ${weatherForecast.maxPrecipitationProbability}% max precipitation probability.`);
+        if (weatherForecast) console.log(`The weather forecast is ${weatherForecast.avgTemperature}º average temperature and ${weatherForecast.maxPrecipitationProbability}% max precipitation probability.`);
     }
 }
 

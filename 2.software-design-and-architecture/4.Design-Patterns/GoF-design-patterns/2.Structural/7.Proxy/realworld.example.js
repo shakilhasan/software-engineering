@@ -31,9 +31,7 @@ class ProxyWeatherService {
         return this.cachedResponse;
     }
     isCacheExpired() {
-        return this.cachedResponse ?
-            Date.now() > this.cacheDate.getTime() + this.expirationTimeInMillis :
-            true;
+        return (this.cachedResponse && this.cacheDate) ? Date.now() > this.cacheDate.getTime() + this.expirationTimeInMillis : true;
     }
     setCache(weatherForecast) {
         this.cachedResponse = weatherForecast;
@@ -44,7 +42,8 @@ class ProxyWeatherService {
 async function clientCode(weatherService) {
     for (let i = 0; i < 3; i += 1) {
         const weatherForecast = await weatherService.request();
-        console.log(`The weather forecast is ${weatherForecast.avgTemperature}º average temperature and ${weatherForecast.maxPrecipitationProbability}% max precipitation probability.`);
+        if (weatherForecast)
+            console.log(`The weather forecast is ${weatherForecast.avgTemperature}º average temperature and ${weatherForecast.maxPrecipitationProbability}% max precipitation probability.`);
     }
 }
 async function main() {
