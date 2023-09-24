@@ -45,7 +45,7 @@ var Direction;
     Direction[Direction["West"] = 270] = "West";
     Direction[Direction["NorthWest"] = 315] = "NorthWest";
 })(Direction || (Direction = {}));
-//The Vehicle class constains the intrinsic state and a reference to theshared state
+//The Vehicle class contains the intrinsic state and a reference to the shared state
 class Vehicle {
     vehicleType;
     x;
@@ -60,7 +60,8 @@ class Vehicle {
         this.vehicleFlyweight = vehicleFlyweight;
     }
     render(x, y, direction) {
-        this.vehicleFlyweight.render(x, y, direction);
+        if (this.vehicleFlyweight)
+            this.vehicleFlyweight.render(x, y, direction);
     }
 }
 exports.Vehicle = Vehicle;
@@ -76,11 +77,10 @@ class VehicleFactory {
     static getMotorbike(x, y, direction) {
         return this.getVehicle(VehicleType.Motorbike, x, y, direction);
     }
-    // Checks if the external state exists in the cache, otherwise itcreates a new one and stores it for reusing in the future
+    // Checks if the external state exists in the cache, otherwise it creates a new one and stores it for reusing in the future
     static getVehicle(vehicleType, x, y, direction) {
-        if (!this.vehicleFlyweights.has(vehicleType)) {
+        if (!this.vehicleFlyweights.has(vehicleType))
             this.vehicleFlyweights.set(vehicleType, new VehicleFlyweight(vehicleType));
-        }
         return new Vehicle(vehicleType, x, y, direction, this.vehicleFlyweights.get(vehicleType));
     }
 }

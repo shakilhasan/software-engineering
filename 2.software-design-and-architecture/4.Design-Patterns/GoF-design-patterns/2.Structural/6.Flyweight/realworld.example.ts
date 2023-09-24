@@ -42,26 +42,25 @@ enum Direction {
     NorthWest = 315,
 }
 
-//The Vehicle class constains the intrinsic state and a reference to theshared state
+//The Vehicle class contains the intrinsic state and a reference to the shared state
 export class Vehicle {
     constructor(
         public vehicleType: VehicleType,
         public x: number,
         public y: number,
         public direction: Direction,
-        protected vehicleFlyweight: VehicleFlyweight,
+        protected vehicleFlyweight: VehicleFlyweight | undefined,
     ) {
     }
 
     public render(x: number, y: number, direction: Direction) {
-        this.vehicleFlyweight.render(x, y, direction);
+        if (this.vehicleFlyweight) this.vehicleFlyweight.render(x, y, direction);
     }
 }
 
 //The Vehicle factory internally manages all the Flyweight objects
 class VehicleFactory {
-    private static vehicleFlyweights: Map<VehicleType, VehicleFlyweight> =
-        new Map<VehicleType, VehicleFlyweight>();
+    private static vehicleFlyweights: Map<VehicleType, VehicleFlyweight> = new Map<VehicleType, VehicleFlyweight>();
 
     public static getCar(x: number, y: number, direction: Direction): Vehicle {
         return this.getVehicle(VehicleType.Car, x, y, direction);
@@ -75,17 +74,14 @@ class VehicleFactory {
         return this.getVehicle(VehicleType.Motorbike, x, y, direction);
     }
 
-    // Checks if the external state exists in the cache, otherwise itcreates a new one and stores it for reusing in the future
-
+    // Checks if the external state exists in the cache, otherwise it creates a new one and stores it for reusing in the future
     protected static getVehicle(
         vehicleType: VehicleType,
         x: number,
         y: number,
         direction: Direction,
     ): Vehicle {
-        if (!this.vehicleFlyweights.has(vehicleType)) {
-            this.vehicleFlyweights.set(vehicleType, new VehicleFlyweight(vehicleType));
-        }
+        if (!this.vehicleFlyweights.has(vehicleType)) this.vehicleFlyweights.set(vehicleType, new VehicleFlyweight(vehicleType));
         return new Vehicle(vehicleType, x, y, direction, this.vehicleFlyweights.get(vehicleType));
     }
 }
