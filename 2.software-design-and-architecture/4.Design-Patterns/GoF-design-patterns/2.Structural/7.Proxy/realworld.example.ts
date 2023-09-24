@@ -52,7 +52,7 @@ class ProxyWeatherService implements WeatherService {
 }
 
 //The client code works with real and proxied services
-async function clientCode(weatherService: WeatherService) {
+async function clientCode_7(weatherService: WeatherService) {
     for (let i = 0; i < 3; i += 1) {
         const weatherForecast = await weatherService.request();
         if (weatherForecast) console.log(`The weather forecast is ${weatherForecast.avgTemperature}º average temperature and ${weatherForecast.maxPrecipitationProbability}% max precipitation probability.`);
@@ -62,11 +62,11 @@ async function clientCode(weatherService: WeatherService) {
 async function main() {
     console.log('Client: Executing the client code with a real weather service:');
     const realWeatherService = new RealWeatherServiceSDK();
-    await clientCode(realWeatherService);
+    await clientCode_7(realWeatherService);
     console.log('');
     console.log('Client: Executing the same client code with a proxied weather service:');
     const proxy = new ProxyWeatherService(realWeatherService);
-    await clientCode(proxy);
+    await clientCode_7(proxy);
 }
 
 main();
