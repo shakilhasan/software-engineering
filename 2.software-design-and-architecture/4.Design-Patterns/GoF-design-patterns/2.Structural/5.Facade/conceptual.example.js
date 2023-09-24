@@ -33,6 +33,7 @@ class Facade {
         return result;
     }
 }
+//client code
 function facadeClientCode(facade) {
     console.log(facade.operation());
 }

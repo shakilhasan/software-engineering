@@ -39,6 +39,7 @@ class Facade {
     }
 }
 
+//client code
 function facadeClientCode(facade: Facade) {
     console.log(facade.operation());
 }
