@@ -1,11 +1,11 @@
 "use strict";
+//the Abstraction
 class ListItemViewAbstraction {
     contentType;
     constructor(contentType) {
         this.contentType = contentType;
     }
 }
-// Now we can extend the Abstraction with the different views and independently of the content types
 class VisualListItemView extends ListItemViewAbstraction {
     getRenderedItem() {
         return `    <li>
@@ -22,7 +22,6 @@ class DescriptiveListItemView extends ListItemViewAbstraction {
     </li>`;
     }
 }
-// Time to create the different implementations, in this case the differentcontent types we have in our application: posts, videos, articles, tweets...
 class PostContentType {
     title;
     caption;

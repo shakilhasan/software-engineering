@@ -1,3 +1,4 @@
+//the Abstraction
 abstract class ListItemViewAbstraction {
     constructor(protected contentType: ContentTypeImplementation) {
     }
@@ -5,7 +6,7 @@ abstract class ListItemViewAbstraction {
     abstract getRenderedItem(): string;
 }
 
-//The Implementation defines the interface for the second dimension = all the content types
+//the Implementation
 interface ContentTypeImplementation {
     renderTitle(): string;
 
@@ -16,7 +17,6 @@ interface ContentTypeImplementation {
     renderLink(): string;
 }
 
-// Now we can extend the Abstraction with the different views and independently of the content types
 class VisualListItemView extends ListItemViewAbstraction {
     getRenderedItem(): string {
         return `    <li>
@@ -35,13 +35,12 @@ class DescriptiveListItemView extends ListItemViewAbstraction {
     }
 }
 
-// Time to create the different implementations, in this case the differentcontent types we have in our application: posts, videos, articles, tweets...
 class PostContentType implements ContentTypeImplementation {
     constructor(
-        protected title,
-        protected caption,
-        protected imageUrl,
-        protected url) {
+        protected title: string,
+        protected caption: string,
+        protected imageUrl: string,
+        protected url: string) {
     }
 
     renderTitle(): string {
@@ -63,10 +62,10 @@ class PostContentType implements ContentTypeImplementation {
 
 class VideoContentType implements ContentTypeImplementation {
     constructor(
-        protected title,
-        protected description,
-        protected thumbnailUrl,
-        protected url) {
+        protected title: string,
+        protected description: string,
+        protected thumbnailUrl: string,
+        protected url: string) {
     }
 
     renderTitle(): string {
@@ -88,9 +87,9 @@ class VideoContentType implements ContentTypeImplementation {
 
 class TweetContentType implements ContentTypeImplementation {
     constructor(
-        protected tweet,
-        protected profilePictureUrl,
-        protected tweetUrl) {
+        protected tweet: string,
+        protected profilePictureUrl: string,
+        protected tweetUrl: string) {
     }
 
     renderTitle(): string {
