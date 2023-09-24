@@ -2,6 +2,7 @@
 interface Implementation {
     operationImplementation(): string;
 }
+
 class Abstraction {
     protected implementation: Implementation;
 
@@ -34,18 +35,15 @@ class ConcreteImplementationB implements Implementation {
     }
 }
 
+//client code
 function bridgeClientCode(abstraction: Abstraction) {
-    // ..
     console.log(abstraction.operation());
-    // ..
 }
 
 let implementation = new ConcreteImplementationA();
 let abstraction = new Abstraction(implementation);
 bridgeClientCode(abstraction);
-
 console.log('');
-
 implementation = new ConcreteImplementationB();
 abstraction = new ExtendedAbstraction(implementation);
 bridgeClientCode(abstraction);

@@ -25,10 +25,9 @@ class ConcreteImplementationB {
         return 'ConcreteImplementationB: Here\'s the result on the platform B.';
     }
 }
+//client code
 function bridgeClientCode(abstraction) {
-    // ..
     console.log(abstraction.operation());
-    // ..
 }
 let implementation = new ConcreteImplementationA();
 let abstraction = new Abstraction(implementation);
