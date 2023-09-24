@@ -20,7 +20,7 @@ class UserController {
         });
     }
 }
-class Decorator {
+class Decorator_4 {
     controller;
     constructor(controller) {
         this.controller = controller;
@@ -29,7 +29,7 @@ class Decorator {
         return this.controller.process(req);
     }
 }
-class TelemetryDecorator extends Decorator {
+class TelemetryDecorator extends Decorator_4 {
     async process(req) {
         const start = new Date().getTime();
         const result = await super.process(req);
@@ -40,5 +40,6 @@ class TelemetryDecorator extends Decorator {
         return result;
     }
 }
+//client code
 const userController = new TelemetryDecorator(new UserController());
 userController.process({ url: '/users', method: 'GET' });

@@ -1,4 +1,4 @@
-//These interfaces are relevant to the Real World example.They are not part of the Decorator pattern.
+//These interfaces are relevant to the Real World example.They are not part of the Decorator_4 pattern.
 interface ControllerRequest {
     url: string;
     method: string;
@@ -37,7 +37,7 @@ class UserController implements Controller {
 }
 
 
-class Decorator implements Controller {
+class Decorator_4 implements Controller {
     protected controller: Controller;
 
     constructor(controller: Controller) {
@@ -49,7 +49,7 @@ class Decorator implements Controller {
     }
 }
 
-class TelemetryDecorator extends Decorator {
+class TelemetryDecorator extends Decorator_4 {
     public async process(req: ControllerRequest): Promise<ControllerResponse> {
         const start = new Date().getTime()
         const result = await super.process(req)
@@ -61,5 +61,6 @@ class TelemetryDecorator extends Decorator {
     }
 }
 
+//client code
 const userController = new TelemetryDecorator(new UserController())
 userController.process({url: '/users', method: 'GET'})
