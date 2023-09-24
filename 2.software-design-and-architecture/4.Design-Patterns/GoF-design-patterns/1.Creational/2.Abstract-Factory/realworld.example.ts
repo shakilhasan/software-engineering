@@ -1,13 +1,13 @@
 export abstract class DB {
-    public abstract connect();
+    public abstract connect():any;
 }
 
 export abstract class FS {
-    public abstract readFile(filename: string);
+    public abstract readFile(filename: string):any;
 }
 
 export abstract class LogProvider {
-    public abstract log(message: string);
+    public abstract log(message: string):any;
 }
 
 export class MySQLDB extends DB {
