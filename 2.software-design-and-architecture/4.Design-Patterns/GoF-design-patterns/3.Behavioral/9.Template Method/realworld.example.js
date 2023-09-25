@@ -40,7 +40,7 @@ class InvoiceFormatter {
         return `
 ${this.formatHeader()}
 ${this.hookFormatSubHeader()}
-${this.formatCustomer()}
+${this.formatCustomer_9()}
 ${this.formatInvoiceLines()}
 ${this.formatTaxes()}
 ${this.formatTotal()}
@@ -66,8 +66,8 @@ class HtmlInvoiceFormatter extends InvoiceFormatter {
     hookFormatSubHeader() {
         return '</hr>';
     }
-    formatCustomer() {
-        return `<div id='customer'>Customer: ${this.invoice.customer.name}, id: ${this.invoice.customer.id}</div>`;
+    formatCustomer_9() {
+        return `<div id='customer'>Customer_9: ${this.invoice.customer.name}, id: ${this.invoice.customer.id}</div>`;
     }
     formatInvoiceLines() {
         return `<ul>\n${this.invoice.lines.map(l => (`  <li>${l.product}, units=${l.units}, amount=${l.units * l.unitPrice}€</li>`)).join('\n')}</ul>`;
@@ -86,8 +86,8 @@ class MarkdownInvoiceFormatter extends InvoiceFormatter {
     hookFormatSubHeader() {
         return '---';
     }
-    formatCustomer() {
-        return `Customer: **${this.invoice.customer.name}**, id: ${this.invoice.customer.id}`;
+    formatCustomer_9() {
+        return `Customer_9: **${this.invoice.customer.name}**, id: ${this.invoice.customer.id}`;
     }
     formatInvoiceLines() {
         return `${this.invoice.lines.map(l => (`*${l.product}, units=${l.units}, amount=${l.units * l.unitPrice}€`)).join('\n')}`;

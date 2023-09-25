@@ -4,7 +4,7 @@ interface Country {
     vat: number;
 }
 
-interface Customer {
+interface Customer_9 {
     name: string;
     id: string;
     country: Country;
@@ -17,7 +17,7 @@ interface InvoiceLine {
 }
 
 class Invoice {
-    constructor(private readonly _customer: Customer) {
+    constructor(private readonly _customer: Customer_9) {
     }
 
     private _lines: InvoiceLine[] = [];
@@ -50,7 +50,7 @@ class Invoice {
         return this.subtotal + this.taxes;
     }
 
-    get customer(): Customer {
+    get customer(): Customer_9 {
         return this._customer;
     }
 
@@ -67,7 +67,7 @@ abstract class InvoiceFormatter {
         return `
 ${this.formatHeader()}
 ${this.hookFormatSubHeader()}
-${this.formatCustomer()}
+${this.formatCustomer_9()}
 ${this.formatInvoiceLines()}
 ${this.formatTaxes()}
 ${this.formatTotal()}
@@ -78,7 +78,7 @@ ${this.hookFormatSubFooter()}
 
     protected abstract formatHeader(): string;
 
-    protected abstract formatCustomer(): string;
+    protected abstract formatCustomer_9(): string;
 
     protected abstract formatInvoiceLines(): string;
 
@@ -109,8 +109,8 @@ class HtmlInvoiceFormatter extends InvoiceFormatter {
         return '</hr>';
     }
 
-    protected formatCustomer(): string {
-        return `<div id='customer'>Customer: ${this.invoice.customer.name}, id: ${this.invoice.customer.id}</div>`;
+    protected formatCustomer_9(): string {
+        return `<div id='customer'>Customer_9: ${this.invoice.customer.name}, id: ${this.invoice.customer.id}</div>`;
     }
 
     protected formatInvoiceLines(): string {
@@ -135,8 +135,8 @@ class MarkdownInvoiceFormatter extends InvoiceFormatter {
         return '---';
     }
 
-    protected formatCustomer(): string {
-        return `Customer: **${this.invoice.customer.name}**, id: ${this.invoice.customer.id}`;
+    protected formatCustomer_9(): string {
+        return `Customer_9: **${this.invoice.customer.name}**, id: ${this.invoice.customer.id}`;
     }
 
     protected formatInvoiceLines(): string {
@@ -165,7 +165,7 @@ const SPAIN: Country = {
     name: 'Spain',
     vat: 0.21,
 };
-const AMAZON: Customer = {
+const AMAZON: Customer_9 = {
     name: 'Amazon Spain',
     id: 'amazon-spain',
     country: SPAIN,
