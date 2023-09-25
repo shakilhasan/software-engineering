@@ -11,8 +11,7 @@ function diameterOfBinaryTree_recursion(root: BinarySearchTreeNode | null | unde
     if (root) {
         let leftMax: any = diameterOfBinaryTree_recursion(root.left);
         let rightMax: any = diameterOfBinaryTree_recursion(root.right);
-        if (diameter < leftMax + rightMax + 1) diameter = leftMax + rightMax;
-
+        if (diameter < leftMax + rightMax) diameter = leftMax + rightMax;
         if (leftMax > rightMax) return leftMax + 1;
         else return rightMax + 1;
     } else return 0;

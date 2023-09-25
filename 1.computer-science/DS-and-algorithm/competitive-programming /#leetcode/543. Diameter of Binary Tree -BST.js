@@ -11,7 +11,7 @@ function diameterOfBinaryTree_recursion(root) {
     if (root) {
         let leftMax = diameterOfBinaryTree_recursion(root.left);
         let rightMax = diameterOfBinaryTree_recursion(root.right);
-        if (diameter < leftMax + rightMax + 1)
+        if (diameter < leftMax + rightMax)
             diameter = leftMax + rightMax;
         if (leftMax > rightMax)
             return leftMax + 1;
