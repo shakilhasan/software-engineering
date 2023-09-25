@@ -1,6 +1,6 @@
 "use strict";
 //Models
-class Student {
+class Student_1 {
     name;
     id;
     section;
@@ -16,47 +16,46 @@ class Student {
         return this.score;
     }
 }
-class NormalStudent extends Student {
+class NormalStudent_1 extends Student_1 {
     constructor(name, id, section) {
         super(name, id, section);
     }
     setScore(score) {
-        this.score = this.score + ((this.score * this.NORMAL_BONUS) / 100);
+        this.score = score + ((score * this.NORMAL_BONUS) / 100);
     }
 }
-class ClassRepresentative extends Student {
+class ClassRepresentative_1 extends Student_1 {
     constructor(name, id, section) {
         super(name, id, section);
     }
     setScore(score) {
-        this.score = this.score + ((this.score * this.CR_BONUS) / 100);
+        this.score = score + ((score * this.CR_BONUS) / 100);
     }
 }
 //Services
-class OutputService {
+class OutputService_1 {
     static outputSummedScore(totalScore) {
         console.log(totalScore);
     }
 }
-class ScoreGeneratingService {
+class ScoreGeneratingService_1 {
     static calculateScores(students = []) {
         let score = 0;
         students.forEach(student => {
             score += student.getScore();
-            console.log(student.getScore());
         });
         return score;
     }
 }
 // client code
-let normalStudent1 = new NormalStudent('Naim', '1404111', 'A');
-let normalStudent2 = new NormalStudent('Jamil', '1404112', 'A');
-let normalStudent3 = new NormalStudent('Hasan', '1404113', 'A');
-let normalStudent4 = new ClassRepresentative('Akash', '1404001', 'A');
-normalStudent1.setScore(55);
-normalStudent2.setScore(89);
-normalStudent3.setScore(32);
-normalStudent4.setScore(92);
-let students = [normalStudent1, normalStudent2, normalStudent3, normalStudent4];
-let totalScore = ScoreGeneratingService.calculateScores(students);
-OutputService.outputSummedScore(totalScore);
+let normalStudent_1_1 = new NormalStudent_1('Naim', '1404111', 'A');
+let normalStudent_1_2 = new NormalStudent_1('Jamil', '1404112', 'A');
+let normalStudent_1_3 = new NormalStudent_1('Hasan', '1404113', 'A');
+let normalStudent_1_4 = new ClassRepresentative_1('Akash', '1404001', 'A');
+normalStudent_1_1.setScore(55);
+normalStudent_1_2.setScore(89);
+normalStudent_1_3.setScore(32);
+normalStudent_1_4.setScore(92);
+let students_1 = [normalStudent_1_1, normalStudent_1_2, normalStudent_1_3, normalStudent_1_4];
+let totalScore_1 = ScoreGeneratingService_1.calculateScores(students_1);
+OutputService_1.outputSummedScore(totalScore_1);
