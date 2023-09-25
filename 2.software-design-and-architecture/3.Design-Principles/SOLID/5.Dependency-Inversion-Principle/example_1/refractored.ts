@@ -1,4 +1,5 @@
 import {CheckoutService, shoppingCart} from "./common";
+
 //Services
 interface MailProvider {
     sendMail(phoneNumber: String, text: String): void;
