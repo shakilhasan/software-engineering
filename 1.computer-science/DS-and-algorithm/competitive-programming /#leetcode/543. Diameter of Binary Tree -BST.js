@@ -13,6 +13,7 @@ function diameterOfBinaryTree_recursion(root) {
         let rightMax = diameterOfBinaryTree_recursion(root.right);
         if (diameter < leftMax + rightMax + 1)
             diameter = leftMax + rightMax;
+        console.log("diameterOfBinaryTree_recursion: ", leftMax, rightMax, diameter);
         if (leftMax > rightMax)
             return leftMax + 1;
         else
@@ -23,6 +24,7 @@ function diameterOfBinaryTree_recursion(root) {
 }
 // test
 const bst = new BinarySearchTree_1.BinarySearchTree({});
-// bst.insertArray([1, 2, 3, 4, 5])
-bst.insertArray([1, 2]);
+bst.insertArray([1, 2, 3, 4, 5]);
+// bst.insertArray([1, 2])
 console.log("diameterOfBinaryTree: ", diameterOfBinaryTree(bst.root));
+console.log("bst: ", bst.root);

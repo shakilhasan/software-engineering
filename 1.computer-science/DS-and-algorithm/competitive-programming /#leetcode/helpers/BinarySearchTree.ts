@@ -1,9 +1,13 @@
 export class BinarySearchTreeNode {
     left: BinarySearchTreeNode | null | undefined;
     right: BinarySearchTreeNode | null | undefined;
-    val: any;
+    val: number;
 
-    constructor({val = 0, left = null, right = null}) {
+    constructor({val = 0, left = null, right = null}: {
+        val?: number,
+        left?: BinarySearchTreeNode | null | undefined,
+        right?: BinarySearchTreeNode | null | undefined
+    }) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -17,7 +21,7 @@ export class BinarySearchTree {
         this.root = root;
     }
 
-    insertArray(arr: any[]) {
+    insertArray(arr: number[]) {
         arr.forEach((item) => {
             this.insert(item)
         })
@@ -97,9 +101,11 @@ export class BinarySearchTree {
             console.log(current?.val);
         }
     }
+
     maxDepth(): number {
         return this.maxDepth_recursion(this.root);
     }
+
     maxDepth_recursion(root: BinarySearchTreeNode | null | undefined): number {
         if (root) {
             let leftMax: any = this.maxDepth_recursion(root.left);
