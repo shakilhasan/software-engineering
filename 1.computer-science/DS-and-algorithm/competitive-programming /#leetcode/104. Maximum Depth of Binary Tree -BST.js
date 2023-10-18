@@ -16,6 +16,6 @@ function maxDepth(root) {
 }
 // test
 const bst = new BinarySearchTree_1.BinarySearchTree({});
-bst.insertArray([3, 9, 20, null, null, 15, 7]);
+// bst.insertArray([3,9,20,null,null,15,7])
 // bst.insertArray([1,null,2])
 console.log(maxDepth(bst.root));
