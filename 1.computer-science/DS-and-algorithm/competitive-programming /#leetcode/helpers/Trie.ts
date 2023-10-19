@@ -59,7 +59,20 @@ class Trie {
         if (this.isEmpty(current) && !current.isWord) current = null
         return current;
     }
+
+    startsWith(word: string) {
+        let current = this.root;
+        for (let i = 0; i < word.length; i++) {
+            let index = word[i].charCodeAt(0) - "a".charCodeAt(0);
+            if (current.next[index] === null) return false;
+            current = current.next[index];
+        }
+        return true;
+    }
 }
+
+//______________________________
+export {Trie, TrieNode}
 
 const trie = new Trie();
 trie.insertArray(["shakil", "hasan", "nabil", "ahmad", "book", "booked",])
@@ -67,3 +80,4 @@ console.log(trie.root);
 console.log(trie.search("nabil"));
 trie.remove("book")
 console.log(trie.search("book"));
+console.log(trie.startsWith("boo"));

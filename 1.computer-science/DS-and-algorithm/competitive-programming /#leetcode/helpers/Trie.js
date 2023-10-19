@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TrieNode = exports.Trie = void 0;
 const ALPHABET_SIZE = 26;
 class TrieNode {
     isWord;
@@ -9,6 +11,7 @@ class TrieNode {
         this.next.fill(null);
     }
 }
+exports.TrieNode = TrieNode;
 class Trie {
     root;
     constructor(root = new TrieNode()) {
@@ -64,10 +67,22 @@ class Trie {
             current = null;
         return current;
     }
+    startsWith(word) {
+        let current = this.root;
+        for (let i = 0; i < word.length; i++) {
+            let index = word[i].charCodeAt(0) - "a".charCodeAt(0);
+            if (current.next[index] === null)
+                return false;
+            current = current.next[index];
+        }
+        return true;
+    }
 }
+exports.Trie = Trie;
 const trie = new Trie();
 trie.insertArray(["shakil", "hasan", "nabil", "ahmad", "book", "booked",]);
 console.log(trie.root);
 console.log(trie.search("nabil"));
 trie.remove("book");
 console.log(trie.search("book"));
+console.log(trie.startsWith("boo"));
