@@ -79,6 +79,38 @@ class Trie {
     }
 }
 exports.Trie = Trie;
+class WordDictionary extends Trie {
+    constructor() {
+        super();
+    }
+    addWord(word) {
+        this.insert(word);
+    }
+    search(word) {
+        return this.search_recursion(this.root, word, 0);
+    }
+    search_recursion(current, word, depth) {
+        if (current.isWord)
+            return true;
+        if (depth === word.length - 1)
+            return true;
+        console.log("depth--", depth);
+        if (word[depth] !== ".") {
+            let index = word[depth].charCodeAt(0) - "a".charCodeAt(0);
+            if (current.next[index])
+                this.search_recursion(current.next[index], word, depth + 1);
+            else
+                return false;
+        }
+        else {
+            for (let i = 0; i < ALPHABET_SIZE; i++) {
+                if (current.next[i])
+                    this.search_recursion(current.next[i], word, depth + 1);
+            }
+        }
+        return true;
+    }
+}
 const trie = new Trie();
 trie.insertArray(["shakil", "hasan", "nabil", "ahmad", "book", "booked",]);
 console.log(trie.root);
@@ -86,3 +118,7 @@ console.log(trie.search("nabil"));
 trie.remove("book");
 console.log(trie.search("book"));
 console.log(trie.startsWith("boo"));
+console.log("----End Trie----");
+const wordDictionary = new WordDictionary();
+wordDictionary.addWord("book");
+console.log(wordDictionary.search("book"));
