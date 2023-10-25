@@ -15,7 +15,7 @@ var Fares;
 (function (Fares) {
     Fares[Fares["Standard"] = 0] = "Standard";
     Fares[Fares["Airport"] = 1] = "Airport";
-})(Fares = exports.Fares || (exports.Fares = {}));
+})(Fares || (exports.Fares = Fares = {}));
 //the Adapter
 class UKTaxiCalculatorLibraryAdapter {
     adaptee;

@@ -85,19 +85,23 @@ class WordDictionary extends Trie {
     }
 
     search_recursion(current: TrieNode, word: string, depth: number): boolean {
-        if (current.isWord) return true;
-        if (depth === word.length - 1) return true;
-        console.log("depth--", depth);
-        if (word[depth] !== ".") {
-            let index = word[depth].charCodeAt(0) - "a".charCodeAt(0);
-            if (current.next[index]) this.search_recursion(current.next[index], word, depth + 1);
-            else return false;
-        } else {
-            for (let i = 0; i < ALPHABET_SIZE; i++) {
-                if (current.next[i]) this.search_recursion(current.next[i], word, depth + 1);
-            }
+        // console.log(word.length - 1, "depth--", depth);
+        if (depth === word.length && current.isWord) {
+            console.log(depth, " - ", word.length, " if (current.isWord)--", current.isWord);
+            return true;
         }
-        return true;
+        if (word[depth] === ".") {
+            console.log(".");
+            for (let i = 0; i < ALPHABET_SIZE; i++) {
+                if (current.next[i]) return this.search_recursion(current.next[i], word, depth + 1);
+            }
+        } else {
+            let index = word[depth].charCodeAt(0) - "a".charCodeAt(0);
+            if (current.next[index]) return this.search_recursion(current.next[index], word, depth + 1);
+            else return false;
+        }
+        console.log(word.length, "depth--", depth);
+        return false;
     }
 
 }
@@ -117,3 +121,5 @@ console.log("----End Trie----");
 const wordDictionary = new WordDictionary()
 wordDictionary.addWord("book")
 console.log(wordDictionary.search("book"))
+console.log(wordDictionary.search("b.ok"))
+console.log(wordDictionary.search("books"))
