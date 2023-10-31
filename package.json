@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc -w"
+    "dev": "npx tsc -w",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts",
+    "lint:fix": "eslint --ignore-path .eslintignore --ext .js,.ts --fix",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "repository": {
     "type": "git",
@@ -15,6 +18,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.8.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "dependencies": {
