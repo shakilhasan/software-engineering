@@ -1,38 +1,36 @@
-// This is a basic representation of a graph
-class BFSGraph
-{
-    constructor(public adj: Array<number>[]=[], public size: number=0) {
+class BFS {
+    constructor(public adj: Array<number>[] = [], public size: number = 0) {
     }
-}
-class BFS
-{
-    public bfs(G: BFSGraph, startVert: number)
-    {
-        const visited: boolean[] = Array<boolean>();
-        // Pre-populate array:
-        for(let i = 0; i < G.size; i++)
-        {
+
+    public bfs(startVert: number) {
+        const visited: boolean[] = Array<boolean>(), level: number[] = Array<number>(),
+            queue: number[] = new Array<number>()
+        for (let i = 0; i < this.size; i++) {
             visited.push(false);
         }
-
-        // Use an array as our queue representation:
-        const q: number[] = new Array<number>();
-
         visited[startVert] = true;
-
-        q.push(startVert);
-
-        while(q.length > 0)
-        {
-            const v = q.shift();
-            for(const adjV of G.adj[v])
-            {
-                if(!visited[adjV])
-                {
+        level[startVert] = 0;
+        queue.push(startVert);
+        while (queue.length > 0) {
+            const v = queue.shift() ?? 0;
+            for (const adjV of this.adj[v]) {
+                if (!visited[adjV]) {
                     visited[adjV] = true;
-                    q.push(adjV);
+                    queue.push(adjV);
+                    level[adjV] = level[v] + 1;
                 }
             }
         }
+        return level;
     }
 }
+
+const adj: Array<number>[] = new Array<Array<number>>;
+adj.push([1, 2, 3]);
+adj.push([0, 2, 3]);
+adj.push([0, 1,]);
+adj.push([0, 1,]);
+
+const bfs = new BFS(adj, 4);
+console.log(bfs.bfs(0));
+
