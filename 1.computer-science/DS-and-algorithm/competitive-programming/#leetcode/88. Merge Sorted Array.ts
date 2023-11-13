@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/merge-sorted-array/description
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
     let i = m, j = n, p = m + n;
     while ((i || j) && p) {
