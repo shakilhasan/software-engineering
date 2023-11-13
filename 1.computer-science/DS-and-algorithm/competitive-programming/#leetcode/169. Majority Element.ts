@@ -4,12 +4,9 @@ function majorityElement(nums: number[]): number {
     for (i = 0; i < nums.length; i++) {
         if (obj[nums[i]]) obj[nums[i]] = obj[nums[i]] + 1
         else obj[nums[i]] = 1
-    }
-    let keys = Object.keys(obj);
-    for (i = 0; i < keys.length; i++) {
-        if (obj[keys[i]] > max) {
-            max = obj[keys[i]]
-            num = keys[i];
+        if (obj[nums[i]] > max) {
+            max = obj[nums[i]]
+            num = nums[i];
         }
     }
     return Number(num);
