@@ -1,8 +1,8 @@
 // Definition for singly-linked list.
 class LinkListNode {
-    val: any
-    index: number
-    next: LinkListNode | null | undefined
+    val: any;
+    index: number;
+    next: LinkListNode | null ;
 
     constructor({val = 0, index = -1, next = null}: {
         val?: any, index?: number, next?: LinkListNode | null | undefined
@@ -11,20 +11,23 @@ class LinkListNode {
         this.index = index;
         this.next = next;
     }
-
 }
 
 class LinkList {
-    head: LinkListNode | null | undefined;
+    head: LinkListNode | null;
     size: number;
 
     constructor({head = null, size = 0}: { head?: LinkListNode | null | undefined, size?: number }) {
         this.head = head;
         this.size = size;
     }
-
+    pushArray(arr: any[]) {
+        arr.forEach((item) => {
+            this.push(item);
+        });
+    }
     push(val: any) {
-        let node = new LinkListNode({val});
+        const node = new LinkListNode({val});
         if (this.head === null) this.head = node;
         else {
             let current: LinkListNode | null | undefined = this.head;
@@ -87,7 +90,7 @@ class LinkList {
         this.head = new LinkListNode({val, next: this.head});
     }
 
-    concat(node: LinkListNode | null | undefined) {
+    concat(node: LinkListNode | null) {
         let current = this.head;
         this.size += this.count(node);
         while (current) {
@@ -99,7 +102,7 @@ class LinkList {
         }
     }
 
-    count(node: LinkListNode | null | undefined) {
+    count(node: LinkListNode | null) {
         let current = node, i = 0;
         while (current) {
             i++;
@@ -140,7 +143,7 @@ class LinkList {
         while (current?.next) {
             if ((index - 1) === i++) {
                 current.next = current.next.next;
-                break
+                break;
             }
             current = current.next;
         }
@@ -208,24 +211,20 @@ class LinkList {
 }
 
 //______________________________
-export {LinkListNode, LinkList}
+export {LinkListNode, LinkList};
 
-const list = new LinkList({});
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push("last");
+// const list = new LinkList({});
+// list.pushArray([1,2,3,4,5]);
 // list.pop();
 // list.join(10);
 // list.shift()
-list.unshift(0);
+// list.unshift(0);
 // list.concat(new LinkListNode({val: 10}));
 // list.insertAt('newInserted', 0);
-list.removeFrom(0);
+// list.removeFrom(0);
 // list.removeElement(0);
 // list.reverse();
-console.log(list.toString());
+// console.log(list.toString());
 // console.log(list.findLastIndex(3));
 // console.log(list.findIndex(3));
 // console.log(list.isEmpty());

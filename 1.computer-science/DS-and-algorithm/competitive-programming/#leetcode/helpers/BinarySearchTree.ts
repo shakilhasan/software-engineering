@@ -23,8 +23,8 @@ export class BinarySearchTree {
 
     insertArray(arr: number[]) {
         arr.forEach((item) => {
-            this.insert(item)
-        })
+            this.insert(item);
+        });
     }
 
     insert(val: number) {

@@ -3,7 +3,7 @@ import {LinkListNode, LinkList} from "./helpers/LinkList";
 
 function mergeTwoLists(list1: LinkListNode | null | undefined, list2: LinkListNode | null | undefined): LinkListNode | null | undefined {
     let result: LinkListNode | null | undefined = new LinkListNode({});
-    let resultHead = result;
+    const resultHead = result;
     let pre: LinkListNode | null | undefined = new LinkListNode({});
     if (!list1 && !list2) return list1;
     while ((list1 || list2) && result) {
@@ -22,19 +22,19 @@ function mergeTwoLists(list1: LinkListNode | null | undefined, list2: LinkListNo
     pre.next = null;
     return resultHead;
 }
-function mergeTwoLists1(list1: LinkListNode | null | undefined, list2: LinkListNode | null | undefined): LinkListNode | null | undefined  {
-    let resultHead: LinkListNode | null | undefined = new LinkListNode({});
-    let current: LinkListNode | null | undefined = resultHead;
+function mergeTwoLists1(list1: LinkListNode | null , list2: LinkListNode | null ): LinkListNode | null | undefined  {
+    const resultHead: LinkListNode | null  = new LinkListNode({});
+    let current: LinkListNode | null  = resultHead;
     while ((list1 || list2) && current) {
         if ((list1 && !list2) || (list2 && list1 && (list1?.val <= list2?.val))) {
-            current.next = list1
+            current.next = list1;
             list1=list1.next;
         }
         else {
             current.next = list2;
             if(list2) list2= list2?.next;
         }
-        current = current.next
+        current = current.next;
     }
     return resultHead.next;
 }
