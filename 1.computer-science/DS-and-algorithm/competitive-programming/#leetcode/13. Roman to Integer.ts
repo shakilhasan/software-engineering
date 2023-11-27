@@ -8,7 +8,7 @@ function romanToInt(s: string): number {
         C: 100,
         D: 500,
         M: 1000
-    }
+    };
     let sum = obj[s[0]], i;
     for (i = 1; i < s.length; i++) {
         sum += obj[s[i]];
@@ -17,6 +17,6 @@ function romanToInt(s: string): number {
     return sum;
 }
 
-console.log(romanToInt("XIX"))
-console.log(romanToInt("MCMXCIV"))
-console.log(romanToInt("MCDLXXVI"))
+console.log(romanToInt("XIX"));
+console.log(romanToInt("MCMXCIV"));
+console.log(romanToInt("MCDLXXVI"));
