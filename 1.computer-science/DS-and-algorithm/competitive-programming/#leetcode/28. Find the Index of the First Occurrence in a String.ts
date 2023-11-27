@@ -1,5 +1,11 @@
 function strStr(haystack: string, needle: string): number {
-    return haystack.indexOf(needle);
+    let [i, j, count, index] = [0, 0, 0, 0];
+    for (i; i < haystack.length; i++) {
+        if (haystack[i] === needle[j]) j++, count++;
+        else j = 0, count = 0, i = index, index++;
+        if (count === needle.length) return index;
+    }
+    return -1;
 }
 
-console.log(strStr('sadbutsad', 'sad'));
+console.log(strStr('mississippi', 'issip'));
