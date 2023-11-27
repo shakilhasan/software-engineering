@@ -1,5 +1,5 @@
 function intToRoman(num: number): string { //: { [key: number]: string }
-    const obj:any = {
+    const obj: any = {
         1000: 'M',
         900: 'CM',
         500: 'D',
@@ -14,18 +14,14 @@ function intToRoman(num: number): string { //: { [key: number]: string }
         4: "IV",
         1: "I",
     };
-
-    const keys = Object.keys(obj);
-    let result='';
-
-    for (let i = 0; i < keys.length; i++) {
-        let count=Math.ceil(num / Number(obj[i]));
-        if (count) {
-            result+=obj[keys[i]];
-        }
+    const keys = Object.keys(obj).reverse();
+    let [i, count] = [0, 0], result = '';
+    for (i; i < keys.length; i++) {
+        count = Math.floor(num / Number(keys[i]));
+        if (count) result += new Array(count + 1).join(obj[keys[i]]);
+        num %= Number(keys[i]);
     }
-
     return result;
 }
 
-console.log(intToRoman(555));
+console.log(intToRoman(1994));
