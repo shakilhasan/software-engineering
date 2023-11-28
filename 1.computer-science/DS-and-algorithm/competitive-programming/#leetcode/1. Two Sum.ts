@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/two-sum
 function twoSum(nums: number[], target: number): number[] {
     let len:number = nums.length
     let a:number[] = [];
@@ -13,5 +14,4 @@ function twoSum(nums: number[], target: number): number[] {
     return a;
 }
 
-let output:number[]=twoSum([2, 7, 11, 15], 9);
-console.log(output);
+console.log(twoSum([2, 7, 11, 15], 9));
