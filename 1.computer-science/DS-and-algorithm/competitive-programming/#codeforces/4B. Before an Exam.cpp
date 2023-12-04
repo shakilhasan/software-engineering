@@ -1,49 +1,32 @@
 //https://codeforces.com/contest/4/problem/B
 #include<iostream>
+
 using namespace std;
-main()
-{
-    int d,t,s,a[1000],b[1000],i,min,max,k=0,q=0;
-    cin>>d>>s;
-    t=s;
-    for(i=0; i<d; i++)
-    {
-        cin>>min>>max;
 
-        if(s>=min)
-        {
-            a[i]=min;
-            s=s-min;
+int main() {
+    int dayAmount, currentSumTime, sumTime, minTimes[1000], minMaxDifferences[1000], i, minTime, maxTime, totalMaxTime = 0;
+    cin >> dayAmount >> sumTime;
+    currentSumTime = sumTime;
+    for (i = 0; i < dayAmount; i++) {
+        cin >> minTime >> maxTime;
+        if (currentSumTime >= minTime) {
+            minTimes[i] = minTime;
+            currentSumTime = currentSumTime - minTime;
         }
-        else{
-
-            q=1;
+        else {
+            cout << "NO";
+            return 0;
         }
-        b[i]=max-min;
-        k=k+max;
+        minMaxDifferences[i] = maxTime - minTime;
+        totalMaxTime = totalMaxTime + maxTime;
     }
-    if(k<t||q==1)
-    {
-        cout<<"NO";
+    if (totalMaxTime < sumTime) {
+        cout << "NO";
         return 0;
     }
-
-    cout<<"YES"<<endl;
-    for(i=0; i<d; i++)
-    {
-
-
-        if(s>=b[i])
-        {
-            cout<<a[i]+b[i]<<" ";
-            s=s-b[i];
-        }
-        else
-        {
-            cout<<a[i]+s<<" ";
-            s=0;
-        }
-
+    cout << "YES" << endl;
+    for (i = 0; i < dayAmount; i++) {
+        if (currentSumTime >= minMaxDifferences[i]) cout << minTimes[i] + minMaxDifferences[i] << " ", currentSumTime = currentSumTime - minMaxDifferences[i];
+        else cout << minTimes[i] + currentSumTime << " ", currentSumTime = 0;
     }
-
 }
