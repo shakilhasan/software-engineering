@@ -178,9 +178,7 @@ class LinkList {
         let current = this.head, pre = null;
         while (current) {
             pre = new LinkListNode({val: current.val, next: pre})
-            if (current.next === null) {
-                this.head = pre;
-            }
+            if (current.next === null) this.head = pre;
             current = current.next;
         }
     }
