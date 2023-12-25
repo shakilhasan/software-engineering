@@ -10,8 +10,7 @@ class RandomFactDomainServiceReceiver {
             https.get('https://uselessfacts.jsph.pl/api/v2/facts/random', (res) => {
                 res.on('data', (d) => {
                     const data = JSON.parse(d);
-                    const fact = data.text;
-                    resolve(fact);
+                    resolve(data.text);
                 });
             }).on('error', (error) => {
                 reject(error);
@@ -25,8 +24,7 @@ class PrintRandomFactCommand implements Command {
     }
 
     public async execute(): Promise<void> {
-        const fact = await this.randomFactDomainServiceReceiver.getRandomFact();
-        console.info(fact);
+        console.info(await this.randomFactDomainServiceReceiver.getRandomFact());
     }
 }
 
@@ -41,8 +39,6 @@ class CommandInvoker {
     }
 }
 
-const randomFactDomainServiceReceiver = new RandomFactDomainServiceReceiver();
-const command = new PrintRandomFactCommand(randomFactDomainServiceReceiver);
+const command = new PrintRandomFactCommand(new RandomFactDomainServiceReceiver());
 const commandInvoker = new CommandInvoker(command, 3);
-
 commandInvoker.start();
