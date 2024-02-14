@@ -24,6 +24,7 @@ abstract class Employee1 implements IEmployee {
     toString(): string {
         return `Employee1 ID: ${this.getId()} Employee1 Name: ${this.getName()}`;
     }
+   abstract isEligibleForInsurance(): boolean;
 }
 
 class ContractEmployee1 extends Employee1 {
