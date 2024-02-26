@@ -1,14 +1,12 @@
 // https://leetcode.com/problems/palindrome-number
-
 function isPalindrome(x: number): boolean {
     if (x < 0) return false;
-    let remainder: number, reversed: number = 0, num: number = x;
+    let reversed: number = 0, num: number = x;
     while (x != 0) {
-        remainder = x % 10;
-        reversed = reversed * 10 + remainder;
+        reversed = reversed * 10 + (x % 10);
         x = Math.floor(x / 10);
     }
-    return num == reversed;
+    return num === reversed;
 }
 
 function isPalindromeByStr(x: number): boolean {
