@@ -3,8 +3,8 @@
 function rotate(nums: number[], k: number): void {
     const reverseArray = (i: number, j: number): any => {
         while (i < j + 1) {
-            let temp = nums[i];
-            nums[i++] = nums[j]
+            const temp = nums[i];
+            nums[i++] = nums[j];
             nums[j--] = temp;
         }
     };
