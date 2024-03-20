@@ -89,6 +89,8 @@ X.
 * Applicability: Mainly beneficial for problems involving sequences or intervals.
 * Initial Complexity: It might take some time to get the hang of this pattern and understand where and how to move the pointers.
 
-## References:
+### More problems based on two pointer technique [here](./Problems).
 
+## References:
 1. [Two Pointers Technique](https://www.geeksforgeeks.org/two-pointers-technique)
+2. [20 Essential Coding Patterns to Ace Your Next Coding Interview ](https://dev.to/arslan_ah/20-essential-coding-patterns-to-ace-your-next-coding-interview-32a3)
