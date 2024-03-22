@@ -32,5 +32,10 @@ Examples :
 [Here](Two-pointer.example.ts) is the implementation of the above approach.
 
 #### Complexity Analysis:
+
 - Time Complexity: O(N^2)
 - Auxiliary Space: O(1)
+
+### References
+
+1. [Find four elements that sum to a given value](https://www.geeksforgeeks.org/find-four-numbers-with-sum-equal-to-given-sum)

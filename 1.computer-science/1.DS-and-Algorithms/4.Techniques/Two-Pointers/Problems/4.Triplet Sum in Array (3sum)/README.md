@@ -37,3 +37,7 @@ algorithm take linear time so it is better than a nested loop.
 - Time complexity: O(N^2), There are only two nested loops traversing the array, so time complexity is O(n^2). Two pointers algorithm takes O(n) time
   and the first element can be fixed using another nested traversal.
 - Auxiliary Space: O(1), As no extra space is required.
+
+### References
+
+1. [Triplet Sum in Array (3sum)](https://www.geeksforgeeks.org/find-a-triplet-that-sum-to-a-given-value/)

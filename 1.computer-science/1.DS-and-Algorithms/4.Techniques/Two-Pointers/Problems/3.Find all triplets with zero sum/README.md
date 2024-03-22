@@ -1,4 +1,5 @@
 # Find all triplets with zero-sum
+
 Given an array of distinct elements. The task is to find triplets in the array whose sum is zero.
 
 Examples :
@@ -27,3 +28,7 @@ Examples :
   array[r-1] < array [r].
 
 [Here](Two-pointer.example.ts) is the implementation of the above approach.
+
+### References
+
+1. [Find all triplets with zero sum](https://www.geeksforgeeks.org/find-triplets-array-whose-sum-equal-zero)

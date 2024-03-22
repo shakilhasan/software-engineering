@@ -45,3 +45,7 @@ The idea is to start from left side of one array and right side of another array
 4. Print the result.
 
 [Here](./Two-pointer.example.ts) is the implementation of the above approach.
+
+### References
+
+1. [Find the closest pair from two sorted arrays](https://www.geeksforgeeks.org/given-two-sorted-arrays-number-x-find-pair-whose-sum-closest-x)
