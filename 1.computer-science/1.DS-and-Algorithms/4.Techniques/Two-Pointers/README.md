@@ -93,4 +93,5 @@ X.
 
 ## References:
 1. [Two Pointers Technique](https://www.geeksforgeeks.org/two-pointers-technique)
-2. [20 Essential Coding Patterns to Ace Your Next Coding Interview ](https://dev.to/arslan_ah/20-essential-coding-patterns-to-ace-your-next-coding-interview-32a3)
+2. [Solved-all-two-pointers-problems-in-100-days](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
+3. [20 Essential Coding Patterns to Ace Your Next Coding Interview ](https://dev.to/arslan_ah/20-essential-coding-patterns-to-ace-your-next-coding-interview-32a3)
