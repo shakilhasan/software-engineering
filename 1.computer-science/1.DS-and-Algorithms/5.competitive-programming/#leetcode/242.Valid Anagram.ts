@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/valid-anagram
-function isAnagram(s: string, t: string): boolean {
+export function isAnagram1(s: string, t: string): boolean {
     let obj: { [k: string]: number } = {}
     if (s.length != t.length) return false;
     for (let i = 0; i < s.length; i++) {
@@ -10,5 +10,14 @@ function isAnagram(s: string, t: string): boolean {
     }
     return !Object.keys(obj).length;
 }
-
+export function isAnagram(s: string, t: string): boolean {
+    const obj:{[k: string]: number}={};
+    if(s.length!==t.length)return false;
+    for (let i = 0; i < s.length; i++){
+        if(s[i] in obj) obj[s[i]]++; else obj[s[i]] =1;
+        if(t[i] in obj) obj[t[i]]--; else obj[t[i]] =-1;
+    }
+    for (const key in obj) if(obj[key]) return false;
+    return true;
+};
 console.log(isAnagram("ab", "ba"))
